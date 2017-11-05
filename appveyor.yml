@@ -21,8 +21,8 @@ environment:
 after_test: 
 # generate report for NUnit testing framework:
 
-    - cmd: FiMA\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FiMA\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single Fima\Tests\Fima.Services.Web.Tests\bin\Debug\Fima.Services.Web.Tests.dll" -output:coverage.xml
-    - cmd: FiMA\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FiMA\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single Fima\Tests\Fima.Web.Controllers.Tests\bin\Debug\Fima.Web.Controllers.Tests.dll" -output:coverage.xml
-    - cmd: FiMA\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FiMA\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single Fima\Tests\Fima.Web.Routes.Tests\bin\Debug\Fima.Web.Routes.Tests.dll" -output:coverage.xml
+    - cmd: FiMA\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FiMA\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single FiMA\Tests\Fima.Services.Web.Tests\bin\Debug\Fima.Services.Web.Tests.dll" -output:coverage.xml
+    - cmd: FiMA\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FiMA\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single FiMA\Tests\Fima.Web.Controllers.Tests\bin\Debug\Fima.Web.Controllers.Tests.dll" -output:coverage.xml
+    - cmd: FiMA\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"FiMA\packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single FiMA\Tests\Fima.Web.Routes.Tests\bin\Debug\Fima.Web.Routes.Tests.dll" -output:coverage.xml
     
     - cmd: FiMA\packages\coveralls.io.1.4.2\tools\coveralls.net.exe --opencover coverage.xml -r %COVERALLS_REPO_TOKEN%
