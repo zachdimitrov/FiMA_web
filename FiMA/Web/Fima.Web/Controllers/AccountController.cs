@@ -157,7 +157,7 @@
         }
 
         // POST: /Account/Register
-        [CaptchaMvc.Attributes.CaptchaVerify("Captcha is not valid")]
+        [CaptchaMvc.Attributes.CaptchaVerify("Резултатът от израза не е верен, опитайте отново!")]
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

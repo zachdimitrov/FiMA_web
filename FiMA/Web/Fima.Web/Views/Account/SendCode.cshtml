@@ -1,6 +1,6 @@
 ﻿@model Fima.Web.ViewModels.Account.SendCodeViewModel
 @{
-    ViewBag.Title = "Send";
+    ViewBag.Title = "Изпращане на код.";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -14,7 +14,7 @@
         <div class="col-md-8">
             Select Two-Factor Authentication Provider:
             @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
-            <input type="submit" value="Submit" class="btn btn-default" />
+            <input type="submit" value="Изпрати" class="btn btn-default" />
         </div>
     </div>
 }

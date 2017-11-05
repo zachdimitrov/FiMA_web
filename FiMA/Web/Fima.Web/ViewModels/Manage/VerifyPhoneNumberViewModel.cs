@@ -4,13 +4,13 @@
 
     public class VerifyPhoneNumberViewModel
     {
-        [Required]
-        [Display(Name = "Code")]
+        [Required(ErrorMessage = "Моля, въведете кода за потърждение!")]
+        [Display(Name = "Код за потвърждение")]
         public string Code { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Моля, въведете телефонен номер!")]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Телефонен номер")]
         public string PhoneNumber { get; set; }
     }
 }

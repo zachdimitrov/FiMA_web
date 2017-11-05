@@ -4,20 +4,20 @@
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Паролата е задължителна!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Вашата стара парола")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = Common.GlobalConstants.PasswordMinLength)]
+        [Required(ErrorMessage = "Моля, въведете новата парола!")]
+        [StringLength(100, ErrorMessage = "Паролата трябва да е поне {2} символа.", MinimumLength = Common.GlobalConstants.PasswordMinLength)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Нова парола")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Потвърдете новата парола")]
+        [Compare("NewPassword", ErrorMessage = "Паролата не съпада, моля опитайте отново!")]
         public string ConfirmPassword { get; set; }
     }
 }

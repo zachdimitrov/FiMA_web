@@ -4,17 +4,17 @@
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Username")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [Required(ErrorMessage = "Потребителското име е задължително!")]
+        [Display(Name = "Потребител")]
+        [StringLength(50, ErrorMessage = "Потребителското име трябва да е поне {2} символа.", MinimumLength = 3)]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Паролата е задължителна!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Парола")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомни ме?")]
         public bool RememberMe { get; set; }
     }
 }
