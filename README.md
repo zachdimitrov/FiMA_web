@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/68olcw2vxlc90oxw?svg=true)](https://ci.appveyor.com/project/zachdimitrov/fima-web)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/68olcw2vxlc90oxw/branch/master?svg=true)](https://ci.appveyor.com/project/zachdimitrov/fima-web/branch/master)
+[![Coverage Status](https://coveralls.io/repos/github/zachdimitrov/FiMA_web/badge.svg)](https://coveralls.io/github/zachdimitrov/FiMA_web)
 
 # FiMA_web
 ASP.NET MVC web site
