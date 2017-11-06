@@ -4,7 +4,7 @@
 
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="Името на външния доставчик е задължително!")]
         public string Provider { get; set; }
 
         [Required(ErrorMessage = "Моля въведете код за потвърждение!")]

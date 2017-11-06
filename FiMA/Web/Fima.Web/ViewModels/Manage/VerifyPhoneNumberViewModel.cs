@@ -9,7 +9,7 @@
         public string Code { get; set; }
 
         [Required(ErrorMessage = "Моля, въведете телефонен номер!")]
-        [Phone]
+        [Phone(ErrorMessage ="Телефонният номер не е валиден")]
         [Display(Name = "Телефонен номер")]
         public string PhoneNumber { get; set; }
     }

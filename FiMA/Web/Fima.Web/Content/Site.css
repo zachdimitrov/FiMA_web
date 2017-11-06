@@ -1,12 +1,91 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
+body {
+    /*font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;*/
+    text-shadow: 1px 1px 1px white;
     padding-top: 50px;
     padding-bottom: 20px;
+    background: url("Images/bg-tiny-checker.png") repeat;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background: #feffff;
+    background: -moz-linear-gradient(top, #feffff 0%, #ddf1f9 100%);
+    background: -webkit-linear-gradient(top, #feffff 0%,#ddf1f9 100%);
+    background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#ddf1f9',GradientType=0 );
+    box-shadow: #000000 0 0 50px;
+}
+
+h1,
+h2
+{
+    font-weight: 200;
+}
+
+h4 {
+    color: #5a7b97;
+}
+
+hr {
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid white;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+footer {
+    color: #ddf1f9;
+    text-shadow: none;
+    margin: 30px -15px 0 -15px;
+    padding-left: 15px;
+    height: 55px;
+    line-height: 55px;
+    background-color: #5a7b97;
+    z-index: 2;
+}
+
+footer a {
+    color: #9ac5d7;
+}
+
+.navbar-inverse {
+    background-color: #003058;
+    border-bottom: 1px solid white;
+}
+
+.navbar-inverse .navbar-nav li:hover {
+        background-color: #5a7b97;
+    }
+
+.navbar-inverse .navbar-nav > li a {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+.navbar-inverse .navbar-brand {
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+    }
+
+.navbar-inverse .navbar-brand:hover {
+        color:aqua;
+    }
+
+.navbar-inverse .navbar-toggle {
+    background-color: #003058;
+    border: none;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #003058;
+    border: none;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -17,8 +96,54 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+input:not(.btn),
 select,
 textarea {
+    transition: all 0.30s ease-in-out;
+    font-size:1.8rem;
     max-width: 280px;
+    background: #fff!important;
+    /*background-color: rgba(0,0,0,.04)!important;*/
+    padding: 6px 10px;
+    margin: 0;
+    border-radius: 0!important;
+    border: 1px solid transparent!important;
+    border-top-color: rgba(0,0,0,.2)!important;
+    border-left-color: rgba(0,0,0,.2)!important;
+    box-shadow: none!important;
+    height: 3.5rem!important;
+}
+
+#CaptchaInputText:active {
+   border-color: white;
+}
+
+input:not(.btn):not([type="checkbox"]):focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1)!important;
+  border: 1px solid rgba(81, 203, 238, 1)!important;
+}
+
+.checkbox {
+    margin-left: 20px;
+}
+
+.checkbox input {
+    width: 1.4rem;
+}
+
+.checkbox input:focus {
+    box-shadow: 0;
+}
+
+.checkbox label {
+    line-height: 3.5rem;
+}
+
+.btn {
+    border-radius: 0!important;
+    min-width: 10rem;
+    min-height: 3.5rem;
+    font-size:1.8rem;
 }
