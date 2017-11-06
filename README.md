@@ -2,5 +2,5 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/zachdimitrov/FiMA_web/badge.svg)](https://coveralls.io/github/zachdimitrov/FiMA_web)
 
-# FiMA_web
+# FiMA
 ASP.NET MVC web site
