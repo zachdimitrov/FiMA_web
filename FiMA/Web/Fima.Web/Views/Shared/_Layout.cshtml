@@ -22,9 +22,9 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Начало", "Index", "Home", new { area = string.Empty }, null)</li>
                     @{
-                        if (this.User.IsInRole("Admin"))
+                        if (this.User.IsInRole("Administrator"))
                         {
-                            <li>@Html.ActionLink("Administration", "Index", "Home", new { area = "Administration" }, null)</li>
+                            <li>@Html.ActionLink("Админ", "Index", "Home", new { area = "Administration" }, null)</li>
                         }
                     }
                 </ul>
