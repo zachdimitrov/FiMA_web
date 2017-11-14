@@ -8,36 +8,41 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    <div class="nav-top-line">
-        <div class="top-container">
+    <header>
+        <nav>
+            <div class="logo">
                 @Html.ActionLink("FiMA", "Index", "Home", new { area = string.Empty }, new { @class = "page-brand" })
+            </div>
+
+            <div class="nav-bar">
                 @Html.Partial("_LoginPartial")
-        </div>
-    </div>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toggle-collapse">
-                    <i class="glyphicon glyphicon-th-list"></i>
-                </button>
-                <a href="@Url.Action("Home", new { @class = "navbar-brand" })">
-                    <i class="glyphicon glyphicon-home"></i>
-                </a>
             </div>
-            <div class="navbar-collapse collapse" id="toggle-collapse">
-                    @Html.Partial("_WorkMenu")
+        </nav>
+    </header>
+    <main class="container">
+        <div class="sidebar">
+            <div class="burger" onclick="burger(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
             </div>
+            <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a>
+            @Html.Partial("_WorkMenu")
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
+        <div class="content">
+            @RenderBody()
+        </div>
+    </main>
+    <footer>
+        <p class="footer-content">&copy; @DateTime.UtcNow.Year - <b>FiМА</b> <a href="">Всички права са запазени.</a> </p>
+    </footer>
+    <script>
+        function burger(x) {
+            x.classList.toggle("burger-selected");
+        }
+    </script>
 
-        <footer>
-            <p>&copy; @DateTime.UtcNow.Year - <b>FiМА</b> <a href="">Всички права са запазени.</a> </p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

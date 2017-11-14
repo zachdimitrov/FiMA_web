@@ -1,149 +1,167 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+
+body,
+div,
+ul,
+li,
+a,
+i,
+nav,
+header,
+span,
+p {
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    /*font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;*/
-    /*text-shadow: 1px 1px 1px white;*/
-    padding-top: 50px;
-    padding-bottom: 20px;
-    background: url("Images/bg-tiny-checker.png") repeat;
+    /*background: url("Images/bg-tiny-checker.png") repeat;*/
+    background: #E3F2FD;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    background: #feffff;
-    background: -moz-linear-gradient(top, #feffff 0%, #ddf1f9 100%);
-    background: -webkit-linear-gradient(top, #feffff 0%,#ddf1f9 100%);
-    background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#ddf1f9',GradientType=0 );
-    box-shadow: #000000 0 0 20px;
+.logo {
+    margin: 0 0 0 0.5rem;
+    align-self: flex-start;
 }
 
-h1,
-h2
-{
-    font-weight: 200;
+.page-brand {
+    font-family: 'Fredericka the Great', cursive;
+    color: white;
+    opacity: 0.8;
+    font-size: 2rem;
+    text-shadow: 2px 2px 2px #003058;
 }
 
-h4 {
-    color: #5a7b97;
+    .page-brand:hover {
+        opacity: 1;
+        text-shadow: 2px 2px 2px #000;
+    }
+
+nav {
+    background-color: #1E88E5;
+    display: flex;
+    flex-wrap: wrap;
+    height: 2.4rem;
+    justify-content: space-between;
+    width: 100%;
 }
 
-hr {
-    border-top: 1px solid lightgrey;
-    border-bottom: 1px solid white;
-    margin-left: -15px;
-    margin-right: -15px;
+a {
+    text-decoration: none;
 }
 
-footer {
-    color: #ddf1f9;
-    text-shadow: none;
-    margin: 30px -15px 0 -15px;
-    padding-left: 15px;
-    height: 55px;
-    line-height: 55px;
-    background-color: #5a7b97;
+ul li {
+    list-style-type: none;
+}
+
+.burger {
+    cursor: pointer;
+    display: inline-block;
+}
+
+    .burger .bar1,
+    .burger .bar2,
+    .burger .bar3 {
+        background-color: #eceff1;
+        height: 0.2rem;
+        margin: 0.3rem;
+        transition: .4s;
+        width: 1.4rem;
+    }
+
+.burger-selected .bar1 {
+    transform: rotate(-45deg) translate(-0.35rem, 0.3rem);
+}
+
+.burger-selected .bar2 {
+    opacity: 0;
+}
+
+.burger-selected .bar3 {
+    transform: rotate(45deg) translate(-0.4rem, -0.4rem);
+}
+
+.nav-bar {
+    align-self: stretch;
+    height: 100%;
+    width: 100%;
+    margin-left: 2.8rem;
     z-index: 2;
 }
 
-footer a {
-    color: #9ac5d7;
-}
-
-.navbar-light {
-    background-color: #003058;
-    border-bottom: 1px solid white;
-}
-
-    .navbar-light .navbar-nav li:hover {
-        background-color: #5a7b97;
+    .nav-bar .menu-item {
+        border-bottom: 1px solid #263238;
+        padding: 0 15px;
     }
 
-    .navbar-light .navbar-nav > li a {
+    .nav-bar i {
+        font-size: 1.4rem;
+        color: #003058;
+        position: relative;
+        top: 4px;
+    }
+
+    .nav-bar .menu-item a {
         color: white;
-        text-shadow: 1px 1px 1px black;
+        opacity: 0.8;
+        font-size: 1rem;
+        line-height: 2.4rem;
+        padding: 0 0 0 3px;
+        text-shadow: 1px 1px 1px #000;
     }
 
-    .navbar-light .navbar-brand {
-        font-size: 2rem;
-        font-weight: bold;
-        color: white;
-        text-shadow: 1px 1px 1px black;
-    }
-
-        .navbar-light .navbar-brand:hover {
-            color: aqua;
-        }
-
-    .navbar-light .navbar-toggle {
+    .nav-bar .menu-item:hover {
         background-color: #003058;
-        border: none;
+        cursor: pointer;
     }
 
-        .navbar-light .navbar-toggle:hover,
-        .navbar-light .navbar-toggle:focus {
-            background-color: #003058;
-            border: none;
+        .nav-bar .menu-item:hover i {
+            color: white;
         }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+@media (min-width: 540px) {
+    .burger {
+        display: none;
+    }
+
+    .nav-bar {
+        align-self: flex-end;
+        margin: 0;
+        width: auto;
+    }
+
+        .nav-bar .menu-item {
+            border: 0;
+            display: inline-block;
+        }
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input:not(.btn),
-select,
-textarea {
-    transition: all 0.30s ease-in-out;
-    font-size:1.8rem;
-    max-width: 280px;
-    background: #fff!important;
-    /*background-color: rgba(0,0,0,.04)!important;*/
-    padding: 6px 10px;
-    margin: 0;
-    border-radius: 0!important;
-    border: 1px solid transparent!important;
-    border-top-color: rgba(0,0,0,.2)!important;
-    border-left-color: rgba(0,0,0,.2)!important;
-    box-shadow: none!important;
-    height: 3.5rem!important;
+.container {
+    display: flex;
 }
 
-#CaptchaInputText:active {
-   border-color: white;
+.content {
+    padding: 10px;
 }
 
-input:not(.btn):not([type="checkbox"]):focus,
-select:focus,
-textarea:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1)!important;
-  border: 1px solid rgba(81, 203, 238, 1)!important;
+.sidebar {
+    background-color: #263238;
 }
 
-.checkbox {
-    margin-left: 20px;
+footer {
+    line-height: 25px;
+    padding: 20px 0;
+    width: 100vw;
 }
 
-.checkbox input {
-    width: 1.4rem;
+.footer-content {
+    margin-left: 1rem;
 }
 
-.checkbox input:focus {
-    box-shadow: 0;
-}
-
-.checkbox label {
-    line-height: 3.5rem;
-}
-
-.btn {
-    border-radius: 0!important;
-    min-width: 10rem;
-    min-height: 3.5rem;
-    font-size:1.8rem;
-}
+    .footer-content,
+    .footer-content a {
+        color: #263238;
+        font-size: 0.8rem;
+    }

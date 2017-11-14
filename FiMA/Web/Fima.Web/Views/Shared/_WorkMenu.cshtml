@@ -1,11 +1,27 @@
-﻿<ul class="nav navbar-nav">
+﻿<ul>
     @{
         if (this.User.IsInRole("Administrator"))
         {
-            <li>@Html.ActionLink("Админ", "Index", "Home", new { area = "Administration" }, null)</li>
-            <li>@Html.ActionLink("Test", "Test", "Home", new { area = "Administration" }, null)</li>
-            <li>@Html.ActionLink("Something", "Something", "Home", new { area = "Administration" }, null)</li>
-            <li>@Html.ActionLink("Another", "Another", "Home", new { area = "Administration" }, null)</li>
+            <li>
+                @Html.ActionLink("Админ", "Index", "Home",
+               new { area = "Administration" },
+               new { @class = "links" })
+            </li>
+            <li>
+                @Html.ActionLink("Test", "Test", "Home",
+                new { area = "Administration" },
+                new { @class = "links" })
+            </li>
+            <li>
+                @Html.ActionLink("Something", "Something", "Home",
+                new { area = "Administration" },
+                new { @class = "links" })
+            </li>
+            <li>
+                @Html.ActionLink("Another", "Another", "Home",
+                new { area = "Administration" },
+                new { @class = "links" })
+            </li>
         }
     }
 </ul>
