@@ -2,7 +2,7 @@
 
 body {
     /*font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;*/
-    text-shadow: 1px 1px 1px white;
+    /*text-shadow: 1px 1px 1px white;*/
     padding-top: 50px;
     padding-bottom: 20px;
     background: url("Images/bg-tiny-checker.png") repeat;
@@ -17,7 +17,7 @@ body {
     background: -webkit-linear-gradient(top, #feffff 0%,#ddf1f9 100%);
     background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#ddf1f9',GradientType=0 );
-    box-shadow: #000000 0 0 50px;
+    box-shadow: #000000 0 0 20px;
 }
 
 h1,
@@ -52,41 +52,41 @@ footer a {
     color: #9ac5d7;
 }
 
-.navbar-inverse {
+.navbar-light {
     background-color: #003058;
     border-bottom: 1px solid white;
 }
 
-.navbar-inverse .navbar-nav li:hover {
+    .navbar-light .navbar-nav li:hover {
         background-color: #5a7b97;
     }
 
-.navbar-inverse .navbar-nav > li a {
-    color: white;
-    text-shadow: 1px 1px 1px black;
-}
+    .navbar-light .navbar-nav > li a {
+        color: white;
+        text-shadow: 1px 1px 1px black;
+    }
 
-.navbar-inverse .navbar-brand {
+    .navbar-light .navbar-brand {
         font-size: 2rem;
         font-weight: bold;
         color: white;
         text-shadow: 1px 1px 1px black;
     }
 
-.navbar-inverse .navbar-brand:hover {
-        color:aqua;
+        .navbar-light .navbar-brand:hover {
+            color: aqua;
+        }
+
+    .navbar-light .navbar-toggle {
+        background-color: #003058;
+        border: none;
     }
 
-.navbar-inverse .navbar-toggle {
-    background-color: #003058;
-    border: none;
-}
-
-.navbar-inverse .navbar-toggle:hover,
-.navbar-inverse .navbar-toggle:focus {
-    background-color: #003058;
-    border: none;
-}
+        .navbar-light .navbar-toggle:hover,
+        .navbar-light .navbar-toggle:focus {
+            background-color: #003058;
+            border: none;
+        }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
