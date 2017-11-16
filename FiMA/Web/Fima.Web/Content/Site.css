@@ -1,24 +1,257 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+body,
+div,
+ul,
+li,
+a,
+i,
+nav,
+header,
+span,
+p {
+    margin: 0;
+    padding: 0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+a {
+    text-decoration: none;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+ul li {
+    list-style-type: none;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+    /*background: url("Images/bg-tiny-checker.png") repeat;*/
+    background: #EFEFF0;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.logo {
+    align-self: flex-start;
+}
+
+.page-brand {
+    padding: 0 0.5rem;
+    font-family: 'Fredericka the Great', cursive;
+    color: white;
+    opacity: 0.8;
+    font-size: 1.95rem;
+    text-shadow: 2px 2px 2px #003058;
+}
+
+.page-brand:hover {
+    opacity: 1;
+    text-shadow: 2px 2px 2px #000;
+}
+
+.page-brand:active {
+    background-color: #003058;
+    opacity: 1;
+    text-shadow: 2px 2px 2px #000;
+}
+
+nav {
+    background-color: #1E88E5;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 2.4rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-bar {
+    align-self: flex-end;
+    height: 100%;
+    width: auto;
+    margin: 0;
+    z-index: 2;
+}
+
+.nav-bar li {
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.nav-bar i {
+    font-size: 1.4rem;
+    color: #003058;
+    position: relative;
+    top: 3px;
+}
+
+.nav-bar li a {
+    color: white;
+    opacity: 0.8;
+    font-size: 1rem;
+    line-height: 2.4rem;
+    padding: 0 0 0 3px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.nav-bar li:hover {
+    cursor: pointer;
+}
+
+.nav-bar li:hover i {
+    color: black;
+}
+
+.nav-bar li:hover a {
+    opacity: 1;
+    background-color: inherit;
+}
+
+.nav-bar li:active {
+    background-color: #003058;
+    cursor: pointer;
+}
+
+.nav-bar li:active i {
+    color: white;
+}
+
+.burger .bar2 {
+    margin: 0.3rem 0;
+}
+
+.burger .bar1,
+.burger .bar2,
+.burger .bar3 {
+    background-color: white;
+    height: 0.2rem;
+    transition: .4s;
+    width: 1.4rem;
+}
+
+.burger-selected .bar1 {
+    transform: rotate(-45deg) translate(-0.35rem, 0.3rem);
+}
+
+.burger-selected .bar2 {
+    opacity: 0;
+}
+
+.burger-selected .bar3 {
+    transform: rotate(45deg) translate(-0.4rem, -0.4rem);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    padding: 10px;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+}
+
+.sidebar {
+    width: 230px;
+    line-height: 20px;
+    background-color: #D4DBE1;
+    border-right: 1px solid darkgrey;
+    border-collapse: collapse;
+}
+
+.menu-item {
+    padding: 0 0 0 7px;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.burger {
+    padding: 5px 0 5px 5px;
+}
+
+.menu-item a {
+    color: #303B46;
+}
+
+.menu-item i {
+    margin-right: 5px;
+    color: #003058;
+}
+
+.icon-right {
+    position: relative;
+    left: 40px;
+    top: -5px;
+}
+
+.toggle:hover>.icon-right {
+    top: 0;
+}
+
+.selected {
+    border-right: 1px solid white;
+    width: 101%;
+    border-top: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    border-left: 2px solid orangered;
+    background-color: white;
+}
+
+.selected .menu-item {
+    border-right: 1px solid white;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu .menu-item {
+    border-right: none;
+}
+
+.sub-selected {
+    background-color: rgba(212, 219, 225, 0.25);
+    border-left: 2px solid orangered;
+    margin-left: -7px;
+    padding-left: 5px;
+}
+
+.unfold>.submenu {
+    display: inline-block;
+    width: 100%;
+}
+
+[id*=error] {
+    color: orangered;
+    font-size: 0.8rem;
+}
+
+.form-group {
+    margin: 25px;
+}
+
+.checkbox input {
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox label {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+footer {
+    line-height: 25px;
+    padding: 20px 0;
+    width: 100vw;
+}
+
+.footer-content {
+    margin-left: 1rem;
+}
+
+.footer-content,
+.footer-content a {
+    color: #263238;
+    font-size: 0.8rem;
 }

@@ -1,14 +1,14 @@
 ﻿@model Fima.Web.ViewModels.Account.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>Използване нa външен профил.</h4>
+<h4>Използване нa външен профил</h4>
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (!loginProviders.Any()) {
         <div>
             <p>
-                Не са е конфигурирана външна авторизация. Повече информация вижте в <a href="http://go.microsoft.com/fwlink/?LinkId=403804">тази статия</a>.
+                Не е конфигурирана външна авторизация. Повече информация вижте в <a href="http://go.microsoft.com/fwlink/?LinkId=403804">тази статия</a>.
             </p>
         </div>
     }

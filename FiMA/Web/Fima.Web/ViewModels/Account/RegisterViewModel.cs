@@ -10,7 +10,7 @@
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Е-мейл адресът е задължителен!")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Е-мейл адресът не е валиден!")]
         [Display(Name = "Е-мейл адрес")]
         public string Email { get; set; }
 
