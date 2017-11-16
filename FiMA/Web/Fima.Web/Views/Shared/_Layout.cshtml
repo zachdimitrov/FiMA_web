@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - FiMA</title>
     @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
     @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -21,15 +23,18 @@
     </header>
     <main class="container">
         <div class="sidebar">
-            <div class="burger" onclick="burger(this)">
+            <div class="burger">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
             </div>
             <div class="menu-item">
-                <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i>начало</a>
+                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>начало</a>
             </div>
-            @Html.Partial("_WorkMenu")
+        @if (this.User.IsInRole("FrontOffice") || this.User.IsInRole("Administrator"))
+        {
+            Html.RenderPartial("_FrontOfficeMenu");
+        }
         </div>
         <div class="content">
             @RenderBody()
@@ -38,13 +43,8 @@
     <footer>
         <p class="footer-content">&copy; @DateTime.UtcNow.Year - <b>FiМА</b> <a href="">Всички права са запазени.</a> </p>
     </footer>
-    <script>
-        function burger(x) {
-            x.classList.toggle("burger-selected");
-        }
-    </script>
 
-    @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/local")
 </body>
 </html>

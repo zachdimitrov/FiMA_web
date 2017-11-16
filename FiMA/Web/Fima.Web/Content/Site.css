@@ -112,17 +112,15 @@ nav {
     color: white;
 }
 
-.burger {
-    cursor: pointer;
-    display: inline-block;
+.burger .bar2 {
+    margin: 0.3rem 0;
 }
 
 .burger .bar1,
 .burger .bar2,
 .burger .bar3 {
-    background-color: #eceff1;
+    background-color: white;
     height: 0.2rem;
-    margin: 0.3rem;
     transition: .4s;
     width: 1.4rem;
 }
@@ -137,12 +135,6 @@ nav {
 
 .burger-selected .bar3 {
     transform: rotate(45deg) translate(-0.4rem, -0.4rem);
-}
-
-@media (min-width: 540px) {
-    .burger {
-        display: none;
-    }
 }
 
 .container {
@@ -160,16 +152,21 @@ nav {
 }
 
 .sidebar {
-    min-width: 200px;
+    width: 230px;
     line-height: 20px;
     background-color: #D4DBE1;
+    border-right: 1px solid darkgrey;
+    border-collapse: collapse;
 }
 
 .menu-item {
     padding: 0 0 0 7px;
     line-height: 35px;
     cursor: pointer;
-    border-right: 1px solid darkgrey;
+}
+
+.burger {
+    padding: 5px 0 5px 5px;
 }
 
 .menu-item a {
@@ -192,7 +189,8 @@ nav {
 }
 
 .selected {
-    border-right: none;
+    border-right: 1px solid white;
+    width: 101%;
     border-top: 1px solid darkgrey;
     border-bottom: 1px solid darkgrey;
     border-left: 2px solid orangered;
@@ -200,7 +198,7 @@ nav {
 }
 
 .selected .menu-item {
-    border-right: none;
+    border-right: 1px solid white;
 }
 
 .submenu {
@@ -221,6 +219,25 @@ nav {
 .unfold>.submenu {
     display: inline-block;
     width: 100%;
+}
+
+[id*=error] {
+    color: orangered;
+    font-size: 0.8rem;
+}
+
+.form-group {
+    margin: 25px;
+}
+
+.checkbox input {
+    width: 18px;
+    height: 18px;
+}
+
+.checkbox label {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 footer {
