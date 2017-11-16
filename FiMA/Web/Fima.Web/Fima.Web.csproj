@@ -205,6 +205,8 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Controllers\ManageUsersController.cs" />
+    <Compile Include="Areas\FrontOffice\Controllers\HomeController.cs" />
+    <Compile Include="Areas\FrontOffice\FrontOfficeAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -234,6 +236,9 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Areas\Administration\Views\Shared\_AdminMenu.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Content\font-awesome.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\bg-tiny-checker.png" />
@@ -250,6 +255,10 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\FrontOffice\Views\web.config" />
+    <Content Include="Areas\FrontOffice\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\FrontOffice\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\FrontOffice\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -294,10 +303,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
-    <Content Include="Views\Shared\_FrontOfficeMenu.cshtml" />
+    <Content Include="Areas\FrontOffice\Views\Shared\_FrontOfficeMenu.cshtml" />
+    <Content Include="Views\Shared\_SideMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\FrontOffice\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

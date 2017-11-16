@@ -1,4 +1,11 @@
 ﻿@{
     ViewBag.Title = "Начало";
 }
-<h1>Добре дошли в системата на FiMA!</h1>
+
+<h2>Добре дошли в системата на FiMA!</h2>
+
+@section scripts {
+    <script>
+        $('[href="/"]').closest('.menu-item').addClass('selected');
+    </script>
+}

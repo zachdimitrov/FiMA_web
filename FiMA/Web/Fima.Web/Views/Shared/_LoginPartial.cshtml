@@ -3,18 +3,25 @@
 {
     using (Html.BeginForm("LogOff", "Account", new { area = string.Empty }, FormMethod.Post, new { id = "logoutForm", @class = "item-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="login-right">
-        <li>
-            <i class="fa fa-user"></i>
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: new { area = string.Empty }, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li>
-            <i class="fa fa-sign-out"></i>
-            <a href="javascript:document.getElementById('logoutForm').submit()">изход</a>
-        </li>
-    </ul>
+        <ul class="login-right">
+            @if (this.User.IsInRole("Administrator"))
+            {
+                <li>
+                    <i class="fa fa-cogs"></i>
+                    @Html.ActionLink("панел", "Index", "Home", routeValues: new { area = "Administration" }, htmlAttributes: new { title="Panel" })
+                </li>
+            }
+            <li>
+                <i class="fa fa-user"></i>
+                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: new { area = string.Empty }, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>
+                <i class="fa fa-sign-out"></i>
+                <a href="javascript:document.getElementById('logoutForm').submit()">изход</a>
+            </li>
+        </ul>
     }
 }
 else
@@ -22,11 +29,11 @@ else
     <ul class="login-right">
         <li>
             <i class="fa fa-user-plus"></i>
-        @Html.ActionLink("регистрация", "Register", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })
+            @Html.ActionLink("регистрация", "Register", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })
         </li>
         <li>
             <i class="fa fa-sign-in"></i>
-        @Html.ActionLink("вход", "Login", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })
+            @Html.ActionLink("вход", "Login", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })
         </li>
     </ul>
 }

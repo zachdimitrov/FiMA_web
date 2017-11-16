@@ -37,10 +37,11 @@
     function checkBurger() {
         if (!$('.burger').hasClass('burger-selected')) {
             $('.menu-item').hide();
-            $('.sidebar').css({ "minWidth": 32 });
+            $('.sidebar').css({ "min-width": 32 });
             $('.sidebar').width(32);
         } else {
-            $('.sidebar').css({ "minWidth": 230 });
+            $('.sidebar').css({ "min-width": 240 });
+            $('.sidebar').width(240);
             $('.menu-item').fadeIn();
         }
     }

@@ -22,6 +22,16 @@ ul li {
     list-style-type: none;
 }
 
+h2 {
+    margin: 0 0 10px 0;
+    font-weight: 400;
+    color: #003058;
+}
+
+html {
+        font-size: 16px;
+}
+
 body {
     /*background: url("Images/bg-tiny-checker.png") repeat;*/
     background: #EFEFF0;
@@ -152,7 +162,7 @@ nav {
 }
 
 .sidebar {
-    width: 230px;
+    min-width: 230px;
     line-height: 20px;
     background-color: #D4DBE1;
     border-right: 1px solid darkgrey;
@@ -170,6 +180,10 @@ nav {
 }
 
 .menu-item a {
+    display: block;
+    margin: 0;
+    height: 100%;
+    width: 100%;
     color: #303B46;
 }
 
