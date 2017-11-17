@@ -273,6 +273,12 @@ nav {
     margin-left: 10px;
 }
 
+.button-right {
+    position: absolute;
+    right: 15px;
+    top: 50px;
+}
+
 footer {
     line-height: 25px;
     padding: 20px 0;

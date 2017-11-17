@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Начало";
+}
+
+<h2>Бек офис</h2>
+
+<a class="pure-button button-right" href="@Url.Action("Index","Home", new { area = "FrontOffice" })"><i class="fa fa-chevron-left"></i> фронт офис</a>
+
+@section scripts {
+    <script>
+        $('[href*=home]').closest('.menu-item').addClass('selected');
+    </script>
+}
