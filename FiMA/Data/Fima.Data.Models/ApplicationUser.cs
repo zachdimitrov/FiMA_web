@@ -13,7 +13,6 @@
     {
         public ApplicationUser()
         {
-            // TODO: maybe UtcNow, but left it like this for consistency with other code
             this.CreatedOn = DateTime.Now;
         }
 

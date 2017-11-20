@@ -4,21 +4,15 @@
     using System.Reflection;
     using System.Web;
     using System.Web.Mvc;
-
     using Autofac;
     using Autofac.Integration.Mvc;
-
     using Controllers;
-
     using Data;
     using Data.Common;
-
+    using Fima.Data.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-
-    using Fima.Data.Models;
-
     using Services.Web;
 
     public static class AutofacConfig

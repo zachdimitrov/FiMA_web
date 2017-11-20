@@ -9,14 +9,15 @@
         [HttpGet]
         public ActionResult Register()
         {
-            return View();
+            return this.View();
         }
 
         // POST: FrontOffice/Client/Register
         [HttpPost]
         public ActionResult Register(ClientRegisterViewModel model)
         {
-            return View(model);
+
+            return this.View(model);
         }
     }
 }

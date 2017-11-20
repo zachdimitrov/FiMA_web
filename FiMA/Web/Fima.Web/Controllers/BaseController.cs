@@ -3,7 +3,7 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Infrastructure.Mapping;
-    using Fima.Services.Web;
+    using Services.Web;
 
     public abstract class BaseController : Controller
     {
