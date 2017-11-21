@@ -1,12 +1,15 @@
 ﻿namespace Fima.Web
 {
     using System;
-    using Fima.Data;
-    using Fima.Data.Models;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
     using Microsoft.Owin.Security.Cookies;
+
+    using Fima.Data;
+    using Fima.Data.Models;
+
     using Owin;
 
     public partial class Startup

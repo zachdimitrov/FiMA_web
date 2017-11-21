@@ -1,28 +1,32 @@
 ﻿namespace Fima.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using Common.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class FimaUser : IdentityUser<int, FimaLogin, FimaUserRole, FimaClaim>, IUser<int>
+    public class ApplicationUser : IdentityUser, IDeletableEntity, IAuditInfo
     {
-        public string StrEmpPassword { get; set; }
+        public ApplicationUser()
+        {
+            // TODO: maybe UtcNow, but left it like this for consistency with other code
+            this.CreatedOn = DateTime.Now;
+        }
 
-        public string StrAccess { get; set; }
+        [Index]
+        public bool IsDeleted { get; set; }
 
-        public string StrName { get; set; }
+        public DateTime? DeletedOn { get; set; }
 
-        public string StrTown { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        public string StrIndex { get; set; }
+        public DateTime? ModifiedOn { get; set; }
 
-        public string EmpFunction { get; set; }
-
-        public string Emptown { get; set; }
-
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<FimaUser, int> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
