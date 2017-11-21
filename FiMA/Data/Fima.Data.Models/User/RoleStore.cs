@@ -5,7 +5,7 @@ namespace Fima.Data.Models
 
     public class RoleStore : RoleStore<FimaRole, int, FimaUserRole>
     {
-        public RoleStore(DbContext context) 
+        public RoleStore(DbContext context)
             : base(context)
         {
         }

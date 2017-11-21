@@ -49,7 +49,10 @@
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
-            builder.Register(c => c.Resolve<ApplicationDbContext>()).As<DbContext>().InstancePerRequest();
+            builder.RegisterType<KpEntities>().AsSelf().InstancePerRequest();
+
+            // builder.Register(c => c.Resolve<ApplicationDbContext>()).As<DbContext>().InstancePerRequest();
+            builder.Register(c => c.Resolve<KpEntities>()).As<DbContext>().InstancePerRequest();
 
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
