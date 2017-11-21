@@ -62,10 +62,296 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="DbModels\acc_test.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BANKS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BANK_ACCOUNTS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BANK_ACCOUNT_TYPES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BIG_ACCOUNTING_TABLE.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BIG_ACCOUNTING_TABLE_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BIG_ACCOUNTING_TABLE_kur.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BIG_ACCOUNTING_TABLE_SCH.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BNB_CCY.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BNB_COUNTRY.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BNB_MARKETS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BNB_SECTOR.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BNB_TYPE.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BRANCH_BG.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BROKERS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BULLETIN_BFB.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\BULLETIN_USA.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CALENDAR.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CD_MESSAGES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CD_MESSAGES_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CD_TEXT_MESSAGES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CD_TEXT_MESSAGES_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CE_EVENT_TYPES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CONTRACTED_PARTIES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CONTRACTS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\contracts_kcm.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\contracts_schroders.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\contracts_schroders_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CORPORATE_EVENTS_ALLFUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\COUNTRIES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\CURRENCIES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\DAILYPRICES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\DAILYPRICES_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\DATAUD_AVRORA.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\db_beta.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\DEFERRED_EXPENSES_COUNTERPARTIES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\DEPOSITS_ALLFUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\DEPOSIT_CONVENTIONS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\dtproperties.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ec_groups.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\FimaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FimaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\FimaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\FimaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FimaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\FORWARD_CONTRACTS_ALLFUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\GENERAL_LEDGER.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTMENT_TYPES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTORS_DEALS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTORS_DEALS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTORS_DEALS_SCHRODERS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTORS_DEALS_SCHRODERS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTORS_FUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTORS_FUNDS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\INVESTOR_TRANSFERS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\MONEYTRANSFER_TYPE.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\MUNICIPALITY.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\NAV_CALCULATION_ALLFUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\NAV_FUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\NOM_BANKS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ORDERS_INPUT.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ORDERS_INPUT_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ORDERS_INPUT_SCHRODERS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ORDERS_INPUT_SCHRODERS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ORDERS_OPERATIONS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ORGANIZATIONS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIOOPERATIONS_TYPE.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIOORDERS_TYPE.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_DEALS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_DEALS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_ORDERS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_ORDERS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_SUMMARY_FUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_SUMMARY_FUNDS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_SUMMARY_FUNDS_SCH.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\PORTFOLIO_SUMMARY_FUNDS_SCH_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\POSITIONS_INVESTMENTS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\RM_PRICES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\RM_PRICES_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\SUMARY_NAV_FUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\SUMARY_NAV_FUNDS_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\sysdiagrams.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\tblEmployees.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\TEST_CD_MESSAGES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\TEST_CD_TEXT_MESSAGES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\TEST_PRICES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\TOWNS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\TYPES.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\UD_FUNDS.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\UD_FUNDS_schroders.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\usd_histrates.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\VN.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\VN_HIST.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="DbModels\FimaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FimaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbModels\FimaModel.edmx.diagram">
+      <DependentUpon>FimaModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +372,19 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DbModels\FimaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FimaModel.edmx</DependentUpon>
+      <LastGenOutput>FimaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DbModels\FimaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FimaModel.edmx</DependentUpon>
+      <LastGenOutput>FimaModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
