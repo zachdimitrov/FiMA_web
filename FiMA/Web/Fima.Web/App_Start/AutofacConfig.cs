@@ -51,8 +51,8 @@
             builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
             builder.RegisterType<KpEntities>().AsSelf().InstancePerRequest();
 
-            // builder.Register(c => c.Resolve<ApplicationDbContext>()).As<DbContext>().InstancePerRequest();
-            builder.Register(c => c.Resolve<KpEntities>()).As<DbContext>().InstancePerRequest();
+            builder.Register(c => c.Resolve<ApplicationDbContext>()).As<DbContext>().InstancePerRequest();
+            // builder.Register(c => c.Resolve<KpEntities>()).As<DbContext>().InstancePerRequest();
 
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();

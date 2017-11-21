@@ -60,11 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201711210054293_initial.cs" />
-    <Compile Include="Migrations\201711210054293_initial.Designer.cs">
-      <DependentUpon>201711210054293_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,11 +89,6 @@
     <AdditionalFiles Include="..\..\stylecop.json">
       <Link>stylecop.json</Link>
     </AdditionalFiles>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711210054293_initial.resx">
-      <DependentUpon>201711210054293_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class FimaUser : IdentityUser<int, FimaLogin, FimaUserRole, FimaClaim>
+    public class FimaUser : IdentityUser<int, FimaLogin, FimaUserRole, FimaClaim>, IUser<int>
     {
         public string StrEmpPassword { get; set; }
 

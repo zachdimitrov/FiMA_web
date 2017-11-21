@@ -846,19 +846,19 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.dbo_syssegments' does not have a 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="strEmpPassword" Type="varchar" MaxLength="50" />
           <Property Name="strAccess" Type="varchar" MaxLength="50" />
           <Property Name="strName" Type="varchar" MaxLength="50" />
           <Property Name="strTown" Type="varchar" MaxLength="50" />
           <Property Name="strIndex" Type="varchar" MaxLength="50" />
           <Property Name="EmpFunction" Type="varchar" MaxLength="50" />
-          <Property Name="emptown" Type="varchar" MaxLength="50" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="emptown" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" />
-          <Property Name="SequrityStamp" Type="nvarchar(max)" />
-          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="SequrityStamp" Type="varchar(max)" />
+          <Property Name="PhoneNumber" Type="varchar(max)" />
           <Property Name="PhoneNumberConfirmed" Type="bit" />
           <Property Name="TwoFactorEnabled" Type="bit" />
           <Property Name="LockoutEndDateUtc" Type="datetime" />
@@ -2148,11 +2148,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.VN_HIST' does not have a primary 
           <Property Name="ACT_EVENT" Type="varchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.ACC_FOLDERS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ACC_FOLDERS">
-          <Property Name="TRANSACTION_FOLDER" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.ACC_MOVE_PERIOD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ACC_MOVE_PERIOD">
           <Key>
@@ -2740,58 +2735,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.BIGACCOUNTINGYABLE_PERIOD_SCH' do
           <Property Name="TRANSACTION_FUNDID" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.CD_INVESTORS_FUNDS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CD_INVESTORS_FUNDS">
-          <Property Name="FORMATED_ID" Type="varchar" MaxLength="306" />
-          <Property Name="CLIENTID" Type="int" />
-          <Property Name="INVESTOR_ID" Type="varchar" MaxLength="50" />
-          <Property Name="ORDER_FUND" Type="varchar" MaxLength="255" />
-          <Property Name="TYPE_PERSON" Type="varchar" MaxLength="50" />
-          <Property Name="TYPE_ORGANIZATION" Type="varchar" MaxLength="50" />
-          <Property Name="DATE_TIME" Type="smalldatetime" />
-          <Property Name="CREATED_BY" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.CD_MESSAGES_REGISTER_ACCOUNT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CD_MESSAGES_REGISTER_ACCOUNT">
-          <Property Name="CD_DATE" Type="smalldatetime" />
-          <Property Name="CD_MESSAGE_NUMBER" Type="varchar" MaxLength="53" />
-          <Property Name="CD_MESSAGE_ID" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_TYPE" Type="varchar" MaxLength="200" />
-          <Property Name="CD_FOLDER" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_DES" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_DES2" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_PATH" Type="varchar" MaxLength="200" />
-          <Property Name="FUND_ID" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_FUNDID" Type="varchar" MaxLength="50" />
-          <Property Name="CD_ACTION_TYPE" Type="varchar" MaxLength="50" />
-          <Property Name="CD_CONFIRMATION" Type="varchar" MaxLength="50" />
-          <Property Name="CD_STATUS" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_TEXT" Type="varchar" MaxLength="255" />
-          <Property Name="FORMATED_ID2" Type="varchar" MaxLength="101" />
-          <Property Name="CD_EGN_BULSTAT" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.CD_MESSAGES_REGISTER_TRANSACTIONS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CD_MESSAGES_REGISTER_TRANSACTIONS">
-          <Property Name="CD_DATE" Type="smalldatetime" />
-          <Property Name="CD_MESSAGE_NUMBER" Type="varchar" MaxLength="53" />
-          <Property Name="CD_MESSAGE_ID" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_TRID" Type="varchar" MaxLength="53" />
-          <Property Name="CD_MESSAGE_TYPE" Type="varchar" MaxLength="200" />
-          <Property Name="CD_FOLDER" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_DES" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_DES2" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_PATH" Type="varchar" MaxLength="200" />
-          <Property Name="FUND_ID" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_FUNDID" Type="varchar" MaxLength="50" />
-          <Property Name="CD_ACTION_TYPE" Type="varchar" MaxLength="50" />
-          <Property Name="CD_CONFIRMATION" Type="varchar" MaxLength="50" />
-          <Property Name="CD_STATUS" Type="varchar" MaxLength="50" />
-          <Property Name="CD_MESSAGE_TEXT" Type="varchar" MaxLength="255" />
-          <Property Name="FORMATED_ID2" Type="varchar" MaxLength="8000" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.contracts_kcm_readable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="contracts_kcm_readable">
           <Key>
@@ -3087,29 +3030,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.DEPOSITS_ANYFUND' does not have a
           <Property Name="DEP_STATUS" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.DN_BALANCE_INVESTORS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="DN_BALANCE_INVESTORS">
-          <Property Name="CLIENTID_STRING" Type="varchar" MaxLength="50" />
-          <Property Name="DEALS_INVESTOR" Type="varchar" MaxLength="50" />
-          <Property Name="DEALS_INVESTOR_NAME" Type="varchar" MaxLength="255" />
-          <Property Name="FUNDNAME" Type="varchar" MaxLength="100" />
-          <Property Name="DEALS_FUND" Type="varchar" MaxLength="50" />
-          <Property Name="ISINCODE" Type="varchar" MaxLength="50" />
-          <Property Name="BALANCE_SHARES" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.DN_INVESTOR_DEALS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="DN_INVESTOR_DEALS">
-          <Property Name="DATE_DEAL" Type="smalldatetime" />
-          <Property Name="DEALS_INVESTOR" Type="varchar" MaxLength="50" />
-          <Property Name="DEALS_INVESTOR_NAME" Type="varchar" MaxLength="255" />
-          <Property Name="DEALS_SHARES" Type="float" />
-          <Property Name="DEALS_SHARES2" Type="float" />
-          <Property Name="STATUS" Type="varchar" MaxLength="50" />
-          <Property Name="DEALS_TYPE" Type="varchar" MaxLength="50" />
-          <Property Name="DEALS_FUND" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.DP_LIMITED' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DP_LIMITED">
           <Key>
@@ -3128,13 +3048,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.DP_LIMITED' does not have a prima
           <Property Name="rm_mkt" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.fax_schroders' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="fax_schroders">
-          <Property Name="faxes_fund" Type="varchar" MaxLength="255" />
-          <Property Name="faxes_sum" Type="float" />
-          <Property Name="faxes_currency" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.FORWARD_CONTRACTS_ANYFUND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FORWARD_CONTRACTS_ANYFUND">
           <Key>
@@ -3152,24 +3065,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.FORWARD_CONTRACTS_ANYFUND' does n
           <Property Name="FUND_ID" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="STATUS" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.INV_ORDERS_SUBONLY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="INV_ORDERS_SUBONLY">
-          <Property Name="INVESTOR_ID" Type="varchar" MaxLength="50" />
-          <Property Name="SUBS" Type="varchar" MaxLength="255" />
-          <Property Name="ORDER_FUND" Type="varchar" MaxLength="255" />
-          <Property Name="CLIENTID" Type="int" />
-          <Property Name="CLIENTID_STRING" Type="varchar" MaxLength="50" />
-          <Property Name="FULL NAME" Type="varchar" MaxLength="255" />
-          <Property Name="TYPE_PERSON" Type="varchar" MaxLength="50" />
-          <Property Name="TYPE_ORGANIZATION" Type="varchar" MaxLength="50" />
-          <Property Name="FUNDNAME" Type="varchar" MaxLength="100" />
-          <Property Name="ISINCODE" Type="varchar" MaxLength="50" />
-          <Property Name="FIRSTNAME" Type="varchar" MaxLength="50" />
-          <Property Name="SECONDNAME" Type="varchar" MaxLength="50" />
-          <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
-          <Property Name="STATUS" Type="varchar" MaxLength="255" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.INVESTOR_AUTH2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="INVESTOR_AUTH2">
@@ -3378,13 +3273,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.POSITION_BONDS_INTEREST_1' does n
           <Property Name="TRANSACTION_SUMBGN" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.POSITION_BONDS_INTEREST_2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="POSITION_BONDS_INTEREST_2">
-          <Property Name="TOTQ" Type="float" />
-          <Property Name="TOTSUM" Type="float" />
-          <Property Name="TOTSUMBGN" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.POSITION_INVESTMENTS_BONDS_ONLY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="POSITION_INVESTMENTS_BONDS_ONLY">
           <Key>
@@ -3443,24 +3331,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.sch_orders_active' does not have 
           <Property Name="DEALS_TYPE" Type="varchar" MaxLength="50" />
           <Property Name="DEALS_CURRENCY" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.sch_orders_subs_perclient' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="sch_orders_subs_perclient">
-          <Property Name="DATE_TIME" Type="smalldatetime" />
-          <Property Name="INVESTOR_ID" Type="varchar" MaxLength="50" />
-          <Property Name="ORDER_TYPE" Type="varchar" MaxLength="255" />
-          <Property Name="ORDER_CURRENCY" Type="varchar" MaxLength="255" />
-          <Property Name="TOTAL_SUM" Type="float" />
-          <Property Name="ORDER_ID_STRING" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.schroders_faxes_red' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="schroders_faxes_red">
-          <Property Name="faxes_fund" Type="varchar" MaxLength="255" />
-          <Property Name="faxes_fundname" Type="varchar" MaxLength="100" />
-          <Property Name="faxes_sum" Type="float" />
-          <Property Name="faxes_currency" Type="varchar" MaxLength="255" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.schroders_orders_readable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="schroders_orders_readable">
@@ -3591,26 +3461,7 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.UNMATCHED_CD_REGISTER_TRANSACTION
           <Property Name="ACCOUNT_WITH_CD" Type="varchar" MaxLength="50" />
           <Property Name="STATUS" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="unmatched_register_accounts">
-          <Property Name="CD_EGN_BULSTAT" Type="varchar" MaxLength="50" />
-          <Property Name="INVESTOR_ID" Type="varchar" MaxLength="50" />
-          <Property Name="SUBS" Type="varchar" MaxLength="255" />
-          <Property Name="ORDER_FUND" Type="varchar" MaxLength="255" />
-          <Property Name="CLIENTID" Type="int" />
-          <Property Name="CLIENTID_STRING" Type="varchar" MaxLength="50" />
-          <Property Name="FULL NAME" Type="varchar" MaxLength="255" />
-          <Property Name="TYPE_PERSON" Type="varchar" MaxLength="50" />
-          <Property Name="TYPE_ORGANIZATION" Type="varchar" MaxLength="50" />
-          <Property Name="FUNDNAME" Type="varchar" MaxLength="100" />
-          <Property Name="ISINCODE" Type="varchar" MaxLength="50" />
-          <Property Name="FIRSTNAME" Type="varchar" MaxLength="50" />
-          <Property Name="SECONDNAME" Type="varchar" MaxLength="50" />
-          <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
-          <Property Name="STATUS" Type="varchar" MaxLength="255" />
-        </EntityType>-->
-        <Association Name="FK_AspNetUserClaims_AspNetUsers">
+        <Association Name="FK_FimaClaims_FimaUsers">
           <End Role="FimaUsers" Type="Self.FimaUsers" Multiplicity="1" />
           <End Role="FimaClaims" Type="Self.FimaClaims" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3622,7 +3473,7 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AspNetUserLogins_AspNetUsers">
+        <Association Name="FK_FimaLogins_FimaUsers">
           <End Role="FimaUsers" Type="Self.FimaUsers" Multiplicity="1" />
           <End Role="FimaLogins" Type="Self.FimaLogins" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3634,7 +3485,7 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AspNetUserRoles_AspNetRoles">
+        <Association Name="FK_FimaUserRoles_FimaRoles">
           <End Role="FimaRoles" Type="Self.FimaRoles" Multiplicity="1" />
           <End Role="FimaUserRoles" Type="Self.FimaUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3646,7 +3497,7 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AspNetUserRoles_AspNetUsers">
+        <Association Name="FK_FimaUserRoles_FimaUsers">
           <End Role="FimaUsers" Type="Self.FimaUsers" Multiplicity="1" />
           <End Role="FimaUserRoles" Type="Self.FimaUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7142,19 +6993,19 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
     [UNMATCHED_CD_REGISTER_TRANSACTIONS].[STATUS] AS [STATUS]
     FROM [dbo].[UNMATCHED_CD_REGISTER_TRANSACTIONS] AS [UNMATCHED_CD_REGISTER_TRANSACTIONS]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
+          <AssociationSet Name="FK_FimaClaims_FimaUsers" Association="Self.FK_FimaClaims_FimaUsers">
             <End Role="FimaUsers" EntitySet="FimaUsers" />
             <End Role="FimaClaims" EntitySet="FimaClaims" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers" Association="Self.FK_AspNetUserLogins_AspNetUsers">
+          <AssociationSet Name="FK_FimaLogins_FimaUsers" Association="Self.FK_FimaLogins_FimaUsers">
             <End Role="FimaUsers" EntitySet="FimaUsers" />
             <End Role="FimaLogins" EntitySet="FimaLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+          <AssociationSet Name="FK_FimaUserRoles_FimaRoles" Association="Self.FK_FimaUserRoles_FimaRoles">
             <End Role="FimaRoles" EntitySet="FimaRoles" />
             <End Role="FimaUserRoles" EntitySet="FimaUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+          <AssociationSet Name="FK_FimaUserRoles_FimaUsers" Association="Self.FK_FimaUserRoles_FimaUsers">
             <End Role="FimaUsers" EntitySet="FimaUsers" />
             <End Role="FimaUserRoles" EntitySet="FimaUserRoles" />
           </AssociationSet>
@@ -13288,19 +13139,19 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="strEmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strTown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmpFunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="emptown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="emptown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="EmailConfirmed" Type="Boolean" />
-          <Property Name="SequrityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SequrityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PhoneNumberConfirmed" Type="Boolean" />
           <Property Name="TwoFactorEnabled" Type="Boolean" />
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />

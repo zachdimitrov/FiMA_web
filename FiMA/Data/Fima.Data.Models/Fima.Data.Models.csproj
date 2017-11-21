@@ -460,7 +460,7 @@
     <Compile Include="RM_PRICES_HIST.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User\RoleStore.cs" />
+    <Compile Include="User\FimaRoleStore.cs" />
     <Compile Include="schroders_orders_readable.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -800,7 +800,7 @@
     <Compile Include="usd_histrates.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User\UserStore.cs" />
+    <Compile Include="User\FimaUserStore.cs" />
     <Compile Include="VN.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
