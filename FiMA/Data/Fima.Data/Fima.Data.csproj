@@ -60,14 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201603131613050_Initial.cs" />
-    <Compile Include="Migrations\201603131613050_Initial.Designer.cs">
-      <DependentUpon>201603131613050_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711051631161_SeedAdminUser.cs" />
-    <Compile Include="Migrations\201711051631161_SeedAdminUser.Designer.cs">
-      <DependentUpon>201711051631161_SeedAdminUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,14 +90,6 @@
     <AdditionalFiles Include="..\..\stylecop.json">
       <Link>stylecop.json</Link>
     </AdditionalFiles>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603131613050_Initial.resx">
-      <DependentUpon>201603131613050_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711051631161_SeedAdminUser.resx">
-      <DependentUpon>201711051631161_SeedAdminUser.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
