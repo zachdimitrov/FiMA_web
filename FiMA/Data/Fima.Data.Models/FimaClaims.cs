@@ -12,16 +12,13 @@ namespace Fima.Data.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblEmployees
+    public partial class FimaClaims
     {
-        public int lngEmpID { get; set; }
-        public string strEmpName { get; set; }
-        public string strEmpPassword { get; set; }
-        public string strAccess { get; set; }
-        public string strName { get; set; }
-        public string strTown { get; set; }
-        public string strIndex { get; set; }
-        public string EmpFunction { get; set; }
-        public string emptown { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+    
+        public virtual FimaUsers FimaUsers { get; set; }
     }
 }

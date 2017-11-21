@@ -16,7 +16,6 @@
         [HttpPost]
         public ActionResult Register(ClientRegisterViewModel model)
         {
-
             return this.View(model);
         }
     }

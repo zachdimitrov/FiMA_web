@@ -165,7 +165,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                var user = new FimaUser { UserName = model.Username, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -188,9 +188,9 @@
 
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public async Task<ActionResult> ConfirmEmail(int userId, string code)
         {
-            if (userId == null || code == null)
+            if (userId < 0 || code == null)
             {
                 return this.View("Error");
             }
@@ -299,7 +299,7 @@
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await this.SignInManager.GetVerifiedUserIdAsync();
-            if (userId == null)
+            if (userId < 0)
             {
                 return this.View("Error");
             }
@@ -388,7 +388,7 @@
                     return this.View("ExternalLoginFailure");
                 }
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new FimaUser { UserName = model.Email, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

@@ -2,25 +2,19 @@
 {
     using System.Linq;
 
-    using Fima.Data.Common.Models;
-
     public interface IDbRepository<T>
-        where T : class, IAuditInfo, IDeletableEntity
+        where T : class
     {
-        IQueryable<T> All();
-
-        IQueryable<T> AllWithDeleted();
-
-        T GetById(object id);
-
         void Add(T entity);
 
-        void Delete(T entity);
+        IQueryable<T> All();
+
+        void Dispose();
+
+        T GetById(object id);
 
         void HardDelete(T entity);
 
         void Save();
-
-        void Dispose();
     }
 }

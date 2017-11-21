@@ -76,7 +76,22 @@
     <Compile Include="acc_test.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="FimaClaims.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FimaLogins.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FimaRoles.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FimaUsers.cs">
+      <DependentUpon>FimaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User\FimaClaim.cs" />
+    <Compile Include="User\FimaLogin.cs" />
+    <Compile Include="User\FimaRole.cs" />
+    <Compile Include="User\FimaUser.cs" />
     <Compile Include="BANKS.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -299,6 +314,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FimaModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="User\FimaUserRole.cs" />
     <Compile Include="FORWARD_CONTRACTS_ALLFUNDS.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -444,6 +460,7 @@
     <Compile Include="RM_PRICES_HIST.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="User\RoleStore.cs" />
     <Compile Include="schroders_orders_readable.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -753,9 +770,6 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblEmployees.cs">
-      <DependentUpon>FimaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TEST_CD_MESSAGES.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -786,6 +800,7 @@
     <Compile Include="usd_histrates.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="User\UserStore.cs" />
     <Compile Include="VN.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>

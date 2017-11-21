@@ -86,7 +86,6 @@ namespace Fima.Data.Models
         public virtual DbSet<RM_PRICES> RM_PRICES { get; set; }
         public virtual DbSet<SUMARY_NAV_FUNDS> SUMARY_NAV_FUNDS { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<tblEmployees> tblEmployees { get; set; }
         public virtual DbSet<TEST_PRICES> TEST_PRICES { get; set; }
         public virtual DbSet<TOWNS> TOWNS { get; set; }
         public virtual DbSet<TYPES> TYPES { get; set; }
@@ -166,6 +165,10 @@ namespace Fima.Data.Models
         public virtual DbSet<SCHRODERS_ORDERS_WITHTIME> SCHRODERS_ORDERS_WITHTIME { get; set; }
         public virtual DbSet<UNMATCHED_ACCOUNT_MESSAGES> UNMATCHED_ACCOUNT_MESSAGES { get; set; }
         public virtual DbSet<UNMATCHED_CD_REGISTER_TRANSACTIONS> UNMATCHED_CD_REGISTER_TRANSACTIONS { get; set; }
+        public virtual DbSet<FimaClaims> FimaClaims { get; set; }
+        public virtual DbSet<FimaLogins> FimaLogins { get; set; }
+        public virtual DbSet<FimaRoles> FimaRoles { get; set; }
+        public virtual DbSet<FimaUsers> FimaUsers { get; set; }
     
         public virtual int dt_addtosourcecontrol(string vchSourceSafeINI, string vchProjectName, string vchComment, string vchLoginName, string vchPassword)
         {

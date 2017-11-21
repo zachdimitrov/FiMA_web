@@ -1,17 +1,16 @@
-﻿namespace Fima.Data.Migrations
+namespace Fima.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
+    using Data.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Models;
 
-    public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Fima.Data.ApplicationDbContext>
     {
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.ContextKey = "Fima.Data.ApplicationDbContext";
         }
 
         protected override void Seed(ApplicationDbContext context)
@@ -21,17 +20,17 @@
             const string AdministratorPassword = "123qwe";
 
             this.SeedAdmin(
-                context,
-                AdministratorUsername,
-                AdministratorEmail,
-                AdministratorPassword);
+            context,
+            AdministratorUsername,
+            AdministratorEmail,
+            AdministratorPassword);
         }
 
         private void SeedAdmin(
-            ApplicationDbContext context,
-            string administratorUsername,
-            string administratorEmail,
-            string administratorPassword)
+        ApplicationDbContext context,
+        string administratorUsername,
+        string administratorEmail,
+        string administratorPassword)
         {
             // create roles for all other users here
             var roleStore = new RoleStore<IdentityRole>(context);
@@ -53,15 +52,14 @@
             roleManager.Create(walletManagerRole);
             roleManager.Create(riskManagerRole);
 
-            var userStore = new UserStore<ApplicationUser>(context);
-            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userStore = new UserStore(context);
+            var userManager = new UserManager<FimaUser, int>(userStore);
 
-            var user = new ApplicationUser
+            var user = new FimaUser
             {
                 UserName = administratorUsername,
                 Email = administratorEmail,
-                EmailConfirmed = true,
-                CreatedOn = DateTime.Now
+                EmailConfirmed = true
             };
 
             userManager.Create(user, administratorPassword);

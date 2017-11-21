@@ -4,10 +4,9 @@
     using System.Linq;
     using Common.Contracts;
     using Fima.Data.Common;
-    using Fima.Data.Common.Models;
 
     public abstract class BaseDataService<T> : IBaseDataService<T>
-        where T : class, IDeletableEntity, IAuditInfo
+        where T : class
     {
         public BaseDataService(IDbRepository<T> dataSet)
         {
@@ -30,7 +29,7 @@
                 throw new InvalidOperationException("No entity with provided id found.");
             }
 
-            this.Data.Delete(entity);
+            this.Data.HardDelete(entity);
             this.Data.Save();
         }
 

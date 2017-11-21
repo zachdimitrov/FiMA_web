@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.acc_test' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="acc_test">
@@ -806,6 +806,64 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.dbo_syssegments' does not have a 
           </Key>
           <Property Name="issuer_id" Type="int" Nullable="false" />
           <Property Name="issuer_des" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FimaClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FimaLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FimaRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FimaUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FimaUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="strEmpPassword" Type="varchar" MaxLength="50" />
+          <Property Name="strAccess" Type="varchar" MaxLength="50" />
+          <Property Name="strName" Type="varchar" MaxLength="50" />
+          <Property Name="strTown" Type="varchar" MaxLength="50" />
+          <Property Name="strIndex" Type="varchar" MaxLength="50" />
+          <Property Name="EmpFunction" Type="varchar" MaxLength="50" />
+          <Property Name="emptown" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="SequrityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" />
+          <Property Name="TwoFactorEnabled" Type="bit" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" />
+          <Property Name="AccessFailedCount" Type="int" />
         </EntityType>
         <EntityType Name="FORWARD_CONTRACTS_ALLFUNDS">
           <Key>
@@ -1899,20 +1957,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.SUMARY_NAV_FUNDS_HIST' does not h
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="tblEmployees">
-          <Key>
-            <PropertyRef Name="lngEmpID" />
-          </Key>
-          <Property Name="lngEmpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strEmpName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="strEmpPassword" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="strAccess" Type="varchar" MaxLength="50" />
-          <Property Name="strName" Type="varchar" MaxLength="50" />
-          <Property Name="strTown" Type="varchar" MaxLength="50" />
-          <Property Name="strIndex" Type="varchar" MaxLength="50" />
-          <Property Name="EmpFunction" Type="varchar" MaxLength="50" />
-          <Property Name="emptown" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KAROLL_PULSE.dbo.TEST_CD_MESSAGES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3566,6 +3610,54 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
           <Property Name="STATUS" Type="varchar" MaxLength="255" />
         </EntityType>-->
+        <Association Name="FK_AspNetUserClaims_AspNetUsers">
+          <End Role="FimaUsers" Type="Self.FimaUsers" Multiplicity="1" />
+          <End Role="FimaClaims" Type="Self.FimaClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FimaUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FimaClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserLogins_AspNetUsers">
+          <End Role="FimaUsers" Type="Self.FimaUsers" Multiplicity="1" />
+          <End Role="FimaLogins" Type="Self.FimaLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FimaUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FimaLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetRoles">
+          <End Role="FimaRoles" Type="Self.FimaRoles" Multiplicity="1" />
+          <End Role="FimaUserRoles" Type="Self.FimaUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FimaRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FimaUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetUsers">
+          <End Role="FimaUsers" Type="Self.FimaUsers" Multiplicity="1" />
+          <End Role="FimaUserRoles" Type="Self.FimaUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FimaUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FimaUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="dt_addtosourcecontrol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vchSourceSafeINI" Type="varchar" Mode="In" />
           <Parameter Name="vchProjectName" Type="varchar" Mode="In" />
@@ -5308,6 +5400,11 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <EntitySet Name="DEPOSITS_ALLFUNDS" EntityType="Self.DEPOSITS_ALLFUNDS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ec_groups" EntityType="Self.ec_groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FimaClaims" EntityType="Self.FimaClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FimaLogins" EntityType="Self.FimaLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FimaRoles" EntityType="Self.FimaRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FimaUserRoles" EntityType="Self.FimaUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FimaUsers" EntityType="Self.FimaUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORWARD_CONTRACTS_ALLFUNDS" EntityType="Self.FORWARD_CONTRACTS_ALLFUNDS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GENERAL_LEDGER" EntityType="Self.GENERAL_LEDGER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INVESTMENT TYPES" EntityType="Self.INVESTMENT TYPES" Schema="dbo" store:Type="Tables" />
@@ -5334,7 +5431,6 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <EntitySet Name="RM_PRICES" EntityType="Self.RM_PRICES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUMARY_NAV_FUNDS" EntityType="Self.SUMARY_NAV_FUNDS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblEmployees" EntityType="Self.tblEmployees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEST_PRICES" EntityType="Self.TEST_PRICES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TOWNS" EntityType="Self.TOWNS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TYPES" EntityType="Self.TYPES" Schema="dbo" store:Type="Tables" />
@@ -7046,9 +7142,24 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
     [UNMATCHED_CD_REGISTER_TRANSACTIONS].[STATUS] AS [STATUS]
     FROM [dbo].[UNMATCHED_CD_REGISTER_TRANSACTIONS] AS [UNMATCHED_CD_REGISTER_TRANSACTIONS]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
+            <End Role="FimaUsers" EntitySet="FimaUsers" />
+            <End Role="FimaClaims" EntitySet="FimaClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers" Association="Self.FK_AspNetUserLogins_AspNetUsers">
+            <End Role="FimaUsers" EntitySet="FimaUsers" />
+            <End Role="FimaLogins" EntitySet="FimaLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+            <End Role="FimaRoles" EntitySet="FimaRoles" />
+            <End Role="FimaUserRoles" EntitySet="FimaUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+            <End Role="FimaUsers" EntitySet="FimaUsers" />
+            <End Role="FimaUserRoles" EntitySet="FimaUserRoles" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -8202,20 +8313,6 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="tblEmployees">
-          <Key>
-            <PropertyRef Name="lngEmpID" />
-          </Key>
-          <Property Name="lngEmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strEmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="strEmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="strAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="strName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="strTown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="strIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmpFunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="emptown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TEST_PRICES">
           <Key>
@@ -10317,7 +10414,6 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <EntitySet Name="RM_PRICES" EntityType="Self.RM_PRICES" />
           <EntitySet Name="SUMARY_NAV_FUNDS" EntityType="Self.SUMARY_NAV_FUNDS" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="tblEmployees" EntityType="Self.tblEmployees" />
           <EntitySet Name="TEST_PRICES" EntityType="Self.TEST_PRICES" />
           <EntitySet Name="TOWNS" EntityType="Self.TOWNS" />
           <EntitySet Name="TYPES" EntityType="Self.TYPES" />
@@ -10413,7 +10509,7 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           </FunctionImport>
           <FunctionImport Name="dt_adduserobject" />
           <FunctionImport Name="dt_adduserobject_vcs">
-            <Parameter Name="vchProperty" Mode="In" Type="String" />
+          <Parameter Name="vchProperty" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_checkinobject">
             <Parameter Name="chObjectType" Mode="In" Type="String" />
@@ -10470,10 +10566,10 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_dropuserobjectbyid">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="dt_generateansiname">
-            <Parameter Name="name" Mode="InOut" Type="String" />
+          <Parameter Name="name" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_getobjwithprop" ReturnType="Collection(Int32)">
             <Parameter Name="property" Mode="In" Type="String" />
@@ -10553,28 +10649,28 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb_p">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb_realizedgain">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb_realizedloss">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb_reval">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb_revalfx">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb_s">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb1">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_bnb2">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -10583,10 +10679,10 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_deleteclient">
-            <Parameter Name="CLIENTID_1" Mode="In" Type="Int32" />
+          <Parameter Name="CLIENTID_1" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_deleteorder">
-            <Parameter Name="ORDER_ID_STRING_1" Mode="In" Type="String" />
+          <Parameter Name="ORDER_ID_STRING_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_deletetestprices" />
           <FunctionImport Name="sp_dropdiagram">
@@ -10596,40 +10692,40 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <FunctionImport Name="sp_getaccbnd" ReturnType="Collection(KpModel.sp_getaccbnd_Result)" />
           <FunctionImport Name="sp_getaccbnd2" ReturnType="Collection(KpModel.sp_getaccbnd2_Result)" />
           <FunctionImport Name="sp_getacccash" ReturnType="Collection(KpModel.sp_getacccash_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getacccash2" ReturnType="Collection(KpModel.sp_getacccash2_Result)">
             <Parameter Name="acc_1" Mode="In" Type="String" />
             <Parameter Name="fund_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getacccy" ReturnType="Collection(KpModel.sp_getacccy_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getaccfolder" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_getacclastreval1">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getacclastreval2">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getacclastreval3">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getaccnm" ReturnType="Collection(KpModel.sp_getaccnm_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getaccnm2" ReturnType="Collection(KpModel.sp_getaccnm2_Result)">
             <Parameter Name="acc_1" Mode="In" Type="String" />
             <Parameter Name="ccy_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getaccnm3" ReturnType="Collection(KpModel.sp_getaccnm3_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getaccnm4" ReturnType="Collection(KpModel.sp_getaccnm4_Result)">
-            <Parameter Name="ccy_1" Mode="In" Type="Double" />
+          <Parameter Name="ccy_1" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_getaccres">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getassetvalue" ReturnType="Collection(KpModel.sp_getassetvalue_Result)">
             <Parameter Name="int" Mode="In" Type="String" />
@@ -10646,87 +10742,87 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <FunctionImport Name="sp_getbnbtype" ReturnType="Collection(KpModel.sp_getbnbtype_Result)" />
           <FunctionImport Name="sp_getbranch" ReturnType="Collection(KpModel.sp_getbranch_Result)" />
           <FunctionImport Name="sp_getbrancheng" ReturnType="Collection(KpModel.sp_getbrancheng_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getbrokers" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_getcashacc" ReturnType="Collection(KpModel.sp_getcashacc_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getcdclient" ReturnType="Collection(KpModel.sp_getcdclient_Result)" />
           <FunctionImport Name="sp_getcdcountry" ReturnType="Collection(KpModel.sp_getcdcountry_Result)">
-            <Parameter Name="iso_1" Mode="In" Type="String" />
+          <Parameter Name="iso_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getcdmunicipality" ReturnType="Collection(KpModel.sp_getcdmunicipality_Result)">
-            <Parameter Name="MUNICIPALITY_1" Mode="In" Type="String" />
+          <Parameter Name="MUNICIPALITY_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getclient" ReturnType="Collection(KpModel.sp_getclient_Result)">
-            <Parameter Name="int" Mode="In" Type="Int32" />
+          <Parameter Name="int" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getclient_cd" ReturnType="Collection(KpModel.sp_getclient_cd_Result)">
-            <Parameter Name="int" Mode="In" Type="Int32" />
+          <Parameter Name="int" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getclient2" ReturnType="Collection(KpModel.sp_getclient2_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getclient3" ReturnType="Collection(KpModel.sp_getclient3_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getconventions" ReturnType="Collection(KpModel.sp_getconventions_Result)" />
           <FunctionImport Name="sp_getcountries" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_getcp" ReturnType="Collection(KpModel.sp_getcp_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getcp2" ReturnType="Collection(KpModel.sp_getcp2_Result)" />
           <FunctionImport Name="sp_getcp3" ReturnType="Collection(KpModel.sp_getcp3_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getcurrencies" ReturnType="Collection(KpModel.sp_getcurrencies_Result)" />
           <FunctionImport Name="sp_getdepconvdet" ReturnType="Collection(KpModel.sp_getdepconvdet_Result)">
-            <Parameter Name="acc_1" Mode="In" Type="String" />
+          <Parameter Name="acc_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getecgroups" ReturnType="Collection(KpModel.sp_getecgroups_Result)" />
           <FunctionImport Name="sp_getequities" />
           <FunctionImport Name="sp_getfundcdid" ReturnType="Collection(KpModel.sp_getfundcdid_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getfundcdid2" ReturnType="Collection(KpModel.sp_getfundcdid2_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getfundisin" ReturnType="Collection(KpModel.sp_getfundisin_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getfundisin2" ReturnType="Collection(KpModel.sp_getfundisin2_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getfundname" ReturnType="Collection(KpModel.sp_getfundname_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getfundname2" ReturnType="Collection(KpModel.sp_getfundname2_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getfunds" ReturnType="Collection(KpModel.sp_getfunds_Result)" />
           <FunctionImport Name="sp_getfundsschroders" ReturnType="Collection(KpModel.sp_getfundsschroders_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getglobid" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_getglobid_cl" ReturnType="Collection(Int32)">
-            <Parameter Name="INV" Mode="In" Type="String" />
+          <Parameter Name="INV" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getinvdeal" ReturnType="Collection(KpModel.sp_getinvdeal_Result)">
-            <Parameter Name="int" Mode="In" Type="Int32" />
+          <Parameter Name="int" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getinvdeal_schroders" ReturnType="Collection(KpModel.sp_getinvdeal_schroders_Result)">
-            <Parameter Name="int" Mode="In" Type="Int32" />
+          <Parameter Name="int" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getinvdeal_schroders2" ReturnType="Collection(KpModel.sp_getinvdeal_schroders2_Result)">
-            <Parameter Name="int" Mode="In" Type="Int32" />
+          <Parameter Name="int" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_getinvegn" ReturnType="Collection(KpModel.sp_getinvegn_Result)">
-            <Parameter Name="INV" Mode="In" Type="String" />
+          <Parameter Name="INV" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getinvtypes" ReturnType="Collection(KpModel.sp_getinvtypes_Result)" />
           <FunctionImport Name="sp_getkcmcontract" ReturnType="Collection(KpModel.sp_getkcmcontract_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getledgeracc" ReturnType="Collection(KpModel.sp_getledgeracc_Result)" />
           <FunctionImport Name="sp_getmaxacc_cash" ReturnType="Collection(KpModel.sp_getmaxacc_cash_Result)" />
@@ -10757,10 +10853,10 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <FunctionImport Name="sp_getmaxcontract_kcm" ReturnType="Collection(Int32)" />
           <FunctionImport Name="sp_getmaxcontract_schroders" ReturnType="Collection(Int32)" />
           <FunctionImport Name="sp_getmaxdatereval" ReturnType="Collection(KpModel.sp_getmaxdatereval_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getmaxdatereval_sch" ReturnType="Collection(KpModel.sp_getmaxdatereval_sch_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getmaxdeal_schroders" ReturnType="Collection(KpModel.sp_getmaxdeal_schroders_Result)" />
           <FunctionImport Name="sp_getmaxdefid" ReturnType="Collection(Double)" />
@@ -10783,29 +10879,29 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="nvdes" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getorder" ReturnType="Collection(KpModel.sp_getorder_Result)">
-            <Parameter Name="int" Mode="In" Type="Double" />
+          <Parameter Name="int" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_getorder_schroders" ReturnType="Collection(KpModel.sp_getorder_schroders_Result)">
-            <Parameter Name="int" Mode="In" Type="Double" />
+          <Parameter Name="int" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_getorgs" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_getpdeal" ReturnType="Collection(KpModel.sp_getpdeal_Result)">
-            <Parameter Name="int" Mode="In" Type="Double" />
+          <Parameter Name="int" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_getpendtrades" ReturnType="Collection(KpModel.sp_getpendtrades_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getporder" ReturnType="Collection(KpModel.sp_getporder_Result)">
-            <Parameter Name="int" Mode="In" Type="Double" />
+          <Parameter Name="int" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_getposdetails" ReturnType="Collection(KpModel.sp_getposdetails_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getposdetails_advance" ReturnType="Collection(KpModel.sp_getposdetails_advance_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getposdetails_schroders" ReturnType="Collection(KpModel.sp_getposdetails_schroders_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getpositions" ReturnType="Collection(KpModel.sp_getpositions_Result)" />
           <FunctionImport Name="sp_getschavgproces" ReturnType="Collection(KpModel.sp_getschavgproces_Result)">
@@ -10818,15 +10914,15 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="isin" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getschroderscontract" ReturnType="Collection(KpModel.sp_getschroderscontract_Result)">
-            <Parameter Name="int" Mode="In" Type="String" />
+          <Parameter Name="int" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_gettowns" ReturnType="Collection(String)" />
           <FunctionImport Name="sp_getud" ReturnType="Collection(KpModel.sp_getud_Result)">
-            <Parameter Name="isin_1" Mode="In" Type="String" />
+          <Parameter Name="isin_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_getusers" ReturnType="Collection(KpModel.sp_getusers_Result)" />
           <FunctionImport Name="sp_getuserstring" ReturnType="Collection(String)">
-            <Parameter Name="int" Mode="In" Type="Int32" />
+          <Parameter Name="int" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(KpModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -11552,7 +11648,7 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           </FunctionImport>
           <FunctionImport Name="sp_schroders_getmaxdealid" ReturnType="Collection(KpModel.sp_schroders_getmaxdealid_Result)" />
           <FunctionImport Name="sp_schroders_ordersget" ReturnType="Collection(KpModel.sp_schroders_ordersget_Result)">
-            <Parameter Name="ord_id" Mode="In" Type="Double" />
+          <Parameter Name="ord_id" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_test_accentry">
             <Parameter Name="GLOBAL_ID_1" Mode="In" Type="Double" />
@@ -11770,7 +11866,7 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="IBAN_CD_ACF_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_updateCLIENTstatus">
-            <Parameter Name="CLIENTID_1" Mode="In" Type="Double" />
+          <Parameter Name="CLIENTID_1" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_updatedividaccdate">
             <Parameter Name="PORT_DEAL_ID_1" Mode="In" Type="Double" />
@@ -11977,10 +12073,10 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="contract_sch_biccode_1" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_updatetinvdealstatus_sch">
-            <Parameter Name="DEALS_ID_1" Mode="In" Type="Double" />
+          <Parameter Name="DEALS_ID_1" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_updatetinvdealstatus2">
-            <Parameter Name="DEALS_ID_1" Mode="In" Type="Double" />
+          <Parameter Name="DEALS_ID_1" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_updatetorder">
             <Parameter Name="ORDER_ID_1" Mode="In" Type="Double" />
@@ -12050,10 +12146,10 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="ORDER_SUM_NET" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_updatetordstatus">
-            <Parameter Name="ORDER_ID_1" Mode="In" Type="Double" />
+          <Parameter Name="ORDER_ID_1" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_updatetordstatus2">
-            <Parameter Name="ORDER_ID_1" Mode="In" Type="Double" />
+          <Parameter Name="ORDER_ID_1" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="update_BANK_ACCOUNT_TYPES_1">
@@ -12101,6 +12197,22 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
             <Parameter Name="FEE" Mode="In" Type="String" />
             <Parameter Name="doc_confirm" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="FimaClaims" EntityType="KpModel.FimaClaims" />
+          <EntitySet Name="FimaLogins" EntityType="KpModel.FimaLogins" />
+          <EntitySet Name="FimaRoles" EntityType="KpModel.FimaRoles" />
+          <EntitySet Name="FimaUsers" EntityType="KpModel.FimaUsers" />
+          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers1" Association="KpModel.FK_AspNetUserClaims_AspNetUsers1">
+            <End Role="FimaUsers" EntitySet="FimaUsers" />
+            <End Role="FimaClaims" EntitySet="FimaClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers1" Association="KpModel.FK_AspNetUserLogins_AspNetUsers1">
+            <End Role="FimaUsers" EntitySet="FimaUsers" />
+            <End Role="FimaLogins" EntitySet="FimaLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FimaUserRoles" Association="KpModel.FimaUserRoles">
+            <End Role="FimaRoles" EntitySet="FimaRoles" />
+            <End Role="FimaUsers" EntitySet="FimaUsers" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -13142,6 +13254,90 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <Property Type="String" Name="FUND_NAME" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="ISINCODE" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="FimaClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FimaUsers" Relationship="KpModel.FK_AspNetUserClaims_AspNetUsers1" FromRole="FimaClaims" ToRole="FimaUsers" />
+        </EntityType>
+        <EntityType Name="FimaLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FimaUsers" Relationship="KpModel.FK_AspNetUserLogins_AspNetUsers1" FromRole="FimaLogins" ToRole="FimaUsers" />
+        </EntityType>
+        <EntityType Name="FimaRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FimaUsers" Relationship="KpModel.FimaUserRoles" FromRole="FimaRoles" ToRole="FimaUsers" />
+        </EntityType>
+        <EntityType Name="FimaUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="strEmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strTown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpFunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emptown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="SequrityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" />
+          <Property Name="AccessFailedCount" Type="Int32" />
+          <NavigationProperty Name="FimaClaims" Relationship="KpModel.FK_AspNetUserClaims_AspNetUsers1" FromRole="FimaUsers" ToRole="FimaClaims" />
+          <NavigationProperty Name="FimaLogins" Relationship="KpModel.FK_AspNetUserLogins_AspNetUsers1" FromRole="FimaUsers" ToRole="FimaLogins" />
+          <NavigationProperty Name="FimaRoles" Relationship="KpModel.FimaUserRoles" FromRole="FimaUsers" ToRole="FimaRoles" />
+        </EntityType>
+        <Association Name="FK_AspNetUserClaims_AspNetUsers1">
+          <End Type="KpModel.FimaUsers" Role="FimaUsers" Multiplicity="1" />
+          <End Type="KpModel.FimaClaims" Role="FimaClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FimaUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FimaClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserLogins_AspNetUsers1">
+          <End Type="KpModel.FimaUsers" Role="FimaUsers" Multiplicity="1" />
+          <End Type="KpModel.FimaLogins" Role="FimaLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FimaUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FimaLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FimaUserRoles">
+          <End Type="KpModel.FimaRoles" Role="FimaRoles" Multiplicity="*" />
+          <End Type="KpModel.FimaUsers" Role="FimaUsers" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14309,21 +14505,6 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblEmployees">
-            <EntityTypeMapping TypeName="KpModel.tblEmployees">
-              <MappingFragment StoreEntitySet="tblEmployees">
-                <ScalarProperty Name="lngEmpID" ColumnName="lngEmpID" />
-                <ScalarProperty Name="strEmpName" ColumnName="strEmpName" />
-                <ScalarProperty Name="strEmpPassword" ColumnName="strEmpPassword" />
-                <ScalarProperty Name="strAccess" ColumnName="strAccess" />
-                <ScalarProperty Name="strName" ColumnName="strName" />
-                <ScalarProperty Name="strTown" ColumnName="strTown" />
-                <ScalarProperty Name="strIndex" ColumnName="strIndex" />
-                <ScalarProperty Name="EmpFunction" ColumnName="EmpFunction" />
-                <ScalarProperty Name="emptown" ColumnName="emptown" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -17843,7 +18024,67 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.unmatched_register_accounts' does
           <FunctionImportMapping FunctionImportName="update_BANK_ACCOUNT_TYPES_1" FunctionName="KpModel.Store.update_BANK_ACCOUNT_TYPES_1" />
           <FunctionImportMapping FunctionImportName="update_schroders_deal" FunctionName="KpModel.Store.update_schroders_deal" />
           <FunctionImportMapping FunctionImportName="update_schroders_deal2" FunctionName="KpModel.Store.update_schroders_deal2" />
-        </EntityContainerMapping>
+          <EntitySetMapping Name="FimaClaims">
+            <EntityTypeMapping TypeName="KpModel.FimaClaims">
+              <MappingFragment StoreEntitySet="FimaClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FimaLogins">
+            <EntityTypeMapping TypeName="KpModel.FimaLogins">
+              <MappingFragment StoreEntitySet="FimaLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FimaRoles">
+            <EntityTypeMapping TypeName="KpModel.FimaRoles">
+              <MappingFragment StoreEntitySet="FimaRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FimaUsers">
+            <EntityTypeMapping TypeName="KpModel.FimaUsers">
+              <MappingFragment StoreEntitySet="FimaUsers">
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SequrityStamp" ColumnName="SequrityStamp" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="emptown" ColumnName="emptown" />
+                <ScalarProperty Name="EmpFunction" ColumnName="EmpFunction" />
+                <ScalarProperty Name="strIndex" ColumnName="strIndex" />
+                <ScalarProperty Name="strTown" ColumnName="strTown" />
+                <ScalarProperty Name="strName" ColumnName="strName" />
+                <ScalarProperty Name="strAccess" ColumnName="strAccess" />
+                <ScalarProperty Name="strEmpPassword" ColumnName="strEmpPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FimaUserRoles" TypeName="KpModel.FimaUserRoles" StoreEntitySet="FimaUserRoles">
+            <EndProperty Name="FimaUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="FimaRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

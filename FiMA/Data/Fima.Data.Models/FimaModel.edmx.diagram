@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a92065a0bc9d437cbf7efd50eb4ad3be" Name="Diagram1">
+      <Diagram DiagramId="a92065a0bc9d437cbf7efd50eb4ad3be" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="KpModel.BANK_ACCOUNT_TYPES" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.BANK_ACCOUNTS" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.BANKS" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
@@ -64,7 +64,6 @@
         <EntityTypeShape EntityType="KpModel.RM_PRICES" Width="1.5" PointX="2.75" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.SUMARY_NAV_FUNDS" Width="1.5" PointX="4.75" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="24.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KpModel.tblEmployees" Width="1.5" PointX="24.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.TEST_PRICES" Width="1.5" PointX="24.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.TOWNS" Width="1.5" PointX="24.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.TYPES" Width="1.5" PointX="24.75" PointY="20.75" IsExpanded="true" />
@@ -144,6 +143,13 @@
         <EntityTypeShape EntityType="KpModel.SCHRODERS_ORDERS_WITHTIME" Width="1.5" PointX="24.75" PointY="39.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.UNMATCHED_ACCOUNT_MESSAGES" Width="1.5" PointX="40.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KpModel.UNMATCHED_CD_REGISTER_TRANSACTIONS" Width="1.5" PointX="40.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KpModel.FimaClaims" Width="1.5" PointX="45.875" PointY="10.5" />
+        <EntityTypeShape EntityType="KpModel.FimaLogins" Width="1.5" PointX="45.875" PointY="13.125" />
+        <EntityTypeShape EntityType="KpModel.FimaRoles" Width="1.5" PointX="41.375" PointY="11.875" />
+        <EntityTypeShape EntityType="KpModel.FimaUsers" Width="1.5" PointX="43.625" PointY="10.125" />
+        <AssociationConnector Association="KpModel.FK_AspNetUserClaims_AspNetUsers1" />
+        <AssociationConnector Association="KpModel.FK_AspNetUserLogins_AspNetUsers1" />
+        <AssociationConnector Association="KpModel.FimaUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
