@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Fima.Common;
 using Fima.Data;
 using Fima.Data.Models;
 using Microsoft.AspNet.Identity;
@@ -42,21 +43,21 @@ namespace Fima.Web
             var roleStore = new Fima.Data.Models.FimaRoleStore(context);
             var roleManager = new RoleManager<FimaRole, int>(roleStore);
 
-            if (roleManager.RoleExists("Administrator"))
+            if (roleManager.RoleExists(GlobalConstants.AdministratorRoleName))
             {
                 return;
             }
 
-            var adminRole = new FimaRole { Name = "Administrator" };
-            var subscriberRole = new FimaRole { Name = "Subscriber" };
-            var frontOfficeRole = new FimaRole { Name = "FrontOffice" };
-            var backOfficeRole = new FimaRole { Name = "BackOffice" };
-            var accauntingRole = new FimaRole { Name = "Accountant" };
-            var walletManagerRole = new FimaRole { Name = "WalletManager" };
-            var riskManagerRole = new FimaRole { Name = "RiskManager" };
+            var adminRole = new FimaRole { Name = GlobalConstants.AdministratorRoleName};
+            var guestRole = new FimaRole { Name = GlobalConstants.GuestRoleName };
+            var frontOfficeRole = new FimaRole { Name = GlobalConstants.FrontOfficeRoleName };
+            var backOfficeRole = new FimaRole { Name = GlobalConstants.BackOfficeRoleName };
+            var accauntingRole = new FimaRole { Name = GlobalConstants.AccountantRoleName };
+            var walletManagerRole = new FimaRole { Name = GlobalConstants.WalletManagerRoleName };
+            var riskManagerRole = new FimaRole { Name = GlobalConstants.RiskManagerRoleName };
 
             roleManager.Create(adminRole);
-            roleManager.Create(subscriberRole);
+            roleManager.Create(guestRole);
             roleManager.Create(frontOfficeRole);
             roleManager.Create(backOfficeRole);
             roleManager.Create(accauntingRole);

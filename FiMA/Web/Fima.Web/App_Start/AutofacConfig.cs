@@ -1,4 +1,8 @@
-﻿namespace Fima.Web
+﻿using Fima.Data.DbModels;
+using Fima.Services.Data;
+using Fima.Services.Data.Common.Contracts;
+
+namespace Fima.Web
 {
     using System.Data.Entity;
     using System.Reflection;
@@ -9,6 +13,7 @@
     using Controllers;
     using Data;
     using Data.Common;
+    using Data.DbModels;
     using Fima.Data.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
@@ -49,10 +54,9 @@
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
-            builder.RegisterType<KpEntities>().AsSelf().InstancePerRequest();
+            builder.RegisterType<KpEntitiesContext>().AsSelf().InstancePerRequest();
 
             builder.Register(c => c.Resolve<ApplicationDbContext>()).As<DbContext>().InstancePerRequest();
-            // builder.Register(c => c.Resolve<KpEntities>()).As<DbContext>().InstancePerRequest();
 
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
@@ -63,19 +67,17 @@
                 DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("Application​")
             });
 
-            builder.Register(x => new HttpCacheService())
-                .As<ICacheService>()
-                .InstancePerRequest();
-            builder.Register(x => new IdentifierProvider())
-                .As<IIdentifierProvider>()
-                .InstancePerRequest();
+            builder.Register(x => new HttpCacheService()).As<ICacheService>().InstancePerRequest();
+            builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>().InstancePerRequest();
 
-            builder.RegisterGeneric(typeof(DbRepository<>))
-                .As(typeof(IDbRepository<>))
-                .InstancePerRequest();
+            builder.RegisterGeneric(typeof(DbRepository<>)).As(typeof(IDbRepository<>)).InstancePerRequest();
+            builder.RegisterGeneric(typeof(FimaRepository<>)).As(typeof(IFimaRepository<>)).InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
+
+            var servicesAssembly = Assembly.GetAssembly(typeof(IRolesService));
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
         }
     }
 }

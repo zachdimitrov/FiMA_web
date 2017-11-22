@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Common\BaseDataService{T}.cs" />
     <Compile Include="Common\Contracts\IBaseDataService{T}.cs" />
+    <Compile Include="IRolesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Fima.Data.Common\Fima.Data.Common.csproj">
@@ -56,6 +58,10 @@
     <ProjectReference Include="..\..\Data\Fima.Data.Models\Fima.Data.Models.csproj">
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>Fima.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Fima.Data\Fima.Data.csproj">
+      <Project>{7C950CDC-9587-4B65-A204-988EFED17948}</Project>
+      <Name>Fima.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Fima.Common\Fima.Common.csproj">
       <Project>{701f322f-aa01-4ddc-90b6-6935981c1e73}</Project>

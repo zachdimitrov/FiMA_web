@@ -4,15 +4,18 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-    using Fima.Data.Models;
-    using Fima.Web.ViewModels.Account;
+    using Data.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using Services.Data;
+    using ViewModels.Account;
 
     [Authorize]
     public class AccountController : BaseController
     {
+        private readonly IRolesService roles;
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -20,10 +23,11 @@
 
         private ApplicationUserManager userManager;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IRolesService roles)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
+            this.roles = roles;
         }
 
         public ApplicationSignInManager SignInManager
@@ -153,6 +157,8 @@
         [AllowAnonymous]
         public ActionResult Register()
         {
+            this.ViewBag.Name = new SelectList(this.roles.AllButAdmin(), "Name", "Name");
+
             return this.View();
         }
 
@@ -176,8 +182,12 @@
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //Assign Role to user Here  
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     return this.RedirectToAction("Index", "Home");
                 }
+
+                this.ViewBag.Name = new SelectList(this.roles.AllButAdmin(), "Name", "Name");
 
                 this.AddErrors(result);
             }
