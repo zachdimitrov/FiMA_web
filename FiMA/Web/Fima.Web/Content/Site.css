@@ -18,6 +18,15 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
+.pure-button:hover {
+    text-decoration: none;
+    font-weight:500;
+}
+
 ul li {
     list-style-type: none;
 }
@@ -51,6 +60,10 @@ body {
     font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+.text-danger {
+    color: orangered;
+}
+
 .logo {
     align-self: flex-start;
 }
@@ -65,6 +78,7 @@ body {
 }
 
 .page-brand:hover {
+    text-decoration: none;
     opacity: 1;
     text-shadow: 2px 2px 2px #000;
 }
@@ -122,6 +136,7 @@ nav {
 }
 
 .nav-bar li:hover a {
+    text-decoration: none;
     opacity: 1;
     background-color: inherit;
 }
@@ -198,6 +213,12 @@ nav {
     height: 100%;
     width: 100%;
     color: #303B46;
+}
+
+.menu-item:hover a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
 }
 
 .menu-item i {

@@ -5,6 +5,6 @@
 
     public interface IRolesService
     {
-        IEnumerable<FimaRoles> AllButAdmin();
+        IEnumerable<string> AllButAdmin();
     }
 }

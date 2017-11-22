@@ -6,7 +6,7 @@
     {
         [Required(ErrorMessage = "Изборът на роля е задължителен!")]
         [Display(Name = "Роля")]
-        public string UserRoles { get; set; }
+        public string UserRole { get; set; }
 
         [Required(ErrorMessage = "Потребителското име е задължително!")]
         [Display(Name = "Потребител")]

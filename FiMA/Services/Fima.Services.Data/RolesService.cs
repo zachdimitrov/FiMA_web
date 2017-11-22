@@ -14,10 +14,11 @@
             this.roles = roles;
         }
 
-        public IEnumerable<FimaRoles> AllButAdmin()
+        public IEnumerable<string> AllButAdmin()
         {
             return this.roles.All()
                 .Where(n => n.Name != GlobalConstants.AdministratorRoleName)
+                .Select(r => r.Name)
                 .ToList();
         }
     }

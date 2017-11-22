@@ -98,7 +98,7 @@
                         new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    this.ModelState.AddModelError(string.Empty, "Грешно въведени потребител или парола!");
                     return this.View(model);
             }
         }
@@ -148,7 +148,7 @@
                     return this.View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    this.ModelState.AddModelError(string.Empty, "Invalid code.");
+                    this.ModelState.AddModelError(string.Empty, "Грешен код.");
                     return this.View(model);
             }
         }
@@ -157,7 +157,7 @@
         [AllowAnonymous]
         public ActionResult Register()
         {
-            this.ViewBag.Name = new SelectList(this.roles.AllButAdmin(), "Name", "Name");
+            this.ViewBag.Roles = new SelectList(this.roles.AllButAdmin());
 
             return this.View();
         }
@@ -182,12 +182,13 @@
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    //Assign Role to user Here  
-                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+
+                    // Assign Role to user Here
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
                     return this.RedirectToAction("Index", "Home");
                 }
 
-                this.ViewBag.Name = new SelectList(this.roles.AllButAdmin(), "Name", "Name");
+                this.ViewBag.Roles = new SelectList(this.roles.AllButAdmin());
 
                 this.AddErrors(result);
             }
