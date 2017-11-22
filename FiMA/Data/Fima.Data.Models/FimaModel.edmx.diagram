@@ -146,7 +146,7 @@
         <EntityTypeShape EntityType="KpModel.FimaClaims" Width="1.5" PointX="45.875" PointY="10.5" />
         <EntityTypeShape EntityType="KpModel.FimaLogins" Width="1.5" PointX="45.875" PointY="13.125" />
         <EntityTypeShape EntityType="KpModel.FimaRoles" Width="1.5" PointX="41.375" PointY="11.875" />
-        <EntityTypeShape EntityType="KpModel.FimaUsers" Width="1.5" PointX="43.625" PointY="10.125" />
+        <EntityTypeShape EntityType="KpModel.FimaUsers" Width="1.5" PointX="43.625" PointY="10.125" IsExpanded="true" />
         <AssociationConnector Association="KpModel.FK_AspNetUserClaims_AspNetUsers1" />
         <AssociationConnector Association="KpModel.FK_AspNetUserLogins_AspNetUsers1" />
         <AssociationConnector Association="KpModel.FimaUserRoles" />

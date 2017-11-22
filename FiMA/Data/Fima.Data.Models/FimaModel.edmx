@@ -246,11 +246,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.BIG_ACCOUNTING_TABLE_HIST' does n
           <Property Name="USER_MODIFIED" Type="varchar" MaxLength="200" />
           <Property Name="USER_modified_time" Type="varchar" MaxLength="200" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.BIG_PASS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="BIG_PASS">
-          <Property Name="PASS" Type="char" MaxLength="20" />
-        </EntityType>-->
         <EntityType Name="BNB_CCY">
           <Key>
             <PropertyRef Name="CODE" />
@@ -728,13 +723,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.db_beta' does not have a primary 
           <Property Name="beta_b2" Type="float" />
           <Property Name="beta_fund" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.dbo_syssegments' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dbo_syssegments">
-          <Property Name="segment" Type="int" />
-          <Property Name="name" Type="nvarchar" MaxLength="10" />
-          <Property Name="status" Type="int" />
-        </EntityType>-->
         <EntityType Name="DEFERRED_EXPENSES_COUNTERPARTIES">
           <Key>
             <PropertyRef Name="DE_ID" />
@@ -846,19 +834,19 @@ warning 6013: The table/view 'KAROLL_PULSE.dbo.dbo_syssegments' does not have a 
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
-          <Property Name="strEmpPassword" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="strEmpPassword" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="strAccess" Type="varchar" MaxLength="50" />
           <Property Name="strName" Type="varchar" MaxLength="50" />
           <Property Name="strTown" Type="varchar" MaxLength="50" />
           <Property Name="strIndex" Type="varchar" MaxLength="50" />
           <Property Name="EmpFunction" Type="varchar" MaxLength="50" />
-          <Property Name="emptown" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PasswordHash" Type="varchar(max)" />
-          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="emptown" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" />
-          <Property Name="SequrityStamp" Type="varchar(max)" />
-          <Property Name="PhoneNumber" Type="varchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
           <Property Name="PhoneNumberConfirmed" Type="bit" />
           <Property Name="TwoFactorEnabled" Type="bit" />
           <Property Name="LockoutEndDateUtc" Type="datetime" />
@@ -1817,18 +1805,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.PORTFOLIO_SUMMARY_FUNDS_SCH_HIST'
           <Property Name="user_modified_time" Type="varchar" MaxLength="50" />
           <Property Name="issuer_id" Type="varchar" MaxLength="250" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.REFERENCE_AMOUNTS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="REFERENCE_AMOUNTS">
-          <Property Name="FUNDID" Type="varchar" MaxLength="50" />
-          <Property Name="CCY" Type="char" MaxLength="3" />
-          <Property Name="MIN1" Type="float" />
-          <Property Name="MIN2" Type="float" />
-          <Property Name="MIN3" Type="float" />
-          <Property Name="fee1" Type="varchar" MaxLength="50" />
-          <Property Name="fee2" Type="varchar" MaxLength="50" />
-          <Property Name="fee3" Type="varchar" MaxLength="50" />
-        </EntityType>-->
         <EntityType Name="RM_PRICES">
           <Key>
             <PropertyRef Name="rmdate" />
@@ -1866,39 +1842,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.RM_PRICES_HIST' does not have a p
           <Property Name="USER_ID" Type="varchar" MaxLength="50" />
           <Property Name="ACT_EVENT" Type="varchar" MaxLength="20" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.schroders_entryfees' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="schroders_entryfees">
-          <Property Name="MIN1" Type="float" />
-          <Property Name="MIN1_fee1" Type="float" />
-          <Property Name="min1_fee2" Type="float" />
-          <Property Name="min2" Type="float" />
-          <Property Name="min2_fee1" Type="float" />
-          <Property Name="min2_fee2" Type="float" />
-          <Property Name="min3" Type="float" />
-          <Property Name="min3_fee1" Type="float" />
-          <Property Name="min3_fee2" Type="float" />
-          <Property Name="min4" Type="float" />
-          <Property Name="min4_fee1" Type="float" />
-          <Property Name="min4_fee2" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.schroders_prices' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="schroders_prices">
-          <Property Name="schroders_date" Type="smalldatetime" />
-          <Property Name="schroders_isin" Type="varchar" MaxLength="50" />
-          <Property Name="schroders_price" Type="float" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.schroders_prices_HIST' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="schroders_prices_HIST">
-          <Property Name="schroders_date" Type="smalldatetime" />
-          <Property Name="schroders_isin" Type="varchar" MaxLength="50" />
-          <Property Name="schroders_price" Type="float" />
-          <Property Name="EFFECTIVE_DATE" Type="datetime" />
-          <Property Name="USER_ID" Type="varchar" MaxLength="50" />
-          <Property Name="ACT_EVENT" Type="varchar" MaxLength="20" />
-        </EntityType>-->
         <EntityType Name="SUMARY_NAV_FUNDS">
           <Key>
             <PropertyRef Name="DATE" />
@@ -2024,12 +1967,6 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.TEST_CD_TEXT_MESSAGES' does not h
           <Property Name="TWENTYEIGTHLINE2" Type="nvarchar" MaxLength="255" />
           <Property Name="TWENTYNINGHTLINE2" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'KAROLL_PULSE.dbo.test_facking_date' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="test_facking_date">
-          <Property Name="test_date" Type="smalldatetime" />
-          <Property Name="port_deal_id" Type="float" />
-        </EntityType>-->
         <EntityType Name="TEST_PRICES">
           <Key>
             <PropertyRef Name="MYDATE" />
@@ -13139,19 +13076,19 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.UNMATCHED_CD_REGISTER_TRANSACTION
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="strEmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="strEmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="strAccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strTown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="strIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmpFunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="emptown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="emptown" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" />
-          <Property Name="SequrityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SequrityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumberConfirmed" Type="Boolean" />
           <Property Name="TwoFactorEnabled" Type="Boolean" />
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
@@ -13160,6 +13097,7 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.UNMATCHED_CD_REGISTER_TRANSACTION
           <NavigationProperty Name="FimaClaims" Relationship="KpModel.FK_AspNetUserClaims_AspNetUsers1" FromRole="FimaUsers" ToRole="FimaClaims" />
           <NavigationProperty Name="FimaLogins" Relationship="KpModel.FK_AspNetUserLogins_AspNetUsers1" FromRole="FimaUsers" ToRole="FimaLogins" />
           <NavigationProperty Name="FimaRoles" Relationship="KpModel.FimaUserRoles" FromRole="FimaUsers" ToRole="FimaRoles" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_AspNetUserClaims_AspNetUsers1">
           <End Type="KpModel.FimaUsers" Role="FimaUsers" Multiplicity="1" />
@@ -17905,13 +17843,13 @@ warning 6002: The table/view 'KAROLL_PULSE.dbo.UNMATCHED_CD_REGISTER_TRANSACTION
           <EntitySetMapping Name="FimaUsers">
             <EntityTypeMapping TypeName="KpModel.FimaUsers">
               <MappingFragment StoreEntitySet="FimaUsers">
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
                 <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
                 <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SequrityStamp" ColumnName="SequrityStamp" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
