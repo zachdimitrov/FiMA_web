@@ -7,14 +7,14 @@
     using Microsoft.Owin;
     using Microsoft.Owin.Security;
 
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    public class ApplicationSignInManager : SignInManager<FimaUser, int>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(FimaUser user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)this.UserManager);
         }

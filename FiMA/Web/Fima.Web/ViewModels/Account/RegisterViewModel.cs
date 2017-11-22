@@ -4,6 +4,10 @@
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "Изборът на роля е задължителен!")]
+        [Display(Name = "Роля")]
+        public string UserRoles { get; set; }
+
         [Required(ErrorMessage = "Потребителското име е задължително!")]
         [Display(Name = "Потребител")]
         [StringLength(50, ErrorMessage = "Потребителското име трябва да е поне {2} символа.", MinimumLength = 3)]

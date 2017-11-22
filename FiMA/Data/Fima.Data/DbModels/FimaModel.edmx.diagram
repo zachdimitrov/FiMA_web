@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6b545738d2847c984daa46854784bc5" Name="Diagram1">
+        <EntityTypeShape EntityType="DbModels.BANK_ACCOUNT_TYPES" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BANK_ACCOUNTS" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BANKS" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIG_ACCOUNTING_TABLE" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIG_ACCOUNTING_TABLE_kur" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIG_ACCOUNTING_TABLE_SCH" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BNB_CCY" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BNB_COUNTRY" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BNB_MARKETS" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BNB_SECTOR" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BNB_TYPE" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BRANCH_BG" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BROKERS" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BULLETIN_BFB" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BULLETIN_USA" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CALENDAR" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CD_MESSAGES" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CD_TEXT_MESSAGES" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CE_EVENT_TYPES" Width="1.5" PointX="13.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CONTRACTED_PARTIES" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CONTRACTS" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.contracts_kcm" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.contracts_schroders" Width="1.5" PointX="15.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CORPORATE_EVENTS_ALLFUNDS" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.COUNTRIES" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CURRENCIES" Width="1.5" PointX="2.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DAILYPRICES" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DATAUD_AVRORA" Width="1.5" PointX="12.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DEFERRED_EXPENSES_COUNTERPARTIES" Width="1.5" PointX="14.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DEPOSIT_CONVENTIONS" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DEPOSITS_ALLFUNDS" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.dtproperties" Width="1.5" PointX="4.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ec_groups" Width="1.5" PointX="17.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.FimaClaims" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.FimaLogins" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.FimaRoles" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.FimaUsers" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.FORWARD_CONTRACTS_ALLFUNDS" Width="1.5" PointX="17.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.GENERAL_LEDGER" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTMENT_TYPES" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTOR_TRANSFERS" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_DEALS" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_DEALS_SCHRODERS" Width="1.5" PointX="20.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_FUNDS" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.MONEYTRANSFER_TYPE" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.MUNICIPALITY" Width="1.5" PointX="21.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.NAV_CALCULATION_ALLFUNDS" Width="1.5" PointX="2.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.NAV_FUNDS" Width="1.5" PointX="4.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.NOM_BANKS" Width="1.5" PointX="12.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ORDERS_INPUT" Width="1.5" PointX="14.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ORDERS_INPUT_SCHRODERS" Width="1.5" PointX="16.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ORDERS_OPERATIONS" Width="1.5" PointX="22.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ORGANIZATIONS" Width="1.5" PointX="22.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_DEALS" Width="1.5" PointX="22.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_ORDERS" Width="1.5" PointX="22.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_SUMMARY_FUNDS" Width="1.5" PointX="6.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_SUMMARY_FUNDS_SCH" Width="1.5" PointX="8.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIOOPERATIONS_TYPE" Width="1.5" PointX="23.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIOORDERS_TYPE" Width="1.5" PointX="23.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.POSITIONS_INVESTMENTS" Width="1.5" PointX="24.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.RM_PRICES" Width="1.5" PointX="10.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.SUMARY_NAV_FUNDS" Width="1.5" PointX="24.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.sysdiagrams" Width="1.5" PointX="24.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.TEST_PRICES" Width="1.5" PointX="24.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.TOWNS" Width="1.5" PointX="24.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.TYPES" Width="1.5" PointX="25.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.UD_FUNDS" Width="1.5" PointX="26.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.UD_FUNDS_schroders" Width="1.5" PointX="26.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.usd_histrates" Width="1.5" PointX="26.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.VN" Width="1.5" PointX="26.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.acc_test" Width="1.5" PointX="26.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIG_ACCOUNTING_TABLE_HIST" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CD_MESSAGES_HIST" Width="1.5" PointX="0.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.CD_TEXT_MESSAGES_HIST" Width="1.5" PointX="2.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.contracts_schroders_HIST" Width="1.5" PointX="4.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DAILYPRICES_HIST" Width="1.5" PointX="6.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.db_beta" Width="1.5" PointX="8.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_DEALS_HIST" Width="1.5" PointX="28.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_DEALS_SCHRODERS_HIST" Width="1.5" PointX="10.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_FUNDS_HIST" Width="1.5" PointX="28.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ORDERS_INPUT_HIST" Width="1.5" PointX="22.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ORDERS_INPUT_SCHRODERS_HIST" Width="1.5" PointX="18.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_DEALS_HIST" Width="1.5" PointX="24.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_ORDERS_HIST" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_SUMMARY_FUNDS_HIST" Width="1.5" PointX="30.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIO_SUMMARY_FUNDS_SCH_HIST" Width="1.5" PointX="30.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.RM_PRICES_HIST" Width="1.5" PointX="12.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.SUMARY_NAV_FUNDS_HIST" Width="1.5" PointX="30.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.TEST_CD_MESSAGES" Width="1.5" PointX="30.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.TEST_CD_TEXT_MESSAGES" Width="1.5" PointX="30.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.VN_HIST" Width="1.5" PointX="14.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ACC_MOVE_PERIOD" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ACC_MOVE_PERIOD_2" Width="1.5" PointX="32.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ACCOUNTING_ENTRIES_ALL" Width="1.5" PointX="32.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.ACCOUNTINGTABLE_FORMATED" Width="1.5" PointX="32.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BANK_ACCOUNTS_ANYFUND" Width="1.5" PointX="32.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BETA_CALC" Width="1.5" PointX="32.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIG_ACCOUNTING_TABLE_ANYFUND" Width="1.5" PointX="34.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIG_ACCOUNTING_TABLE_ANYFUND_SCH" Width="1.5" PointX="34.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_BEGIN" Width="1.5" PointX="34.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_BEGIN_SCH" Width="1.5" PointX="34.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_END" Width="1.5" PointX="34.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD" Width="1.5" PointX="26.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_CT1" Width="1.5" PointX="34.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_CT1_SCH" Width="1.5" PointX="4.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_DT1" Width="1.5" PointX="6.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_DT1_SCH" Width="1.5" PointX="36.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_Fct" Width="1.5" PointX="36.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_FDT" Width="1.5" PointX="36.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_FID" Width="1.5" PointX="12.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_FORMATED" Width="1.5" PointX="36.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGTABLE_PERIOD_FSUM" Width="1.5" PointX="14.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.BIGACCOUNTINGYABLE_PERIOD_SCH" Width="1.5" PointX="36.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.contracts_kcm_readable" Width="1.5" PointX="36.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.contracts_schroders_readable" Width="1.5" PointX="28.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DAILYPRICESLIMITED_POSITIONS" Width="1.5" PointX="30.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.dbo_BIG_SUMMARY_PORTFOLIO_RES" Width="1.5" PointX="36.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.dbo_BIGACCOUNTINGTABLE_SUMMARYPORTFOLIO" Width="1.5" PointX="32.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.dbo_BIGACCOUNTINGTABLE_SUMMARYPORTFOLIO_SCH" Width="1.5" PointX="0.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.dbo_DAILYPRICES_POSITIONS_BFBONLY" Width="1.5" PointX="20.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DE_EXPENSES_ANYFUND" Width="1.5" PointX="38.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DEPOSITS_ANYFUND" Width="1.5" PointX="38.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.DP_LIMITED" Width="1.5" PointX="8.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.FORWARD_CONTRACTS_ANYFUND" Width="1.5" PointX="38.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTOR_AUTH2" Width="1.5" PointX="38.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_AUTH" Width="1.5" PointX="38.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS_DEALS_FORMATED" Width="1.5" PointX="38.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORS2" Width="1.5" PointX="38.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORSDEALS_ANYFUND" Width="1.5" PointX="38.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.INVESTORSORDERS_ANYFUND2" Width="1.5" PointX="34.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.MAX_DATE_REVAL" Width="1.5" PointX="36.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.MAX_DATE_REVAL_SCH" Width="1.5" PointX="38.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PENDINGORDERS_INVESTORS2" Width="1.5" PointX="10.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.PORTFOLIODEALS_ANYFUND" Width="1.5" PointX="16.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.POSITION_BONDS_INTEREST_1" Width="1.5" PointX="40.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.POSITION_INVESTMENTS_BONDS_ONLY" Width="1.5" PointX="2.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.RESERVE_SUMMARY" Width="1.5" PointX="40.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.sch_orders_active" Width="1.5" PointX="4.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.schroders_orders_readable" Width="1.5" PointX="40.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.SCHRODERS_ORDERS_WITHTIME" Width="1.5" PointX="12.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.UNMATCHED_ACCOUNT_MESSAGES" Width="1.5" PointX="40.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModels.UNMATCHED_CD_REGISTER_TRANSACTIONS" Width="1.5" PointX="40.75" PointY="23.75" IsExpanded="true" />
+        <AssociationConnector Association="DbModels.FK_FimaClaims_FimaUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModels.FK_FimaLogins_FimaUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModels.FimaUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

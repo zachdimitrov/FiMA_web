@@ -1,10 +1,9 @@
 ﻿namespace Fima.Services.Data.Common.Contracts
 {
     using System.Linq;
-    using Fima.Data.Common.Models;
 
     public interface IBaseDataService<T>
-        where T : class, IDeletableEntity, IAuditInfo
+        where T : class
     {
         void Add(T item);
 

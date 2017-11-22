@@ -196,7 +196,6 @@
     <Compile Include="App_Start\ApplicationUserManager.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\EmailService.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -205,8 +204,19 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Controllers\ManageUsersController.cs" />
+    <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
+    <Compile Include="Areas\BackOffice\Controllers\HomeController.cs" />
+    <Compile Include="Areas\FrontOffice\Controllers\ClientController.cs" />
     <Compile Include="Areas\FrontOffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\FrontOffice\FrontOfficeAreaRegistration.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\AddressViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\AttorneyViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\BankAccountViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\ClientBaseViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\ClientRegisterViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\IndividualViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\LegalEntityViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\LocalAddressViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -259,6 +269,12 @@
     <Content Include="Areas\FrontOffice\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\FrontOffice\Views\_ViewStart.cshtml" />
     <Content Include="Areas\FrontOffice\Views\Home\Index.cshtml" />
+    <Content Include="Areas\BackOffice\Views\web.config" />
+    <Content Include="Areas\BackOffice\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Shared\_BackOfficeMenu.cshtml" />
+    <Content Include="Areas\BackOffice\Views\Home\Index.cshtml" />
+    <Content Include="Areas\FrontOffice\Views\Client\Register.cshtml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -308,7 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\FrontOffice\Models\" />
+    <Folder Include="Areas\BackOffice\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

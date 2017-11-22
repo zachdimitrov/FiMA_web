@@ -4,6 +4,8 @@
 
 <h2>Фронт офис</h2>
 
+<a class="pure-button button-right" href="@Url.Action("Index","Home", new { area = "BackOffice" })"><i class="fa fa-chevron-left"></i> бек офис</a>
+
 @section scripts {
     <script>
         $('[href*=home]').closest('.menu-item').addClass('selected');

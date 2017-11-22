@@ -7,15 +7,15 @@
     using Microsoft.Owin.Security.DataProtection;
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class ApplicationUserManager : UserManager<FimaUser, int>
     {
         public ApplicationUserManager(
-            IUserStore<ApplicationUser> store,
+            IUserStore<FimaUser, int> store,
             IdentityFactoryOptions<ApplicationUserManager> options)
             : base(store)
         {
             // Configure validation logic for usernames
-            this.UserValidator = new UserValidator<ApplicationUser>(this)
+            this.UserValidator = new UserValidator<FimaUser, int>(this)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -48,7 +48,7 @@
 
         private void RegisterPhoneNumberProvider()
         {
-            var provider = new PhoneNumberTokenProvider<ApplicationUser>
+            var provider = new PhoneNumberTokenProvider<FimaUser, int>
             {
                 MessageFormat = "Your security code is {0}"
             };
@@ -57,7 +57,7 @@
 
         private void RegisterEmailProvider()
         {
-            var provider = new EmailTokenProvider<ApplicationUser>
+            var provider = new EmailTokenProvider<FimaUser, int>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -70,7 +70,7 @@
             if (provider != null)
             {
                 this.UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser>(provider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<FimaUser, int>(provider.Create("ASP.NET Identity"));
             }
         }
     }

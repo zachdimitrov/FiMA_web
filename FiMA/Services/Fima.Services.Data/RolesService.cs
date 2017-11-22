@@ -1,0 +1,24 @@
+﻿namespace Fima.Services.Data
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using Fima.Common;
+    using Fima.Data.DbModels;
+
+    public class RolesService : IRolesService
+    {
+        private readonly IFimaRepository<FimaRoles> roles;
+
+        public RolesService(IFimaRepository<FimaRoles> roles)
+        {
+            this.roles = roles;
+        }
+
+        public IEnumerable<FimaRoles> AllButAdmin()
+        {
+            return this.roles.All()
+                .Where(n => n.Name != GlobalConstants.AdministratorRoleName)
+                .ToList();
+        }
+    }
+}

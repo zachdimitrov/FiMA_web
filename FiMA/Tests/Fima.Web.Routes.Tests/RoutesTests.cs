@@ -3,7 +3,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class ControllerTests
+    public class RoutesTests
     {
         [Test]
         public void ControllerShould()

@@ -6,7 +6,7 @@
         @Html.AntiForgeryToken()
 
         <ul class="login-right">
-            @if (this.User.IsInRole("Administrator"))
+            @if (this.User.IsInRole("администратор"))
             {
                 <li>
                     <i class="fa fa-cogs"></i>
