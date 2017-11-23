@@ -58,6 +58,8 @@ body {
     /*background: url("Images/bg-tiny-checker.png") repeat;*/
     background: #EFEFF0;
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .text-danger {
@@ -66,6 +68,15 @@ body {
 
 .logo {
     align-self: flex-start;
+}
+
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    padding: 3px;
 }
 
 .page-brand {
@@ -79,6 +90,7 @@ body {
 
 .page-brand:hover {
     text-decoration: none;
+    color: white;
     opacity: 1;
     text-shadow: 2px 2px 2px #000;
 }
@@ -175,7 +187,7 @@ nav {
     transform: rotate(45deg) translate(-0.4rem, -0.4rem);
 }
 
-.container {
+.page-container {
     display: flex;
     flex-direction: row;
 }
@@ -183,6 +195,7 @@ nav {
 .content {
     padding: 10px;
     width: 100%;
+    overflow-x: scroll;
     background-color: white;
     border-top: 1px solid darkgrey;
     border-right: 1px solid darkgrey;

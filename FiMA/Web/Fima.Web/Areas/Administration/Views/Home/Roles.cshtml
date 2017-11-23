@@ -1,0 +1,25 @@
+﻿@using GridMvc.Html
+@using Fima.Web.Areas.Administration.Models
+
+@model IEnumerable<FimaRolesViewModel>
+
+<h2>Управление на ролите</h2>
+
+<b style="color:orangered">В процес на разработка! </b>Това е страница за управление на ролите на потребителите в табличен вид, така както са записани в базата с данни.
+
+<hr/>
+
+<h4>Списък с роли</h4>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Id).Titled("номер").SetWidth(80).Sortable(true);
+    columns.Add(c => c.Name).Titled("Име").Sortable(true);
+    columns.Add(c => c.FimaUsers).Titled("Потребители");
+}).WithPaging(20)
+
+@section scripts {
+    <script>
+        $('[href*=roles]').closest('.menu-item').addClass('selected');
+    </script>
+}

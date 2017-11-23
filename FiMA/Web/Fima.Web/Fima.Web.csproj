@@ -207,7 +207,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Administration\Controllers\ManageUsersController.cs" />
+    <Compile Include="Areas\Administration\Models\FimaRolesViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\FimaUsersViewModel.cs" />
     <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
     <Compile Include="Areas\BackOffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\FrontOffice\Controllers\ClientController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administration\Views\Home\Roles.cshtml" />
     <None Include="Areas\Administration\Views\Shared\_AdminMenu.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -263,7 +265,7 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\ManageUsers\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\Users.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -334,7 +336,6 @@
     <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\BackOffice\Models\" />
   </ItemGroup>
   <ItemGroup>

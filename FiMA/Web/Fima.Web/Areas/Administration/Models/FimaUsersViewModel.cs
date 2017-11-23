@@ -2,10 +2,12 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using AutoMapper;
     using Data.DbModels;
     using Infrastructure.Mapping;
 
-    public class FimaUsersViewModel : IMapTo<FimaUsers>, IMapFrom<FimaUsers>
+    public class FimaUsersViewModel : IMapTo<FimaUsers>, IMapFrom<FimaUsers>, IHaveCustomMappings
     {
         [Display(Name = "Номер")]
         public int Id { get; set; }
@@ -43,8 +45,13 @@
         [Display(Name = "Опити")]
         public int? AccessFailedCount { get; set; }
 
-        // external properties
         [Display(Name = "Роли")]
-        public ICollection<FimaRoles> FimaRoles { get; set; }
+        public IEnumerable<string> FimaRoles { get; set; }
+
+        public void CreateMappings(IMapperConfiguration configuration)
+        {
+            configuration.CreateMap<FimaUsers, FimaUsersViewModel>()
+                .ForMember(u => u.FimaRoles, opt => opt.MapFrom(x => x.FimaRoles.Select(y => y.Name).ToList()));
+        }
     }
 }
