@@ -9,7 +9,7 @@
     using Models;
     using Web.Controllers;
 
-    [Authorize(Roles = "Администратор")]
+    [Authorize(Roles = "администратор")]
     public class HomeController : BaseController
     {
         private readonly IFimaRepository<FimaUsers> users;
