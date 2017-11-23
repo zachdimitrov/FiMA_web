@@ -1,0 +1,25 @@
+﻿@using Fima.Web.Areas.Administration.Models
+@model FimaRolesViewModel
+
+    <h2>Промяна на роля - <b>@Model.Name</b></h2>
+    <b style="color:orangered">Внимание, промяната на името на роля може да доведе до проблеми в работата със системата! </b>
+
+    <hr />
+    
+@using (Html.BeginForm("RoleEdit", "Home", FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Добавяне на потребител към <b>@Model.Name</b></h4>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.FimaUsers, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.FimaUsers, new SelectList(Model.FimaUsers), "потребители", new { multiple = "multiple", @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="pure-button pure-button-primary" value="Запазване" />
+        </div>
+    </div>
+}

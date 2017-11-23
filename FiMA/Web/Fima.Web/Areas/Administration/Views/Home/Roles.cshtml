@@ -3,9 +3,15 @@
 
 @model IEnumerable<FimaRolesViewModel>
 
-<h2>Управление на ролите</h2>
+@{
+    ViewBag.Title = "Управление на ролите";
+}
+<h2>@ViewBag.Title</h2>
 
-<b style="color:orangered">В процес на разработка! </b>Това е страница за управление на ролите на потребителите в табличен вид, така както са записани в базата с данни.
+<b style="color:orangered">В процес на разработка! </b><br />
+Изберете заглавието на колоната за сортиране.<br />
+Изберете иконата <i class="fa fa-filter"></i> за филтриране по избран критерий.<br />
+Натиснете бутона с номера на реда за промяна на данните.<br />
 
 <hr/>
 
@@ -13,10 +19,18 @@
 
 @Html.Grid(Model).Columns(columns =>
 {
-    columns.Add(c => c.Id).Titled("номер").SetWidth(80).Sortable(true);
-    columns.Add(c => c.Name).Titled("Име").Sortable(true);
-    columns.Add(c => c.FimaUsers).Titled("Потребители");
-}).WithPaging(20)
+    columns.Add(c => c.Id)
+    .Titled("номер")
+    .SetWidth(40)
+    .RenderValueAs(
+        c => Html.ActionLink(c.Id.ToString(),
+        "RoleEdit",
+        new { id = c.Id },
+        new { @class = "pure-button" }));
+
+    columns.Add(c => c.Name).Titled("Име");
+    columns.Add(c => c.FimaUsers).Titled("Потребители").RenderValueAs(x=>string.Join(",", x.FimaUsers));
+}).WithPaging(20).Sortable(true)
 
 @section scripts {
     <script>

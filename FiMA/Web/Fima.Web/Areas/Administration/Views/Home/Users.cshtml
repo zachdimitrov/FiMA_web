@@ -3,9 +3,15 @@
 
 @model IEnumerable<FimaUsersViewModel>
 
-<h2>Управление на потребителите</h2>
+@{
+    ViewBag.Title = "Управление на потребителите";
+}
+<h2>@ViewBag.Title</h2>
 
-<b style="color:orangered">В процес на разработка! </b>Това е страница за управление на потребителите в табличен вид, така както са записани в базата с данни.
+<b style="color:orangered">В процес на разработка! </b><br />
+Изберете заглавието на колоната за сортиране.<br />
+Изберете иконата <i class="fa fa-filter"></i> за филтриране по избран критерий.<br />
+Натиснете бутона с номера на реда за промяна на данните.<br />
 
 <hr/>
 
@@ -13,20 +19,28 @@
 
 @Html.Grid(Model).Columns(columns =>
 {
-    columns.Add(c => c.Id).Titled("номер").Sortable(true);
-    columns.Add(c => c.strName).Titled("име").Sortable(true).Filterable(true);
-    columns.Add(c => c.UserName).Titled("потребител").Sortable(true).Filterable(true);
+    columns.Add(c => c.Id)
+    .Titled("номер")
+    .SetWidth(40)
+    .RenderValueAs(
+        c => Html.ActionLink(c.Id.ToString(),
+        "UserEdit",
+        new { id = c.Id },
+        new { @class = "pure-button" }));
+
+    columns.Add(c => c.strName).Titled("име").Filterable(true);
+    columns.Add(c => c.UserName).Titled("потребител").Filterable(true);
     columns.Add(c => c.strEmpPassword).Titled("парола");
     columns.Add(c => c.Email).Titled("е-мейл").Filterable(true);
     columns.Add(c => c.PhoneNumber).Titled("телефон");
     columns.Add(c => c.EmpFunction).Titled("функция");
-    columns.Add(c => c.emptown).Titled("град").Sortable(true);
-    columns.Add(c => c.strTown).Titled("град").Sortable(true);
+    columns.Add(c => c.emptown).Titled("град");
+    columns.Add(c => c.strTown).Titled("град");
     columns.Add(c => c.strIndex).Titled("индекс");
     columns.Add(c => c.strAccess).Titled("достъп");
     columns.Add(c => c.AccessFailedCount).Titled("Опити");
-    columns.Add(c => c.FimaRoles).Titled("роли");
-}).WithPaging(20)
+    columns.Add(c => c.FimaRoles).Titled("роли").RenderValueAs(x => string.Join(",", x.FimaRoles));
+}).WithPaging(20).Sortable(true)
 
 @section scripts {
     <script>
