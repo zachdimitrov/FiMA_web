@@ -1,7 +1,5 @@
 ﻿namespace Fima.Web.Areas.Administration.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using Data.DbModels;
@@ -74,13 +72,17 @@
         {
             var entity = this.roles.GetById(id);
             var model = this.Mapper.Map<FimaRolesViewModel>(entity);
+            model.Users = this.users.All()
+                .Where(x => !x.FimaRoles.Select(y => y.Name).Contains(model.Name))
+                .Select(x => x.UserName)
+                .ToList();
 
             return this.View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RoleEdit(FimaRolesViewModel model)
+        public ActionResult AddToRole(FimaRolesViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -88,7 +90,45 @@
             }
 
             var entity = this.roles.GetById(model.Id);
-            this.Mapper.Map(model, entity);
+            foreach (var userName in model.FimaUsers)
+            {
+                var user = this.users.All()
+                    .Where(u => u.UserName == userName)
+                    .FirstOrDefault();
+
+                if (user != null)
+                {
+                    entity.FimaUsers.Add(user);
+                }
+            }
+
+            this.roles.Save();
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveFromRole(FimaRolesViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var entity = this.roles.GetById(model.Id);
+            foreach (var userName in model.FimaUsers)
+            {
+                var user = this.users.All()
+                    .Where(u => u.UserName == userName)
+                    .FirstOrDefault();
+
+                if (user != null && entity.FimaUsers.Contains(user))
+                {
+                    entity.FimaUsers.Remove(user);
+                }
+            }
+
             this.roles.Save();
 
             return this.View(model);

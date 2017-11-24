@@ -21,12 +21,14 @@
 {
     columns.Add(c => c.Id)
     .Titled("номер")
+    .Encoded(false)
+    .Sanitized(false)
     .SetWidth(40)
     .RenderValueAs(
         c => Html.ActionLink(c.Id.ToString(),
         "UserEdit",
         new { id = c.Id },
-        new { @class = "pure-button" }));
+        new { @class = "pure-button pure-button-primary button-xsmall" }));
 
     columns.Add(c => c.strName).Titled("име").Filterable(true);
     columns.Add(c => c.UserName).Titled("потребител").Filterable(true);

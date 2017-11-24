@@ -18,6 +18,9 @@
         [Display(Name = "Потребители")]
         public IEnumerable<string> FimaUsers { get; set; }
 
+        [Display(Name = "Всички")]
+        public IEnumerable<string> Users { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<FimaRoles, FimaRolesViewModel>()

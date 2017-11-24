@@ -21,5 +21,13 @@
                 .Select(r => r.Name)
                 .ToList();
         }
+
+        public IEnumerable<string> AllButSelected(string role)
+        {
+            return this.roles.All()
+                .Where(n => n.Name != role)
+                .Select(r => r.Name)
+                .ToList();
+        }
     }
 }

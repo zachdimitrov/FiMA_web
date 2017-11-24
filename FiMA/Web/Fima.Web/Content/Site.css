@@ -27,6 +27,16 @@ a:hover {
     font-weight:500;
 }
 
+.button-xsmall {
+    padding: 2px;
+    width: 30px;
+}
+
+.button-error {
+    background: rgb(202, 60, 60); 
+    color: white;
+}
+
 ul li {
     list-style-type: none;
 }
@@ -288,6 +298,10 @@ nav {
 }
 
 .form-group {
+    margin: 15px;
+}
+
+.pure-form-group {
     margin: 15px;
 }
 
