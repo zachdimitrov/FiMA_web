@@ -10,7 +10,7 @@
     public class FimaRolesViewModel : IMapTo<FimaRoles>, IMapFrom<FimaRoles>, IHaveCustomMappings
     {
         [Display(Name = "Номер")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Display(Name = "Роля")]
         public string Name { get; set; }

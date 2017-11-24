@@ -71,9 +71,9 @@
         public ActionResult RoleEdit(int id)
         {
             var entity = this.roles.GetById(id);
-            var model = this.Mapper.Map<FimaRolesViewModel>(entity);
+            FimaRolesViewModel model = this.Mapper.Map<FimaRolesViewModel>(entity);
             model.Users = this.users.All()
-                .Where(x => !x.FimaRoles.Select(y => y.Name).Contains(model.Name))
+                .Where(x => !x.FimaRoles.Select(y => y.Name).ToList().Contains(model.Name))
                 .Select(x => x.UserName)
                 .ToList();
 
@@ -82,56 +82,54 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddToRole(FimaRolesViewModel model)
+        public ActionResult RoleEdit(string id, FimaRolesViewModel model)
         {
-            if (!this.ModelState.IsValid)
+            if (!this.ModelState.IsValid || id == null)
             {
-                return this.View(model);
+                var e = this.roles.GetById(model.Id);
+                FimaRolesViewModel m = this.Mapper.Map<FimaRolesViewModel>(e);
+                m.Users = this.users.All()
+                    .Where(x => !x.FimaRoles.Select(y => y.Name).ToList().Contains(m.Name))
+                    .Select(x => x.UserName)
+                    .ToList();
+
+                return this.View(m);
             }
 
             var entity = this.roles.GetById(model.Id);
-            foreach (var userName in model.FimaUsers)
-            {
-                var user = this.users.All()
-                    .Where(u => u.UserName == userName)
-                    .FirstOrDefault();
 
-                if (user != null)
+            if (id == "add")
+            {
+                foreach (var userName in model.FimaUsers)
                 {
-                    entity.FimaUsers.Add(user);
+                    var user = this.users.All()
+                        .Where(u => u.UserName == userName)
+                        .FirstOrDefault();
+
+                    if (user != null)
+                    {
+                        entity.FimaUsers.Add(user);
+                    }
+                }
+            }
+            else if (id == "remove")
+            {
+                foreach (var userName in model.FimaUsers)
+                {
+                    var user = this.users.All()
+                        .Where(u => u.UserName == userName)
+                        .FirstOrDefault();
+
+                    if (user != null && entity.FimaUsers.Contains(user))
+                    {
+                        entity.FimaUsers.Remove(user);
+                    }
                 }
             }
 
             this.roles.Save();
 
-            return this.View(model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult RemoveFromRole(FimaRolesViewModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(model);
-            }
-
-            var entity = this.roles.GetById(model.Id);
-            foreach (var userName in model.FimaUsers)
-            {
-                var user = this.users.All()
-                    .Where(u => u.UserName == userName)
-                    .FirstOrDefault();
-
-                if (user != null && entity.FimaUsers.Contains(user))
-                {
-                    entity.FimaUsers.Remove(user);
-                }
-            }
-
-            this.roles.Save();
-
-            return this.View(model);
+            return this.RedirectToAction("Roles");
         }
     }
 }
