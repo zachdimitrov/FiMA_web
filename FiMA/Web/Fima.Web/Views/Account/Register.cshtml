@@ -7,51 +7,46 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "pure-form pure-form-aligned", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Създайте нов потребителски профил като попълните формата по-долу.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-        </div>
+
+    <div class="pure-control-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username)
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
+
+    <div class="pure-control-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email)
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
+
+    <div class="pure-control-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password)
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
+
+    <div class="pure-control-group">
+        @Html.LabelFor(m => m.ConfirmPassword)
+        @Html.PasswordFor(m => m.ConfirmPassword)
     </div>
-    <div class="form-group">   
-        @Html.LabelFor(m => m.UserRole, new { @class = "col-md-2 control-label" })   
-        <div class="col-md-10">   
-            @Html.DropDownListFor(x => x.UserRole, (SelectList)ViewBag.Roles, "изберете роля", new { @class = "form-control" })   
-        </div>   
-    </div>   
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+
+    <div class="pure-control-group">
+        @Html.LabelFor(m => m.UserRole)
+        @Html.DropDownListFor(x => x.UserRole, (SelectList)ViewBag.Roles, "изберете роля")
+    </div>
+
+    <div class="pure-control-group">
+        <label for="CaptchaInputText">Проверка</label>
+        <div class="capcha">
             @Html.MathCaptcha("обнови", "Въведете резултата от израза:", "Полето е задължително!", true)
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="pure-button pure-button-primary" value="Регистрация" />
-        </div>
+    <div class="pure-controls">
+        <input type="submit" class="pure-button pure-button-primary" value="Регистрация" />
     </div>
 }
 

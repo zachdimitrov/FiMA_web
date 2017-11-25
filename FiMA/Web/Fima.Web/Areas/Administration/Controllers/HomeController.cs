@@ -53,18 +53,19 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UserEdit(FimaUsersViewModel model)
+        public ActionResult UserEdit(int id, FimaUsersViewModel model)
         {
+            var entity = this.users.GetById(id);
+
             if (!this.ModelState.IsValid)
             {
                 return this.View(model);
             }
 
-            var entity = this.users.GetById(model.Id);
             this.Mapper.Map(model, entity);
             this.users.Save();
 
-            return this.View(model);
+            return this.RedirectToAction("Users");
         }
 
         [HttpGet]

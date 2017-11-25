@@ -13,6 +13,7 @@
         public int Id { get; set; }
 
         [Display(Name="Потребител")]
+        [StringLength(256, ErrorMessage = "Потребителското име трябва да е поне {2} символа!", MinimumLength = 3)]
         public string UserName { get; set; }
 
         [Display(Name = "Парола")]
@@ -33,13 +34,15 @@
         [Display(Name = "Позиция")]
         public string EmpFunction { get; set; }
 
-        [Display(Name = "Локация")]
+        [Display(Name = "Адрес")]
         public string emptown { get; set; }
 
         [Display(Name = "Е-мейл")]
+        [EmailAddress(ErrorMessage = "Попълнете валиден е-мейл адрес!")]
         public string Email { get; set; }
 
         [Display(Name = "Телефон")]
+        [Phone (ErrorMessage = "Попълнете валиден телефонен номер!")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Опити")]

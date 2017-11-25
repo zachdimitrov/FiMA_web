@@ -266,7 +266,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_GridLayout.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Users.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -285,6 +285,7 @@
     <Content Include="Areas\BackOffice\Views\Home\Index.cshtml" />
     <Content Include="Areas\FrontOffice\Views\Client\Register.cshtml" />
     <Content Include="Grid.mvc.readme" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
