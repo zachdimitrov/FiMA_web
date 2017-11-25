@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Areas/Administration/Views/Shared/_GridLayout.cshtml";
+}
+
+@using GridMvc.Html
+@using Fima.Web.Areas.Administration.Models
+
+@model IEnumerable<FimaUsersViewModel>
+
+@{
+    ViewBag.Title = "Управление на потребителите";
+}
+<h2>@ViewBag.Title</h2>
+
+<b style="color:orangered">В процес на разработка! </b><br />
+Изберете заглавието на колоната за сортиране.<br />
+Изберете иконата <i class="fa fa-filter"></i> за филтриране по избран критерий.<br />
+Натиснете бутона с номера на реда за промяна на данните.<br />
+
+<hr/>
+
+<h4>Списък с потребители</h4>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Id)
+    .Titled("номер")
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(40)
+    .RenderValueAs(
+        c => Html.ActionLink(c.Id.ToString(),
+        "UserEdit",
+        new { id = c.Id },
+        new { @class = "pure-button pure-button-primary button-xsmall" }));
+
+    columns.Add(c => c.strName).Titled("име").Filterable(true);
+    columns.Add(c => c.UserName).Titled("потребител").Filterable(true);
+    columns.Add(c => c.strEmpPassword).Titled("парола");
+    columns.Add(c => c.Email).Titled("е-мейл").Filterable(true);
+    columns.Add(c => c.PhoneNumber).Titled("телефон");
+    columns.Add(c => c.EmpFunction).Titled("функция");
+    columns.Add(c => c.emptown).Titled("град");
+    columns.Add(c => c.strTown).Titled("град");
+    columns.Add(c => c.strIndex).Titled("индекс");
+    columns.Add(c => c.strAccess).Titled("достъп");
+    columns.Add(c => c.AccessFailedCount).Titled("Опити");
+    columns.Add(c => c.FimaRoles).Titled("роли").RenderValueAs(x => string.Join(",", x.FimaRoles));
+}).WithPaging(20).Sortable(true)
+
+@section scripts {
+    <script>
+        $('[href*=users]').closest('.menu-item').addClass('selected');
+    </script>
+}

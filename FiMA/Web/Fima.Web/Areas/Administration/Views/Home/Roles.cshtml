@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Areas/Administration/Views/Shared/_GridLayout.cshtml";
+    }
+
+@using GridMvc.Html
+@using Fima.Web.Areas.Administration.Models
+
+@model IEnumerable<FimaRolesViewModel>
+
+@{
+    ViewBag.Title = "Управление на ролите";
+}
+<h2>@ViewBag.Title</h2>
+
+<b style="color:orangered">В процес на разработка! </b><br />
+Изберете заглавието на колоната за сортиране.<br />
+Изберете иконата <i class="fa fa-filter"></i> за филтриране по избран критерий.<br />
+Натиснете бутона с номера на реда за добавяне или премахване на потребител към роля.<br />
+
+<hr/>
+
+<h4>Списък с роли</h4>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Id)
+    .Titled("номер")
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(40)
+    .RenderValueAs(
+        c => Html.ActionLink(c.Id.ToString(),
+        "RoleEdit",
+        new { id = c.Id },
+        new { @class = "pure-button pure-button-primary button-xsmall" }));
+
+    columns.Add(c => c.Name).Titled("Име");
+    columns.Add(c => c.FimaUsers).Titled("Потребители").Filterable(true).RenderValueAs(x=>string.Join(",", x.FimaUsers));
+}).WithPaging(20).Sortable(true)
+
+@section scripts {
+    <script>
+        $('[href*=roles]').closest('.menu-item').addClass('selected');
+    </script>
+}

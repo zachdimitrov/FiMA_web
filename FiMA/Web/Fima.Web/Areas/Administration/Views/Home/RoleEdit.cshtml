@@ -1,0 +1,43 @@
+﻿@using Fima.Web.Areas.Administration.Models
+@model FimaRolesViewModel
+
+<h2>Промяна на роля - <b>@Model.Name</b></h2>
+
+<hr />
+
+<div>
+    <h4>Добавяне на потребители към <b>@Model.Name</b></h4>
+    @using (Html.BeginForm("RoleEdit", "Home", new { met = "add", id = Model.Id }, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="pure-control-group">
+            @Html.DropDownListFor(m => m.FimaUsers, new SelectList(Model.Users), "", new { multiple = "multiple", style = "min-width:200px" })
+        </div>
+        <div class="pure-controls">
+            <input type="submit" class="pure-button pure-button-primary" value="Добави" />
+        </div>
+    }
+</div>
+<hr />
+@if (Model.FimaUsers.Count() > 0)
+{
+    <div>
+        <h4>Премахване на потребители от <b>@Model.Name</b></h4>
+        @using (Html.BeginForm("RoleEdit", "Home", new { met = "remove", id = Model.Id }, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="pure-control-group">
+                @Html.DropDownListFor(m => m.FimaUsers, new SelectList(Model.FimaUsers), "", new { multiple = "multiple", style = "min-width:200px" })
+            </div>
+            <div class="pure-controls">
+                <input type="submit" class="pure-button button-error" value="Премахни" />
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h4>Няма потребители с роля <b>@Model.Name</b></h4>
+}

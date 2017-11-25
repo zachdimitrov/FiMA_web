@@ -1,0 +1,70 @@
+﻿@using Fima.Web.Areas.Administration.Models
+@model FimaUsersViewModel
+
+<h2>Промяна на потребител - <b>@Model.UserName</b></h2>
+
+<hr />
+
+<div>
+    <h4>Променете данните за <b>@Model.UserName</b> и натиснете  "Запази" за проверка на валидността и изпращане в базата данни.</h4>
+    @using (Html.BeginForm("UserEdit", "Home", new { id = Model.Id }, FormMethod.Post, new { @class = "pure-form pure-form-aligned", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <fieldset>
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.strName)
+                @Html.TextBoxFor(m => m.strName)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.strTown)
+                @Html.TextBoxFor(m => m.strTown)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.emptown)
+                @Html.TextBoxFor(m => m.emptown)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.strEmpPassword)
+                @Html.TextBoxFor(m => m.strEmpPassword)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.strAccess)
+                @Html.TextBoxFor(m => m.strAccess)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.strIndex)
+                @Html.TextBoxFor(m => m.strIndex)
+            </div>
+
+            <div class="pure-control-group">
+                @Html.LabelFor(m => m.EmpFunction)
+                @Html.TextBoxFor(m => m.EmpFunction)
+            </div>
+
+            @*<div class="pure-control-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                        @Html.DropDownListFor(m => m.UserName, new SelectList(Model.Users), "", new { @class = "form-control" })
+                </div>*@
+
+            <div class="pure-controls">
+                <input type="submit" class="pure-button pure-button-primary" value="Запази" />
+            </div>
+        </fieldset>
+    }
+</div>

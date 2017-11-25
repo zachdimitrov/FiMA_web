@@ -3,61 +3,56 @@
 @{
     ViewBag.Title = "Вход в системата";
 }
-
 <h2>@ViewBag.Title</h2>
-<div class="pure-g">
+
+@*<div class="pure-g">
     <div class="pure-u-1 pure-u-md-1-2">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+        <section id="loginForm">*@
+
+            @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "pure-form pure-form-aligned", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Вход на съществуващ потребител</h4>
+                <h4>Попълнете потребителско име и парола за влизане в системата.</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
-                    </div>
+
+                <div class="pure-control-group">
+                    @Html.LabelFor(m => m.Username)
+                    @Html.TextBoxFor(m => m.Username)
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
+
+                <div class="pure-control-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
-                    </div>
+
+                <div class="pure-controls">
+                    <label for="RememberMe" class="pure-checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe) Запомни ме?
+                    </label>
+                    <input type="submit" value="Вход" class="pure-button pure-button-primary" />
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Вход" class="pure-button pure-button-primary" />
-                    </div>
-                </div>
+
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                     </p>*@
             }
-            <br/>
+            <br />
             <div>
                 @Html.ActionLink("Регистрация на нов потребител", "Register")
             </div>
-        </section>
-    </div>
-    <div class="pure-u-1 pure-u-md-1-2">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+
+        @*</section>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+    </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
