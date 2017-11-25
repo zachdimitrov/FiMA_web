@@ -12,7 +12,7 @@
     
 <div>
     <h4>Добавяне на потребители към <b>@Model.Name</b></h4>
-    @using (Html.BeginForm("RoleEdit", "Home", new { Id = "add"}, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+    @using (Html.BeginForm("RoleEdit", "Home", new { met = "add", id = Model.Id}, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -34,7 +34,7 @@
 {
 <div>
     <h4>Премахване на потребители от <b>@Model.Name</b></h4>
-    @using (Html.BeginForm("RoleEdit", "Home", new { Id = "remove" }, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
+    @using (Html.BeginForm("RoleEdit", "Home", new { met = "remove", id = Model.Id }, FormMethod.Post, new { @class = "pure-form pure-form-stacked", role = "form" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger" })

@@ -82,12 +82,13 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RoleEdit(string id, FimaRolesViewModel model)
+        public ActionResult RoleEdit(string met, int id, FimaRolesViewModel model)
         {
-            if (!this.ModelState.IsValid || id == null)
+            var entity = this.roles.GetById(id);
+
+            if (met == null || model.FimaUsers.Count() <= 0)
             {
-                var e = this.roles.GetById(model.Id);
-                FimaRolesViewModel m = this.Mapper.Map<FimaRolesViewModel>(e);
+                FimaRolesViewModel m = this.Mapper.Map<FimaRolesViewModel>(entity);
                 m.Users = this.users.All()
                     .Where(x => !x.FimaRoles.Select(y => y.Name).ToList().Contains(m.Name))
                     .Select(x => x.UserName)
@@ -96,9 +97,7 @@
                 return this.View(m);
             }
 
-            var entity = this.roles.GetById(model.Id);
-
-            if (id == "add")
+            if (met == "add")
             {
                 foreach (var userName in model.FimaUsers)
                 {
@@ -112,7 +111,7 @@
                     }
                 }
             }
-            else if (id == "remove")
+            else if (met == "remove")
             {
                 foreach (var userName in model.FimaUsers)
                 {
