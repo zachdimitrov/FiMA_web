@@ -1,35 +1,218 @@
-﻿@model Fima.Web.Areas.FrontOffice.Models.Client.ClientRegisterViewModel
+﻿@using Fima.Common
+@model Fima.Web.Areas.FrontOffice.Models.Client.ClientRegisterViewModel
 @{
     ViewBag.Title = "Клиенти";
 }
 
-
 <h2>Регистриране на клиент</h2>
-
 <a class="pure-button button-right" href="@Url.Action("Index","Home", new { area = "BackOffice" })"><i class="fa fa-chevron-left"></i> бек офис</a>
-
+<hr />
 
 @using (Html.BeginForm("Register", "Client", FormMethod.Post, new { @class = "pure-form", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.BaseFields.Identification, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BaseFields.Identification, new { @class = "form-control" })
+    <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-3">
+            <div class="top-form pure-form-stacked">
+                <div class="pure-u-1">
+                    @Html.LabelFor(m => m.PERSONALID_BULSTAT)
+                    @Html.TextBoxFor(m => m.PERSONALID_BULSTAT, new { @class = "pure-u-23-24" })
+                </div>
+
+                <div class="pure-u-1">
+                    @Html.LabelFor(m => m.TYPE_PERSON)
+                    @Html.DropDownListFor(
+                        m => m.TYPE_PERSON,
+                        new SelectList(GlobalConstants.PerTypes),
+                        new { @class = "pure-u-23-24" })
+                </div>
+
+                <div class="pure-u-1">
+                    @Html.LabelFor(m => m.CONTRACT_TYPE)
+                    @Html.DropDownListFor(
+                        m => m.CONTRACT_TYPE,
+                        new SelectList(GlobalConstants.ContractType),
+                        new { @class = "pure-u-23-24" })
+                </div>
+
+                <div class="pure-u-1">
+                    <label for="reg-cd">регистрация Ц.Д.</label>
+                    @Html.DropDownList(
+                        "reg-cd",
+                        new SelectList(new string[] { "да", "не" }),
+                        new { @class = "pure-u-23-24" })
+                </div>
+            </div>
+            <br />
+            <div class="top-form pure-controls">
+                <input type="submit" class="pure-button pure-button-primary" value="регистрирай" />
+            </div>
+            <br />
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.BaseFields.EntityType, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BaseFields.EntityType, new { @class = "form-control" })
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="pure-button pure-button-primary" value="регистрирай" />
+        <div class="pure-u-1 pure-u-lg-2-3">
+            <div id="accordion">
+                <b>данни за физическо лице</b>
+                <div class="pure-g pure-form-stacked">
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.FIRSTNAME)
+                        @Html.TextBoxFor(m => m.FIRSTNAME, new { @class = "pure-u-23-24" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.SECONDNAME)
+                        @Html.TextBoxFor(m => m.SECONDNAME, new { @class = "pure-u-23-24" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.LASTNAME)
+                        @Html.TextBoxFor(m => m.LASTNAME, new { @class = "pure-u-23-24" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.PERSONAL_ID)
+                        @Html.TextBoxFor(m => m.PERSONAL_ID, new { @class = "pure-u-23-24" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.PERSONAL_ID_DATE)
+                        @Html.TextBoxFor(m => m.PERSONAL_ID_DATE, new { @class = "pure-u-23-24 datepicker" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.PERSONAL_ID_ISSUED_BY)
+                        @Html.TextBoxFor(m => m.PERSONAL_ID_ISSUED_BY, new { @class = "pure-u-23-24" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-3">
+                        @Html.LabelFor(m => m.CLIENT_BIRTHDATE)
+                        @Html.TextBoxFor(m => m.CLIENT_BIRTHDATE, new { @class = "pure-u-23-24 datepicker" })
+                    </div>
+                </div>
+                <h3>данни за юридическо лице</h3>
+                <div class="pure-form-aligned">
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.FirmName)
+                        @Html.TextBoxFor(m => m.FirmName)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.ID_NUMBER_TAX_ID)
+                        @Html.TextBoxFor(m => m.ID_NUMBER_TAX_ID)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.DDS_REGISTERED)
+                        @Html.DropDownListFor(
+                            m => m.DDS_REGISTERED,
+                            new SelectList(new string[] { "да", "не" }),
+                            new { style = "min-width:216px" })
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.TYPE_ORGANIZATION)
+                        @Html.DropDownListFor(
+                            m => m.TYPE_ORGANIZATION,
+                            new SelectList(GlobalConstants.OrganisationType),
+                            new { style = "min-width:216px" })
+                    </div>
+
+                </div>
+                <h3>адрес</h3>
+                <div class="pure-g pure-form-stacked">
+                    <div class="pure-u-1 pure-u-lg-1-2">
+                        @Html.LabelFor(m => m.COUNTRY_ADDRESS_ID)
+                        @Html.DropDownListFor(
+                            m => m.COUNTRY_ADDRESS_ID,
+                            new SelectList(Model.Countries),
+                            new { @class = "pure-u-23-24" })
+                    </div>
+                    
+                    <div class="pure-u-1 pure-u-lg-1-2">
+                        <label for="checkRES">двойно гражданство</label>
+                        @Html.CheckBox(
+                            "checkRES",
+                            new { @class = "pure-u-23-24" })
+                    </div>
+
+                    <div class="pure-u-1 pure-u-lg-1-1">
+                        @Html.LabelFor(m => m.TOWN_ADDRESS_ID)
+                        @Html.DropDownListFor(
+                            m => m.TOWN_ADDRESS_ID,
+                            new SelectList(Model.Cities),
+                            new { @class = "pure-u-23-24" })
+                    </div>
+                </div>
+                <h3>пълномощници</h3>
+                <div>
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.FIRSTNAME)
+                        @Html.TextBoxFor(m => m.FIRSTNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.SECONDNAME)
+                        @Html.TextBoxFor(m => m.SECONDNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.LASTNAME)
+                        @Html.TextBoxFor(m => m.LASTNAME)
+                    </div>
+                </div>
+                <h3>банкови сметки</h3>
+                <div>
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.FIRSTNAME)
+                        @Html.TextBoxFor(m => m.FIRSTNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.SECONDNAME)
+                        @Html.TextBoxFor(m => m.SECONDNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.LASTNAME)
+                        @Html.TextBoxFor(m => m.LASTNAME)
+                    </div>
+                </div>
+                <h3>допълнителни данни</h3>
+                <div>
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.FIRSTNAME)
+                        @Html.TextBoxFor(m => m.FIRSTNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.SECONDNAME)
+                        @Html.TextBoxFor(m => m.SECONDNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.LASTNAME)
+                        @Html.TextBoxFor(m => m.LASTNAME)
+                    </div>
+                </div>
+                <h3>данни пълномощник</h3>
+                <div>
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.FIRSTNAME)
+                        @Html.TextBoxFor(m => m.FIRSTNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.SECONDNAME)
+                        @Html.TextBoxFor(m => m.SECONDNAME)
+                    </div>
+
+                    <div class="pure-control-group">
+                        @Html.LabelFor(m => m.LASTNAME)
+                        @Html.TextBoxFor(m => m.LASTNAME)
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
@@ -38,5 +221,12 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $('[href*=register]').closest('.menu-item').addClass('selected');
+
+        $(function () {
+            $("#accordion").accordion({
+                collapsible: true
+            });
+            $(".datepicker").datepicker();
+        });
     </script>
 }
