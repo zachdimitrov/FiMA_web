@@ -89,6 +89,10 @@ body {
     padding: 3px;
 }
 
+.logo {
+    line-height: 1.3;    
+}
+
 .page-brand {
     padding: 0 0.5rem;
     font-family: 'Fredericka the Great', cursive;
@@ -244,6 +248,14 @@ nav {
     font-weight: 500;
 }
 
+.toggle:hover a {
+    font-weight: 400;
+}
+
+.submenu-item:hover a {
+    font-weight: 500;
+}
+
 .menu-item i {
     margin-right: 5px;
     color: #003058;
@@ -305,10 +317,16 @@ nav {
     margin: 10px;
 }
 
+/********** pure css override ************/
+
 .pure-form input[type=password], .pure-form input[type=email], .pure-form input[type=url], .pure-form input[type=date], .pure-form input[type=month], .pure-form input[type=time], .pure-form input[type=datetime], .pure-form input[type=datetime-local], .pure-form input[type=week], .pure-form input[type=tel], .pure-form input[type=color], .pure-form input[type=number], .pure-form input[type=search], .pure-form input[type=text], .pure-form select, .pure-form textarea {
-    border-radius: 0;
-    padding: .3rem .6rem;
+    border-radius: .1rem;
+    padding: .4rem .6rem;
     font-size: 1rem;
+}
+
+.pure-g {
+    letter-spacing: normal;
 }
 
 .checkbox input {
@@ -345,4 +363,25 @@ footer {
 .footer-content a {
     color: #263238;
     font-size: 0.8rem;
+}
+
+/********** jquery ui override ************/
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid black;
+    background: #263238;
+    font-weight: normal;
+    color: white;
+}
+
+/********** forms ************/
+
+.top-form {
+    padding: 0 35px;
+}
+
+label {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color:#263238;
 }
