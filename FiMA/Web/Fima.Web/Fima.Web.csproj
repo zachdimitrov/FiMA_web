@@ -209,7 +209,7 @@
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Models\FimaRolesViewModel.cs" />
     <Compile Include="Areas\Administration\Models\FimaUsersViewModel.cs" />
-    <None Include="Areas\Administration\Views\Home\RoleEdit.cshtml" />
+    <Content Include="Areas\Administration\Views\Home\RoleEdit.cshtml" />
     <Compile Include="Areas\BackOffice\BackOfficeAreaRegistration.cs" />
     <Compile Include="Areas\BackOffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\FrontOffice\Controllers\ClientController.cs" />
@@ -254,9 +254,9 @@
   <ItemGroup>
     <Content Include="Areas\Administration\Views\Home\Roles.cshtml" />
     <Content Include="Areas\Administration\Views\Home\UserEdit.cshtml" />
-    <None Include="Areas\Administration\Views\Shared\_AdminMenu.cshtml">
+    <Content Include="Areas\Administration\Views\Shared\_AdminMenu.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\Gridmvc.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
