@@ -1,4 +1,4 @@
-﻿namespace Fima.Services.Data
+﻿namespace Fima.Services.Data.Contracts
 {
     using System.Collections.Generic;
     using Fima.Data.DbModels;

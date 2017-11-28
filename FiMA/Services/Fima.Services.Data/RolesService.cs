@@ -2,21 +2,21 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Contracts;
     using Fima.Common;
+    using Fima.Data.Common;
     using Fima.Data.DbModels;
 
-    public class RolesService : IRolesService
+    public class RolesService : BaseDataService<FimaRoles>, IRolesService
     {
-        private readonly IFimaRepository<FimaRoles> roles;
-
         public RolesService(IFimaRepository<FimaRoles> roles)
+            : base(roles)
         {
-            this.roles = roles;
         }
 
         public IEnumerable<string> AllButAdmin()
         {
-            return this.roles.All()
+            return this.GetAll()
                 .Where(n => n.Name != GlobalConstants.AdministratorRoleName)
                 .Select(r => r.Name)
                 .ToList();
@@ -24,7 +24,7 @@
 
         public IEnumerable<string> AllButSelected(string role)
         {
-            return this.roles.All()
+            return this.GetAll()
                 .Where(n => n.Name != role)
                 .Select(r => r.Name)
                 .ToList();

@@ -3,12 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Web;
     using AutoMapper;
-    using Fima.Common;
-    using Fima.Data.DbModels;
-    using Fima.Web.Infrastructure.Mapping;
+    using Common;
+    using Data.DbModels;
+    using Infrastructure.Mapping;
 
     public class ClientRegisterViewModel : IMapTo<INVESTORS_FUNDS>, IMapFrom<INVESTORS_FUNDS>, IHaveCustomMappings
     {
@@ -48,27 +46,36 @@
         [Display(Name = "номер на Л.К. / паспорт")]
         public string PERSONAL_ID { get; set; }
 
-        [DataType(DataType.DateTime, ErrorMessage = "датата е невалидна")]
         [Display(Name = "Л.K. издадена на")]
-        public DateTime PERSONAL_ID_DATE { get; set; }
+        public string PERSONAL_ID_DATE { get; set; }
 
         [Display(Name = "Л.К. издадена от")]
         public string PERSONAL_ID_ISSUED_BY { get; set; }
 
+        [Display(Name = "държава")]
         public string COUNTRY_ADDRESS_ID { get; set; }
 
+        [Display(Name = "град")]
         public string TOWN_ADDRESS_ID { get; set; }
 
+        [Display(Name = "адрес")]
         public string ADDRESS_ID { get; set; }
 
+        [EmailAddress]
+        [Display(Name = "е-мейл адрес")]
         public string E_MAIL { get; set; }
 
+        [Phone]
+        [Display(Name = "телефон")]
         public string TEL_FIXED { get; set; }
 
+        [Phone]
+        [Display(Name = "мобилен телефон")]
         public string TEL_MOBILE { get; set; }
 
         public string AUTHORISED_TYPE { get; set; }
 
+        [Display(Name = "пълномощник 1")]
         public string AUTHORISED_NAME { get; set; }
 
         public string AUTHORISED_DOC { get; set; }
@@ -77,6 +84,7 @@
 
         public string AUTHORISED_TYPE2 { get; set; }
 
+        [Display(Name = "пълномощник 2")]
         public string AUTHORISED_NAME2 { get; set; }
 
         public string AUTHORISED_DATE2 { get; set; }
@@ -89,26 +97,40 @@
 
         public string EMPLOYEE_AUTHORISED { get; set; }
 
-        [DataType(DataType.DateTime, ErrorMessage = "датата е невалидна")]
         [Display(Name = "дата на раждане")]
-        public DateTime CLIENT_BIRTHDATE { get; set; }
+        public string CLIENT_BIRTHDATE { get; set; }
 
+        [RegularExpression(GlobalConstants.IbanRegex, ErrorMessage = "IBAN номерът не е валиден")]
+        [Display(Name = "IBAN")]
         public string IBAN1 { get; set; }
 
+        [RegularExpression(GlobalConstants.BicRegex, ErrorMessage = "BIC кодът не е валиден")]
+        [Display(Name = "BIC код")]
         public string BIC1 { get; set; }
 
+        [Display(Name = "име на банка")]
         public string BANK1 { get; set; }
 
+        [RegularExpression(GlobalConstants.IbanRegex, ErrorMessage = "IBAN номерът не е валиден")]
+        [Display(Name = "IBAN")]
         public string IBAN2 { get; set; }
 
+        [RegularExpression(GlobalConstants.BicRegex, ErrorMessage = "BIC кодът не е валиден")]
+        [Display(Name = "BIC код")]
         public string BIC2 { get; set; }
 
+        [Display(Name = "име на банка")]
         public string BANK2 { get; set; }
 
+        [RegularExpression(GlobalConstants.IbanRegex, ErrorMessage = "IBAN номерът не е валиден")]
+        [Display(Name = "IBAN")]
         public string IBAN3 { get; set; }
 
+        [RegularExpression(GlobalConstants.BicRegex, ErrorMessage = "BIC кодът не е валиден")]
+        [Display(Name = "BIC код")]
         public string BIC3 { get; set; }
 
+        [Display(Name = "име на банка")]
         public string BANK3 { get; set; }
 
         public string AUTH_NOTARY { get; set; }
@@ -133,25 +155,34 @@
 
         public string CD_BIC { get; set; }
 
+        [Display(Name = "община")]
         public string MUNICIPALITY { get; set; }
 
+        [Display(Name = "квартал")]
         public string RESIDENCE { get; set; }
 
+        [Display(Name = "улица")]
         public string STREET { get; set; }
 
-        public string STRNUM { get; set; }
+        [Display(Name = "№")]
+        public int STRNUM { get; set; }
 
-        public string FLOOR1 { get; set; }
+        [Display(Name = "ет.")]
+        public int FLOOR1 { get; set; }
 
-        public string FLAT { get; set; }
+        [Display(Name = "ап.")]
+        public int FLAT { get; set; }
 
+        [Display(Name = "д-ва на раждане")]
         public string COUNTRY1 { get; set; }
 
-        [Display(Name = "град")]
+        [Display(Name = "град на раждане")]
         public string TOWN1 { get; set; }
 
+        [Display(Name = "д-ва по местоживеене")]
         public string COUNTRY2 { get; set; }
 
+        [Display(Name = "град по местоживеене")]
         public string TOWN2 { get; set; }
 
         public string DCITIZENS { get; set; }
