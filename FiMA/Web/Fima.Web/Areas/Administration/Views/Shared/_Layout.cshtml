@@ -6,12 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - FiMA</title>
 
-    @*===== Grid.Mvc =====*@
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
-    @*===== Pure Css =====*@
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
-    @*===== Local Css =====*@
+    @Styles.Render("~/Content/grid")
+    @Styles.Render("~/Content/pure")
     @Styles.Render("~/Content/css")
 
 </head>
@@ -51,8 +47,8 @@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
-    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/grid")
     @Scripts.Render("~/bundles/local")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -3,17 +3,17 @@
     using System;
     using System.Linq;
     using Common.Contracts;
-    using Fima.Data.Common;
+    using Fima.Data.DbModels;
 
     public abstract class BaseDataService<T> : IBaseDataService<T>
         where T : class
     {
-        public BaseDataService(IDbRepository<T> dataSet)
+        public BaseDataService(IFimaRepository<T> dataSet)
         {
             this.Data = dataSet;
         }
 
-        protected IDbRepository<T> Data { get; set; }
+        protected IFimaRepository<T> Data { get; set; }
 
         public virtual void Add(T item)
         {

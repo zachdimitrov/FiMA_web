@@ -8,7 +8,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using Services.Data;
+    using Services.Data.Contracts;
     using ViewModels.Account;
 
     [Authorize]

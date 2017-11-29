@@ -19,6 +19,7 @@ namespace Fima.Web
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Services.Web;
+    using Services.Data.Contracts;
 
     public static class AutofacConfig
     {

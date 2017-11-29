@@ -14,6 +14,7 @@
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+            context.Routes.LowercaseUrls = true;
             context.MapRoute(
                 name: "FrontOffice_default",
                 url: "FrontOffice/{controller}/{action}/{id}",

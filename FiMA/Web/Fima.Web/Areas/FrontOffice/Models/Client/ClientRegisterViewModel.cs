@@ -2,33 +2,230 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using System.ComponentModel.DataAnnotations;
+    using AutoMapper;
+    using Common;
+    using Data.DbModels;
+    using Infrastructure.Mapping;
 
-    public class ClientRegisterViewModel
+    public class ClientRegisterViewModel : IMapTo<INVESTORS_FUNDS>, IMapFrom<INVESTORS_FUNDS>, IHaveCustomMappings
     {
-        // base properties
-        public ClientBaseViewModel BaseFields { get; set; }
+        [Display(Name = "номер")]
+        public int CLIENTID { get; set; }
 
-        // individual
-        public IndividualViewModel Individual { get; set; }
+        public string CLIENTID_STRING { get; set; }
 
-        // legal entity
-        public LegalEntityViewModel LegalEntity { get; set; }
+        [Required]
+        [RegularExpression("^[0-9]{9,13}$", ErrorMessage ="Въведете валидно ЕГН или ЕИК!")]
+        [Display(Name = "ЕГН / Булстат")]
+        public string PERSONALID_BULSTAT { get; set; }
 
-        // address
-        public AddressViewModel Address { get; set; }
+        [Required]
+        [Display(Name = "служител / пълномощник")]
+        public string CONTRACT_TYPE { get; set; }
 
-        // local address
-        public LocalAddressViewModel LocalAddress { get; set; }
+        [Required]
+        [Display(Name = "тип лице")]
+        public string TYPE_PERSON { get; set; }
 
-        // attorneys
-        public IEnumerable<AttorneyViewModel> Attorneys { get; set; }
+        [Display(Name = "тип организация")]
+        public string TYPE_ORGANIZATION { get; set; }
 
-        // bank accounts
-        public IEnumerable<BankAccountViewModel> BankAccounts { get; set; }
+        [StringLength(64, ErrorMessage = "Невалидна дължина на името.", MinimumLength = 2)]
+        [Display(Name = "собствено име")]
+        public string FIRSTNAME { get; set; }
 
-        // other data
-        // attorney data
+        [StringLength(64, ErrorMessage = "Невалидна дължина на името.", MinimumLength = 2)]
+        [Display(Name = "презиме")]
+        public string SECONDNAME { get; set; }
+
+        [StringLength(64, ErrorMessage = "Невалидна дължина на името.", MinimumLength = 2)]
+        [Display(Name = "фамилия")]
+        public string LASTNAME { get; set; }
+
+        [Display(Name = "пълно име")]
+        public string FULL_NAME { get; set; }
+
+        [StringLength(64, ErrorMessage = "Невалидна дължина на наименованието.", MinimumLength = 2)]
+        [Display(Name = "наименование")]
+        public string FirmName { get; set; } // not mapped
+
+        [RegularExpression("^[0-9]{9,13}$", ErrorMessage = "Въведете валиден номер на Л.К. или паспорт!")]
+        [Display(Name = "номер на Л.К. / паспорт")]
+        public string PERSONAL_ID { get; set; }
+
+        [Display(Name = "Л.K. издадена на")]
+        public string PERSONAL_ID_DATE { get; set; }
+
+        [Display(Name = "Л.К. издадена от")]
+        public string PERSONAL_ID_ISSUED_BY { get; set; }
+
+        [Display(Name = "държава")]
+        public string COUNTRY_ADDRESS_ID { get; set; }
+
+        [Display(Name = "град")]
+        public string TOWN_ADDRESS_ID { get; set; }
+
+        [Display(Name = "адрес")]
+        public string ADDRESS_ID { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "е-мейл адрес")]
+        public string E_MAIL { get; set; }
+
+        [Phone]
+        [Display(Name = "телефон")]
+        public string TEL_FIXED { get; set; }
+
+        [Phone]
+        [Display(Name = "мобилен телефон")]
+        public string TEL_MOBILE { get; set; }
+
+        [Display(Name = "тип представляващ")]
+        public string AUTHORISED_TYPE { get; set; }
+
+        [Display(Name = "пълномощник 1")]
+        public string AUTHORISED_NAME { get; set; }
+
+        [Display(Name = "пълномощно")]
+        public string AUTHORISED_DOC { get; set; }
+
+        [Display(Name = "от дата")]
+        public string AUTHORISED_DATE { get; set; }
+
+        public string AUTHORISED_TYPE2 { get; set; }
+
+        [Display(Name = "пълномощник 2")]
+        public string AUTHORISED_NAME2 { get; set; }
+
+        public string AUTHORISED_DATE2 { get; set; }
+
+        [Display(Name = "регистрация по ДДС")]
+        public string DDS_REGISTERED { get; set; }
+
+        [Display(Name = "данъчен номер")]
+        public string ID_NUMBER_TAX_ID { get; set; }
+
+        public string EMPLOYEE_AUTHORISED { get; set; }
+
+        [Display(Name = "дата на раждане")]
+        public string CLIENT_BIRTHDATE { get; set; }
+
+        [RegularExpression(GlobalConstants.IbanRegex, ErrorMessage = "IBAN номерът не е валиден")]
+        [Display(Name = "IBAN")]
+        public string IBAN1 { get; set; }
+
+        [RegularExpression(GlobalConstants.BicRegex, ErrorMessage = "BIC кодът не е валиден")]
+        [Display(Name = "BIC код")]
+        public string BIC1 { get; set; }
+
+        [Display(Name = "име на банка")]
+        public string BANK1 { get; set; }
+
+        [RegularExpression(GlobalConstants.IbanRegex, ErrorMessage = "IBAN номерът не е валиден")]
+        [Display(Name = "IBAN")]
+        public string IBAN2 { get; set; }
+
+        [RegularExpression(GlobalConstants.BicRegex, ErrorMessage = "BIC кодът не е валиден")]
+        [Display(Name = "BIC код")]
+        public string BIC2 { get; set; }
+
+        [Display(Name = "име на банка")]
+        public string BANK2 { get; set; }
+
+        [RegularExpression(GlobalConstants.IbanRegex, ErrorMessage = "IBAN номерът не е валиден")]
+        [Display(Name = "IBAN")]
+        public string IBAN3 { get; set; }
+
+        [RegularExpression(GlobalConstants.BicRegex, ErrorMessage = "BIC кодът не е валиден")]
+        [Display(Name = "BIC код")]
+        public string BIC3 { get; set; }
+
+        [Display(Name = "име на банка")]
+        public string BANK3 { get; set; }
+
+        [Display(Name = "при нотариус")]
+        public string AUTH_NOTARY { get; set; }
+
+        public string AUTH_NOTARY2 { get; set; }
+
+        public string AUTHORISED_DOC2 { get; set; }
+
+        public string CL_STATUS { get; set; }
+
+        [Display(Name = "Глобален № при Ц.Д.")]
+        public int? CD_GLOBID { get; set; }
+
+        public int? CREATED_BY { get; set; }
+
+        public string CREATED_WHEN { get; set; }
+
+        public string CD_REG { get; set; }
+
+        public string user_modified { get; set; }
+
+        public string user_modified_time { get; set; }
+
+        [Display(Name = "BIC код Ц.Д.")]
+        public string CD_BIC { get; set; }
+
+        [Display(Name = "община")]
+        public string MUNICIPALITY { get; set; }
+
+        [Display(Name = "квартал")]
+        public string RESIDENCE { get; set; }
+
+        [Display(Name = "улица")]
+        public string STREET { get; set; }
+
+        [Display(Name = "№")]
+        public int STRNUM { get; set; }
+
+        [Display(Name = "ет.")]
+        public int FLOOR1 { get; set; }
+
+        [Display(Name = "ап.")]
+        public int FLAT { get; set; }
+
+        [Display(Name = "д-ва на раждане")]
+        public string COUNTRY1 { get; set; }
+
+        [Display(Name = "град на раждане")]
+        public string TOWN1 { get; set; }
+
+        [Display(Name = "д-ва по местоживеене")]
+        public string COUNTRY2 { get; set; }
+
+        [Display(Name = "град по местоживеене")]
+        public string TOWN2 { get; set; }
+
+        public string DCITIZENS { get; set; }
+
+        public string IBAN_CD_AI { get; set; }
+
+        public string IBAN_CD_AEE { get; set; }
+
+        public string IBAN_CD_AEEO { get; set; }
+
+        public string IBAN_CD_AGT { get; set; }
+
+        public string IBAN_CD_ACF { get; set; }
+
+        public IEnumerable<string> Countries { get; set; }
+
+        public IEnumerable<string> Cities { get; set; }
+
+        public IEnumerable<string> Municipalities { get; set; }
+
+        public IEnumerable<string> Banks { get; set; }
+
+        public void CreateMappings(IMapperConfiguration configuration)
+        {
+            configuration.CreateMap<INVESTORS_FUNDS, ClientRegisterViewModel>()
+                .ForMember(u => u.CONTRACT_TYPE, opt => opt.MapFrom(x => GlobalConstants.ContractType[x.CONTRACT_TYPE]));
+
+            configuration.CreateMap<ClientRegisterViewModel, INVESTORS_FUNDS>()
+                .ForMember(u => u.CONTRACT_TYPE, opt => opt.MapFrom(x => Array.IndexOf(GlobalConstants.ContractType, x.CONTRACT_TYPE)));
+        }
     }
 }
