@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanksService.cs" />
     <Compile Include="CitiesService.cs" />
     <Compile Include="ClientsService.cs" />
     <Compile Include="Contracts\IClientsService.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Contracts\ICitiesService.cs" />
     <Compile Include="Contracts\IMunicipalitiesService.cs" />
     <Compile Include="Contracts\ICountriesService.cs" />
+    <Compile Include="Contracts\IBanksService.cs" />
     <Compile Include="MunicipalitiesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolesService.cs" />

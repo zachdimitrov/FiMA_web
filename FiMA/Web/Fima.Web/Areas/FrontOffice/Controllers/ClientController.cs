@@ -9,16 +9,34 @@
     {
         private readonly ICountriesService countries;
         private readonly ICitiesService cities;
+        private readonly IClientsService clients;
         private readonly IMunicipalitiesService municipalities;
+        private readonly IBanksService banks;
 
         public ClientController(
             ICountriesService countries,
             ICitiesService cities,
-            IMunicipalitiesService municipalities)
+            IClientsService clients,
+            IMunicipalitiesService municipalities,
+            IBanksService banks)
         {
             this.countries = countries;
             this.cities = cities;
+            this.clients = clients;
             this.municipalities = municipalities;
+            this.banks = banks;
+        }
+
+        // for ajax request
+        [HttpGet]
+        public JsonResult GetClients()
+        {
+            var users = this.userService
+                .GetAll()
+                .Select(u => u.UserName)
+                .ToList();
+
+            return Json(users, JsonRequestBehavior.AllowGet);
         }
 
         // GET: FrontOffice/Client/Register
@@ -29,6 +47,7 @@
 
             model.Countries = this.countries.AllNames();
             model.Cities = this.cities.AllNames();
+            model.Banks = this.banks.AllNames();
             model.Municipalities = this.municipalities.AllNames();
             model.PERSONAL_ID_DATE = DateTime.Today.ToString("dd/MM/yyyy");
             model.CLIENT_BIRTHDATE = DateTime.Today.ToString("dd/MM/yyyy");

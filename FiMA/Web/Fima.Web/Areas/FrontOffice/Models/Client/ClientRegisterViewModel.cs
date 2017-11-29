@@ -73,13 +73,16 @@
         [Display(Name = "мобилен телефон")]
         public string TEL_MOBILE { get; set; }
 
+        [Display(Name = "тип представляващ")]
         public string AUTHORISED_TYPE { get; set; }
 
         [Display(Name = "пълномощник 1")]
         public string AUTHORISED_NAME { get; set; }
 
+        [Display(Name = "пълномощно")]
         public string AUTHORISED_DOC { get; set; }
 
+        [Display(Name = "от дата")]
         public string AUTHORISED_DATE { get; set; }
 
         public string AUTHORISED_TYPE2 { get; set; }
@@ -133,6 +136,7 @@
         [Display(Name = "име на банка")]
         public string BANK3 { get; set; }
 
+        [Display(Name = "при нотариус")]
         public string AUTH_NOTARY { get; set; }
 
         public string AUTH_NOTARY2 { get; set; }
@@ -141,6 +145,7 @@
 
         public string CL_STATUS { get; set; }
 
+        [Display(Name = "Глобален № при Ц.Д.")]
         public int? CD_GLOBID { get; set; }
 
         public int? CREATED_BY { get; set; }
@@ -153,6 +158,7 @@
 
         public string user_modified_time { get; set; }
 
+        [Display(Name = "BIC код Ц.Д.")]
         public string CD_BIC { get; set; }
 
         [Display(Name = "община")]
@@ -202,6 +208,8 @@
         public IEnumerable<string> Cities { get; set; }
 
         public IEnumerable<string> Municipalities { get; set; }
+
+        public IEnumerable<string> Banks { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
