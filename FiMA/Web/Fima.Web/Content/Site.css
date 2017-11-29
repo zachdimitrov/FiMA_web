@@ -76,6 +76,10 @@ body {
     color: orangered;
 }
 
+.text-success {
+    color: #00c304;
+}
+
 .logo {
     align-self: flex-start;
 }

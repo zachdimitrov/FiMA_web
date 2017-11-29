@@ -16,33 +16,41 @@
         public string CLIENTID_STRING { get; set; }
 
         [Required]
+        [RegularExpression("^[0-9]{9,13}$", ErrorMessage ="Въведете валидно ЕГН или ЕИК!")]
         [Display(Name = "ЕГН / Булстат")]
         public string PERSONALID_BULSTAT { get; set; }
 
+        [Required]
         [Display(Name = "служител / пълномощник")]
         public string CONTRACT_TYPE { get; set; }
 
+        [Required]
         [Display(Name = "тип лице")]
         public string TYPE_PERSON { get; set; }
 
         [Display(Name = "тип организация")]
         public string TYPE_ORGANIZATION { get; set; }
 
+        [StringLength(64, ErrorMessage = "Невалидна дължина на името.", MinimumLength = 2)]
         [Display(Name = "собствено име")]
         public string FIRSTNAME { get; set; }
 
+        [StringLength(64, ErrorMessage = "Невалидна дължина на името.", MinimumLength = 2)]
         [Display(Name = "презиме")]
         public string SECONDNAME { get; set; }
 
+        [StringLength(64, ErrorMessage = "Невалидна дължина на името.", MinimumLength = 2)]
         [Display(Name = "фамилия")]
         public string LASTNAME { get; set; }
 
         [Display(Name = "пълно име")]
         public string FULL_NAME { get; set; }
 
+        [StringLength(64, ErrorMessage = "Невалидна дължина на наименованието.", MinimumLength = 2)]
         [Display(Name = "наименование")]
         public string FirmName { get; set; } // not mapped
 
+        [RegularExpression("^[0-9]{9,13}$", ErrorMessage = "Въведете валиден номер на Л.К. или паспорт!")]
         [Display(Name = "номер на Л.К. / паспорт")]
         public string PERSONAL_ID { get; set; }
 
