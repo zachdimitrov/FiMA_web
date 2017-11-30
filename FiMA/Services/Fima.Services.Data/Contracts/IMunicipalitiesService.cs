@@ -5,5 +5,7 @@
     public interface IMunicipalitiesService
     {
         IEnumerable<string> AllNames();
+
+        int Add(string mun);
     }
 }
