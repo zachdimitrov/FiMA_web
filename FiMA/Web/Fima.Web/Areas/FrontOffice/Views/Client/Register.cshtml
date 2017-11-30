@@ -278,11 +278,13 @@
                         </div>
                         <div class="pure-u-1 pure-u-md-1-3">
                             @Html.LabelFor(m => m.IBAN1)
-                            @Html.TextBoxFor(m => m.FIRSTNAME, new { @class = "pure-u-1 pure-u-md-23-24" })
+                            @Html.TextBoxFor(m => m.IBAN1, new { @class = "pure-u-1 pure-u-md-23-24" })
+                            @Html.ValidationMessageFor(x => x.IBAN1)
                         </div>
                         <div class="pure-u-1 pure-u-md-1-6">
                             @Html.LabelFor(m => m.BIC1)
-                            @Html.TextBoxFor(m => m.SECONDNAME, new { @class = "pure-u-1 pure-u-md-11-12" })
+                            @Html.TextBoxFor(m => m.BIC1, new { @class = "pure-u-1 pure-u-md-11-12" })
+                            @Html.ValidationMessageFor(x => x.BIC1)
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             @Html.LabelFor(m => m.BANK1)
@@ -298,16 +300,18 @@
                         </div>
                         <div class="pure-u-1 pure-u-md-1-3">
                             @Html.LabelFor(m => m.IBAN2)
-                            @Html.TextBoxFor(m => m.FIRSTNAME, new { @class = "pure-u-1 pure-u-md-23-24" })
+                            @Html.TextBoxFor(m => m.IBAN2, new { @class = "pure-u-1 pure-u-md-23-24" })
+                            @Html.ValidationMessageFor(x => x.IBAN2)
                         </div>
                         <div class="pure-u-1 pure-u-md-1-6">
                             @Html.LabelFor(m => m.BIC2)
-                            @Html.TextBoxFor(m => m.SECONDNAME, new { @class = "pure-u-1 pure-u-md-11-12" })
+                            @Html.TextBoxFor(m => m.BIC2, new { @class = "pure-u-1 pure-u-md-11-12" })
+                            @Html.ValidationMessageFor(x => x.BIC2)
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             @Html.LabelFor(m => m.BANK2)
                             @Html.DropDownListFor(
-                                m => m.BANK1,
+                                m => m.BANK2,
                                 new SelectList(Model.Banks),
                                 new { @class = "pure-u-1" })
                         </div>
@@ -318,16 +322,18 @@
                         </div>
                         <div class="pure-u-1 pure-u-md-1-3">
                             @Html.LabelFor(m => m.IBAN3)
-                            @Html.TextBoxFor(m => m.FIRSTNAME, new { @class = "pure-u-1 pure-u-md-23-24" })
+                            @Html.TextBoxFor(m => m.IBAN3, new { @class = "pure-u-1 pure-u-md-23-24" })
+                            @Html.ValidationMessageFor(x => x.IBAN3)
                         </div>
                         <div class="pure-u-1 pure-u-md-1-6">
                             @Html.LabelFor(m => m.BIC3)
-                            @Html.TextBoxFor(m => m.SECONDNAME, new { @class = "pure-u-1 pure-u-md-11-12" })
+                            @Html.TextBoxFor(m => m.BIC3, new { @class = "pure-u-1 pure-u-md-11-12" })
+                            @Html.ValidationMessageFor(x => x.BIC3)
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             @Html.LabelFor(m => m.BANK3)
                             @Html.DropDownListFor(
-                                m => m.BANK1,
+                                m => m.BANK3,
                                 new SelectList(Model.Banks),
                                 new { @class = "pure-u-1" })
                         </div>
