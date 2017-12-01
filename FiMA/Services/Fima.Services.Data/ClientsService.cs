@@ -40,5 +40,10 @@
 
             return ++currentMax;
         }
+
+        IQueryable<INVESTORS_FUNDS> IClientsService.GetAll()
+        {
+            return this.GetAll();
+        }
     }
 }

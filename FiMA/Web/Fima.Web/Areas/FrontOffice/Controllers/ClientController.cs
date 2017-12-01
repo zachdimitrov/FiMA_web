@@ -9,6 +9,8 @@
     using Services.Data.Contracts;
     using Web.Controllers;
     using Data.DbModels;
+    using Infrastructure.Mapping;
+    using System.Linq;
 
     public class ClientController : BaseController
     {
@@ -40,6 +42,18 @@
             var clientsPersonalIds = this.clients.AllPersonalIds();
 
             return this.Json(clientsPersonalIds, JsonRequestBehavior.AllowGet);
+        }
+
+        // GET: FrontOffice/Client/Representatives
+        // for ajax request search and fill representative select form
+        [HttpGet]
+        public JsonResult Representatives()
+        {
+            var representatives = this.clients.GetAll()
+                .To<RepSelectViewModel>()
+                .ToList();
+
+            return this.Json(representatives, JsonRequestBehavior.AllowGet);
         }
 
         // GET: FrontOffice/Client/Register

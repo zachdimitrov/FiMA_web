@@ -244,10 +244,7 @@
                 <div class="pure-form-stacked">
                     <div class="pure-g">
                         <div class="pure-u-1">
-                            <a href="#" class="pure-button pure-button-active">избор на пълномощник 1</a>
-                        </div>
-                        <div class="dialog-form">
-
+                            <a href="#" class="pure-button pure-button-active" id="find-rep-1">избор на пълномощник 1</a>
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             @Html.LabelFor(m => m.AUTHORISED_NAME)
@@ -261,7 +258,7 @@
                     <br />
                     <div class="pure-g">
                         <div class="pure-u-1">
-                            <a href="#" class="pure-button pure-button-active">избор на пълномощник 2</a>
+                            <a href="#" class="pure-button pure-button-active" id="find-rep-2">избор на пълномощник 2</a>
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             @Html.LabelFor(m => m.AUTHORISED_NAME2)
@@ -390,54 +387,137 @@
             </div>
         </div>
     </div>
+
+    <div id="dialog-form" title="Изберете пълномощник">
+        <h4>Използвайте един или повече от критериите за търсене и изберете един от резултатите</h4>
+        <div class="pure-g">
+            <div class="pure-u-md-3-4">
+                <div class="pure-form pure-form-aligned">
+                    <div class="pure-control-group">
+                        @Html.Label("клиентски номер", new { @for = "txtID" })
+                        @Html.TextBox("txtID", "", new { @class = "pure-u-5-8" })
+                    </div>
+                    <div class="pure-control-group">
+                        @Html.Label("ЕГН / булстат", new { @for = "txtEGN" })
+                        @Html.TextBox("txtEGN", "", new { @class = "pure-u-5-8" })
+                    </div>
+                    <div class="pure-control-group">
+                        @Html.Label("наименование", new { @for = "txtName" })
+                        @Html.TextBox("txtName", "", new { @class = "pure-u-5-8" })
+                    </div>
+                    <div class="pure-control-group">
+                        @Html.Label("страна", new { @for = "cmbCountry" })
+                        @Html.DropDownList("txtID", new SelectList(Model.Cities), new { @class = "pure-u-5-8" })
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-md-1-4">
+                <div>
+                    <button class="pure-button pure-button-active" style="width:150px"><i class="fa fa-search"></i> търси</button>
+                </div>
+                <br />
+                <div>
+                    <button class="pure-button pure-button-active" style="width:150px"><i class="fa fa-remove"></i> изчисти</button>
+                </div>
+            </div>
+            <div class="rep-results pure-u-1">
+                <table class="simple-table">
+                    <tr>
+                        <th>ЕГН / булстат</th>
+                        <th>идентификатор</th>
+                        <th>име</th>
+                        <th>държава</th>
+                        <th>град</th>
+                        <th></th>
+                    </tr>
+                    <tr class="rep-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button class="pure-button pure-button-primary"><i class="fa fa-check"></i></button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 }
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $('[href*=register]').closest('.menu-item').addClass('selected');
-
         $(function () {
+            // side menu item hilight
+            $('[href*=register]').closest('.menu-item').addClass('selected');
+
+            // form accordeon settings
             $("#accordion").accordion({
                 collapsible: true
             });
+
+            // date picker settings
             $(".datepicker").datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: "dd/mm/yy",
                 defaultDate: 0
             });
-        });
 
-        $("#id-bulstat").change(function (e) {
-            var clientId = e.target.value;
+            // representative modal
+            var repRow = $(".rep-row").hide(); // hidden if no data available
 
-            $.ajax({
-                method: "GET",
-                url: "@Url.Action("AllClientIds", "Client", new { Area = "FrontOffice"})",
-                data: {},
-                contentType: "application/json; charset=utf-8",
-                success: function (res) {
-                    if (res.indexOf(clientId) >= 0) {
-                        $("#client-notfound").html("");
-                        $("#client-exists").html("Клиентът вече съществува и не може да бъде създаден!");
-                        $("#reg-client").prop("disabled", true);
-                    } else {
-                        $("#reg-client").prop("disabled", false);
-                        $("#client-exists").html("");
+            var dialog = $("#dialog-form").dialog({
+                autoOpen: false,
+                height: 500,
+                width: 750,
+            });
+
+            $("#find-rep-1").on("click", function () {
+                dialog.dialog("open");
+                populateData(1);
+            });
+
+            $("#find-rep-2").on("click", function () {
+                dialog.dialog("open");
+            });
+
+            // add data to representative search based on representative select button
+            function populateData(n) {
+                // TODO
+            }
+
+            // initial search if client is registered
+            $("#id-bulstat").change(function (e) {
+                var clientId = e.target.value;
+
+                $.ajax({
+                    method: "GET",
+                    url: "@Url.Action("AllClientIds", "Client", new { Area = "FrontOffice"})",
+                    data: {},
+                    contentType: "application/json; charset=utf-8",
+                    success: function (res) {
+                        if (res.indexOf(clientId) >= 0) {
+                            $("#client-notfound").html("");
+                            $("#client-exists").html("Клиентът вече съществува и не може да бъде създаден!");
+                            $("#reg-client").prop("disabled", true);
+                        } else {
+                            $("#reg-client").prop("disabled", false);
+                            $("#client-exists").html("");
+                        }
+
+                        if (clientId.length >= 9 && clientId.length <= 13) {
+                            $("#client-notfound").html("Клиентът може да бъде създаден!");
+                            $("#reg-client").prop("disabled", false);
+                        } else {
+                            $("#client-notfound").html("");
+                            $("#reg-client").prop("disabled", true);
+                        }
+                    },
+                    error: function (err) {
+                        console.log("error:", err);
                     }
-
-                    if (clientId.length >= 9 && clientId.length <= 13) {
-                        $("#client-notfound").html("Клиентът може да бъде създаден!");
-                        $("#reg-client").prop("disabled", false);
-                    } else {
-                        $("#client-notfound").html("");
-                        $("#reg-client").prop("disabled", true);
-                    }
-                },
-                error: function (err) {
-                    console.log("error:", err);
-                }
+                })
             })
-        })
+        });
     </script>
 }
