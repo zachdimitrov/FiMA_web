@@ -22,21 +22,6 @@ a:hover {
     text-decoration: underline;
 }
 
-.pure-button:hover {
-    text-decoration: none;
-    font-weight:500;
-}
-
-.button-xsmall {
-    padding: 2px;
-    width: 30px;
-}
-
-.button-error {
-    background: rgb(202, 60, 60); 
-    color: white;
-}
-
 ul li {
     list-style-type: none;
 }
@@ -317,11 +302,25 @@ nav {
     margin: 10px;
 }
 
+/********** pure css override ************/
 .pure-form-group {
     margin: 10px;
 }
 
-/********** pure css override ************/
+.pure-button:hover {
+    text-decoration: none;
+    font-weight:500;
+}
+
+.button-xsmall {
+    padding: 2px;
+    width: 30px;
+}
+
+.button-error {
+    background: rgb(202, 60, 60); 
+    color: white;
+}
 
 .pure-form input[type=password], .pure-form input[type=email], .pure-form input[type=url], .pure-form input[type=date], .pure-form input[type=month], .pure-form input[type=time], .pure-form input[type=datetime], .pure-form input[type=datetime-local], .pure-form input[type=week], .pure-form input[type=tel], .pure-form input[type=color], .pure-form input[type=number], .pure-form input[type=search], .pure-form input[type=text], .pure-form select, .pure-form textarea {
     border-radius: .1rem;
@@ -371,11 +370,21 @@ footer {
 
 /********** jquery ui override ************/
 
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+.ui-state-active, 
+.ui-widget-content .ui-state-active, 
+.ui-widget-header .ui-state-active, 
+a.ui-button:active, 
+.ui-button:active, 
+.ui-button.ui-state-active:hover {
     border: 1px solid black;
     background: #263238;
     font-weight: normal;
     color: white;
+}
+
+.ui-dialog {
+    border-radius: 2px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 /********** forms ************/
@@ -395,4 +404,24 @@ label {
     padding: 0;
     margin: 10px;
     font-size: 1rem;
+}
+
+/* simple tables in forms */
+
+table.simple-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+}
+
+.simple-table th, 
+.simple-table td {
+    padding: 4px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.simple-table .pure-button {
+    padding: 0.5rem 0.7rem;
 }

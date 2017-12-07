@@ -13,7 +13,7 @@
         private readonly IFimaRepository<FimaUsers> users;
         private readonly IFimaRepository<FimaRoles> roles;
 
-        public HomeController(IFimaRepository<FimaUsers> users, IFimaRepository<FimaRoles> roles) 
+        public HomeController(IFimaRepository<FimaUsers> users, IFimaRepository<FimaRoles> roles)
         {
             this.users = users;
             this.roles = roles;

@@ -48,7 +48,7 @@ namespace Fima.Web
                 return;
             }
 
-            var adminRole = new FimaRole { Name = GlobalConstants.AdministratorRoleName};
+            var adminRole = new FimaRole { Name = GlobalConstants.AdministratorRoleName };
             var guestRole = new FimaRole { Name = GlobalConstants.GuestRoleName };
             var frontOfficeRole = new FimaRole { Name = GlobalConstants.FrontOfficeRoleName };
             var backOfficeRole = new FimaRole { Name = GlobalConstants.BackOfficeRoleName };

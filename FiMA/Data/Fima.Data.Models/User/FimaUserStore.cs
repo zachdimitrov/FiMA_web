@@ -11,7 +11,7 @@ namespace Fima.Data.Models
         public FimaUserStore()
             : this(new IdentityDbContext())
         {
-            base.DisposeContext = true;
+            this.DisposeContext = true;
         }
 
         public FimaUserStore(DbContext context)

@@ -18,5 +18,21 @@
                 .Select(x => x.MUNICIPALITY1)
                 .ToList();
         }
+
+        public int Add(string mun)
+        {
+            if (this.AllNames().Contains(mun))
+            {
+                return 0;
+            }
+
+            var m = new MUNICIPALITY()
+            {
+                MUNICIPALITY1 = mun
+            };
+
+            this.Add(m);
+            return 1;
+        }
     }
 }

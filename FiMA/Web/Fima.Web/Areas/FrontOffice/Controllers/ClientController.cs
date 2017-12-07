@@ -1,14 +1,15 @@
 ﻿namespace Fima.Web.Areas.FrontOffice.Controllers
 {
     using System;
+    using System.Linq;
     using System.Web.Mvc;
     using Common;
+    using Data.DbModels;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.Owin;
     using Models.Client;
     using Services.Data.Contracts;
     using Web.Controllers;
-    using Data.DbModels;
 
     public class ClientController : BaseController
     {
@@ -40,6 +41,18 @@
             var clientsPersonalIds = this.clients.AllPersonalIds();
 
             return this.Json(clientsPersonalIds, JsonRequestBehavior.AllowGet);
+        }
+
+        // GET: FrontOffice/Client/Representatives
+        // for ajax request search and fill representative select form
+        [HttpGet]
+        public JsonResult Representatives()
+        {
+            var representatives = this.clients.GetAll()
+                .To<RepSelectViewModel>()
+                .ToList();
+
+            return this.Json(representatives, JsonRequestBehavior.AllowGet);
         }
 
         // GET: FrontOffice/Client/Register
@@ -81,10 +94,17 @@
             }
 
             // TODO: създаване на тези неща
-            model.CLIENTID_STRING = "00000000";
             model.CREATED_BY = int.Parse(id);
             model.CREATED_WHEN = DateTime.Now.ToString();
-            model.CLIENTID = this.clients.GetNewId();
+
+            var clientNewId = this.clients.GetNewId();
+            model.CLIENTID = clientNewId;
+
+            var tempStr = "000000";
+            var i2 = tempStr.Length - clientNewId.ToString().Length;
+            var tempstr2 = tempStr.Substring(0, i2);
+            var clstring = "AC";
+            model.CLIENTID_STRING = clstring + tempstr2.ToString() + clientNewId.ToString();
 
             /*Dim rst As ADODB.Recordset
     myuser = conn_sql.myuser   '' DLookup("[user]", "current_user")
@@ -151,15 +171,6 @@
     Dim crwhen As Date
     crwhen = Now()
     '///////////////////////////////////////////////////////////////////
-
-    'MsgBox "exec sp_insertclient " _
-    '& i & ", " _
-    '& "'" & clidstring & "', '" & Forms!investor_create.txtID & "', 2, '" & Me.investor_create.cmbPERTYPE & "','" & Forms!investor_create.cmbORG & "', " _
-    '& "'" & Forms!investor_create.txtFNAME & "', '" & Forms!investor_create.txtSNAME & "', '" & Forms!investor_create.txtLNAME & "', '" & fullnm & "','" & Forms!investor_create.txtIDNM & "', '" & Forms!investor_create.txtIDDATE & "', '" & Forms!investor_create.txtIDISSUE & "', '" & Forms!investor_create.cmbCOUNTRY & "', '" & Forms!investor_create.cmbTOWn & "', '" & Forms!investor_create.txtSTR & "', " _
-    '& "'" & Forms!investor_create.txtEMAIL & "', '" & Forms!investor_create.txtPHONE & "', '" & Forms!investor_create.txtMOBILE & "', '" & Forms!investor_create.cmbREPTYPE & "', '" & Forms!investor_create.txtpylnomid1 & "', '" & Forms!investor_create.txtREP2 & "', '" & Forms!investor_create.cmbREPDATE & "', 'NONE', '" & Forms!investor_create.txtpylnomid2 & "', 'NONE', " _
-    '& "'" & Forms!investor_create.txtDDS & "', '" & Forms!investor_create.txtTAXID & "', '" & Forms!investor_create.cmbEMPLOYEE & "', '" & Forms!investor_create.cmbBDATE & "', " _
-    '& "'" & Forms!investor_create.txtIBAN & "', '" & Forms!investor_create.txtBIC & "', '" & Forms!investor_create.txtBANK & "', '" & Forms!investor_create.txtIBAN2 & "', '" & Forms!investor_create.txtBIC2 & "', '" & Forms!investor_create.txtBANK2 & "', '" & Forms!investor_create.txtIBAN3 & "', '" & Forms!investor_create.txtBIC3 & "', '" & Forms!investor_create.txtBANK3 & "', " _
-    '& "'" & Forms!investor_create.txtNOTARY & "', 'NONE', 'NONE', 'OK', '" & Forms!investor_create.txtglobid & "', " & userid & ",'" & crwhen & "','" & Forms!investor_create.cmbregcd & "'"
 
     Dim dcit As String
     If Me.checkRES.Checked = True Then

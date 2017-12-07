@@ -17,32 +17,32 @@
         public string UserName { get; set; }
 
         [Display(Name = "Парола")]
-        public string strEmpPassword { get; set; }
+        public string StrEmpPassword { get; set; }
 
         [Display(Name = "Достъп")]
-        public string strAccess { get; set; }
+        public string StrAccess { get; set; }
 
         [Display(Name = "Име")]
-        public string strName { get; set; }
+        public string StrName { get; set; }
 
         [Display(Name = "Град")]
-        public string strTown { get; set; }
+        public string StrTown { get; set; }
 
         [Display(Name = "Индекс")]
-        public string strIndex { get; set; }
+        public string StrIndex { get; set; }
 
         [Display(Name = "Позиция")]
         public string EmpFunction { get; set; }
 
         [Display(Name = "Адрес")]
-        public string emptown { get; set; }
+        public string Emptown { get; set; }
 
         [Display(Name = "Е-мейл")]
         [EmailAddress(ErrorMessage = "Попълнете валиден е-мейл адрес!")]
         public string Email { get; set; }
 
         [Display(Name = "Телефон")]
-        [Phone (ErrorMessage = "Попълнете валиден телефонен номер!")]
+        [Phone(ErrorMessage = "Попълнете валиден телефонен номер!")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Опити")]

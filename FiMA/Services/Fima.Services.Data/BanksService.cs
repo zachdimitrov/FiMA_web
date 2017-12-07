@@ -7,7 +7,7 @@
 
     public class BanksService : BaseDataService<BANKS>, IBanksService
     {
-        public BanksService(IFimaRepository<BANKS> dataSet) 
+        public BanksService(IFimaRepository<BANKS> dataSet)
             : base(dataSet)
         {
         }

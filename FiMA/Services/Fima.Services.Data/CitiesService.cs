@@ -18,5 +18,21 @@
                 .Select(x => x.TOWNNAME)
                 .ToList();
         }
+
+        public int Add(string city)
+        {
+            if (this.AllNames().Contains("city"))
+            {
+                return 0;
+            }
+
+            var c = new TOWNS()
+            {
+                TOWNNAME = city
+            };
+
+            this.Add(c);
+            return 1;
+        }
     }
 }

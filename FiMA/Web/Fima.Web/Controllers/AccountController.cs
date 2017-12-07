@@ -14,10 +14,10 @@
     [Authorize]
     public class AccountController : BaseController
     {
-        private readonly IRolesService roles;
-
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
+
+        private readonly IRolesService roles;
 
         private ApplicationSignInManager signInManager;
 

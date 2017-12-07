@@ -13,18 +13,19 @@
         [Display(Name = "номер")]
         public int CLIENTID { get; set; }
 
+        [Display(Name = "идентификатор")]
         public string CLIENTID_STRING { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Въведете ЕГН или ЕИК!")]
         [RegularExpression("^[0-9]{9,13}$", ErrorMessage ="Въведете валидно ЕГН или ЕИК!")]
         [Display(Name = "ЕГН / Булстат")]
         public string PERSONALID_BULSTAT { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Въведете служител / пълномощник!")]
         [Display(Name = "служител / пълномощник")]
         public string CONTRACT_TYPE { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Въведете тип лице!")]
         [Display(Name = "тип лице")]
         public string TYPE_PERSON { get; set; }
 
@@ -162,9 +163,9 @@
 
         public string CD_REG { get; set; }
 
-        public string user_modified { get; set; }
+        public string User_modified { get; set; }
 
-        public string user_modified_time { get; set; }
+        public string User_modified_time { get; set; }
 
         [Display(Name = "BIC код Ц.Д.")]
         public string CD_BIC { get; set; }

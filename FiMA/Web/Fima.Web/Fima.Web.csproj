@@ -206,6 +206,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\CommonDataController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administration\Models\FimaRolesViewModel.cs" />
     <Compile Include="Areas\Administration\Models\FimaUsersViewModel.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Areas\FrontOffice\Controllers\HomeController.cs" />
     <Compile Include="Areas\FrontOffice\FrontOfficeAreaRegistration.cs" />
     <Compile Include="Areas\FrontOffice\Models\Client\ClientRegisterViewModel.cs" />
+    <Compile Include="Areas\FrontOffice\Models\Client\RepSelectViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
