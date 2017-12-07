@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Common\FormattedDbEntityValidationException.cs" />
     <Compile Include="DbModels\ACCOUNTINGTABLE_FORMATED.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -270,9 +271,6 @@
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DbModels\DP_LIMITED.cs">
-      <DependentUpon>FimaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModels\dtproperties.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DbModels\dt_getpropertiesbyid_Result.cs">
@@ -760,9 +758,6 @@
     <Compile Include="DbModels\SUMARY_NAV_FUNDS_HIST.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbModels\sysdiagrams.cs">
-      <DependentUpon>FimaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DbModels\TEST_CD_MESSAGES.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
@@ -799,6 +794,7 @@
     <Compile Include="DbModels\VN_HIST.cs">
       <DependentUpon>FimaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="KpEntitiesContextExtended.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

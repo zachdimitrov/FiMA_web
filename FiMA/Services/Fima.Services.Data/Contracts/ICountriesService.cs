@@ -12,6 +12,5 @@
         COUNTRIES GetByName(string name);
 
         IEnumerable<string> GetNamesBasedOnPerType(string perType);
-
     }
 }

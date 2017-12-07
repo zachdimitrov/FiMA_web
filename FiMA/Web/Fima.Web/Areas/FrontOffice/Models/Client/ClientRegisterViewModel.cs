@@ -163,9 +163,9 @@
 
         public string CD_REG { get; set; }
 
-        public string user_modified { get; set; }
+        public string User_modified { get; set; }
 
-        public string user_modified_time { get; set; }
+        public string User_modified_time { get; set; }
 
         [Display(Name = "BIC код Ц.Д.")]
         public string CD_BIC { get; set; }

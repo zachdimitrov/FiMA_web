@@ -1,8 +1,4 @@
-﻿using Fima.Data.DbModels;
-using Fima.Services.Data;
-using Fima.Services.Data.Common.Contracts;
-
-namespace Fima.Web
+﻿namespace Fima.Web
 {
     using System.Data.Entity;
     using System.Reflection;
@@ -18,8 +14,8 @@ namespace Fima.Web
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using Services.Web;
     using Services.Data.Contracts;
+    using Services.Web;
 
     public static class AutofacConfig
     {

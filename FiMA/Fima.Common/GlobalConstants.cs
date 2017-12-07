@@ -13,7 +13,7 @@
 
         public const string BaseCountry = "БЪЛГАРИЯ";
 
-        public const string IbanRegex = "^BG\\d{2}[A-Z]{4}\\d{6}[0-9A-Z]{8}$";
+        public const string IbanRegex = "^BG[0-9]{2}[A-Z]{4}[0-9]{6}[0-9A-Z]{8}$";
         public const string BicRegex = "^([a-zA-Z]{4}[a-zA-Z]{2}[a-zA-Z0-9]{2}([a-zA-Z0-9]{3})?)$";
 
         public static readonly string[] PerTypes = new[]

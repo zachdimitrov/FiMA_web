@@ -252,7 +252,7 @@
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             <label for="txtpulnomnm1">име на пълномощник 1</label>
-                            <input type="text" name="txtpulnomnm1" value="" class="pure-u-1" />
+                            <input type="text" name="txtpulnomnm1" id="txtpulnomnm1" value="" class="pure-u-1" />
                         </div>
                     </div>
                     <br />
@@ -266,7 +266,7 @@
                         </div>
                         <div class="pure-u-1 pure-u-md-1-2">
                             <label for="txtpulnomnm2">име на пълномощник 2</label>
-                            <input type="text" name="txtpulnomnm2" value="" class="pure-u-1" />
+                            <input type="text" name="txtpulnomnm2" id="txtpulnomnm2" value="" class="pure-u-1" />
                         </div>
                     </div>
                 </div>
@@ -407,36 +407,44 @@
                     </div>
                     <div class="pure-control-group">
                         @Html.Label("страна", new { @for = "cmbCountry" })
-                        @Html.DropDownList("txtID", new SelectList(Model.Cities), new { @class = "pure-u-5-8" })
+                        @Html.DropDownList("cmbCountry", new SelectList(Model.Countries), new { @class = "pure-u-5-8" })
+                    </div>
+                    <div class="pure-control-group">
+                        @Html.Label("град", new { @for = "cmbTown" })
+                        @Html.DropDownList("cmbTown", new SelectList(Model.Cities), new { @class = "pure-u-5-8" })
                     </div>
                 </div>
             </div>
             <div class="pure-u-md-1-4">
                 <div>
-                    <button class="pure-button pure-button-active" style="width:150px"><i class="fa fa-search"></i> търси</button>
+                    <button class="pure-button pure-button-active" id="rep-search" style="width:150px"><i class="fa fa-search"></i> търси</button>
                 </div>
                 <br />
                 <div>
-                    <button class="pure-button pure-button-active" style="width:150px"><i class="fa fa-remove"></i> изчисти</button>
+                    <button class="pure-button pure-button-active" id="rep-clean" style="width:150px"><i class="fa fa-remove"></i> изчисти</button>
+                </div>
+                <div>
+                    <br />
+                    <p class="text-danger" id="search-error"></p>
                 </div>
             </div>
             <div class="rep-results pure-u-1">
                 <table class="simple-table">
                     <tr>
+                        <th>№</th>
                         <th>ЕГН / булстат</th>
                         <th>идентификатор</th>
                         <th>име</th>
                         <th>държава</th>
                         <th>град</th>
-                        <th></th>
                     </tr>
                     <tr class="rep-row">
+                        <td><button class="pure-button pure-button-primary selected-rep-number"></button></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><button class="pure-button pure-button-primary"><i class="fa fa-check"></i></button></td>
                     </tr>
                 </table>
             </div>
@@ -453,6 +461,33 @@
             // form accordeon settings
             $("#accordion").accordion({
                 collapsible: true
+            });
+
+            // check for person type and hide fields
+            var active = 0;
+            var personType = $("select[name=TYPE_PERSON]");
+            addBaseCountry();
+
+            function addBaseCountry() {
+                $("#COUNTRY_ADDRESS_ID").val("@GlobalConstants.BaseCountry").prop('disabled', 'disabled');
+                $("#COUNTRY1").val("@GlobalConstants.BaseCountry").prop('disabled', 'disabled');
+                $("#COUNTRY2").val("@GlobalConstants.BaseCountry").prop('disabled', 'disabled');
+            }
+
+            personType.change(function () {
+                if ($("select[name=TYPE_PERSON] option:selected").text().indexOf("физическо") >= 0) {
+                    $("#accordion").accordion("option", "active", 0);
+                } else {
+                    $("#accordion").accordion("option", "active", 1);
+                }
+
+                if ($("select[name=TYPE_PERSON] option:selected").text().indexOf("българско") >= 0) {
+                    addBaseCountry();
+                } else {
+                    $("#COUNTRY_ADDRESS_ID").prop('disabled', false);
+                    $("#COUNTRY1").prop('disabled', false);
+                    $("#COUNTRY2").prop('disabled', false);
+                }
             });
 
             // date picker settings
@@ -472,18 +507,167 @@
                 width: 750,
             });
 
-            $("#find-rep-1").on("click", function () {
+            $("#find-rep-1").click(function () {
                 dialog.dialog("open");
                 populateData(1);
             });
 
-            $("#find-rep-2").on("click", function () {
+            $("#find-rep-2").click(function () {
                 dialog.dialog("open");
+                populateData(2);
             });
 
             // add data to representative search based on representative select button
             function populateData(n) {
-                // TODO
+                var clientNum = $("input[name=txtID]");
+                var clientEgn = $("input[name=txtEGN]");
+                var clientName = $("input[name=txtName]");
+                var clientCountry;
+                var clientCity;
+
+                function cleanModal() {
+                    clientNum.val("");
+                    clientEgn.val("");
+                    clientName.val("");
+
+                    function createBlank() {
+                        $("select[name=cmbCountry]").prepend("<option value='' class='blank-option' selected='selected'></option>");
+                        $("select[name=cmbTown]").prepend("<option value='' class='blank-option' selected='selected'></option>");
+                    }
+
+                    var blanks = $(".blank-option");
+
+                    if (blanks.length > 0) {
+                        Promise.resolve(blanks.remove())
+                        .then(createBlank());
+                    } else {
+                        createBlank();
+                    }
+
+                    var oldRows = $(".rep-data-row")
+                    if (oldRows) {
+                        oldRows.remove();
+                    }
+                }
+
+                cleanModal();
+
+                $("#rep-clean").click(function () {
+                    cleanModal();
+                });
+
+                $("#rep-search").click(function () {
+                    $.ajax({
+                        method: "GET",
+                        url: "@Url.Action("Representatives", "Client", new { Area = "FrontOffice"})",
+                        data: {},
+                        contentType: "application/json; charset=utf-8",
+                        success: function (res) {
+                            if (res.length <= 0)
+                            {
+                                return;
+                            }
+
+                            var oldRows = $(".rep-data-row")
+                            if (oldRows) {
+                                oldRows.remove();
+                            }
+
+                            clientNum = $("input[name=txtID]");
+                            clientEgn = $("input[name=txtEGN]");
+                            clientName = $("input[name=txtName]");
+                            clientCountry = $("select[name=cmbCountry] option:selected");
+                            clientCity = $("select[name=cmbTown] option:selected");
+
+                            var result = [];
+                            var filter = {};
+
+                            var num = clientNum.val(),
+                                egn = clientEgn.val(),
+                                name = clientName.val(),
+                                coun = clientCountry.text(),
+                                city = clientCity.text();
+
+                            if (num != "" && num != undefined) {
+                                filter.CLIENTID_STRING = num;
+                            }
+
+                            if (egn != "" && egn != undefined) {
+                                filter.PERSONALID_BULSTAT = egn;
+                            }
+
+                            if (name != "" && name != undefined) {
+                                filter.FULL_NAME = name;
+                            }
+
+                            if (coun != "" && coun != undefined) {
+                                filter.COUNTRY_ADDRESS_ID = coun;
+                            }
+
+                            if (city != "" && city != undefined) {
+                                filter.TOWN_ADDRESS_ID = city;
+                            }
+
+                            if (Object.keys(filter).length <= 0) {
+                                result = res;
+                            } else {
+                                for (i = 0; i < res.length; i++) {
+                                    var found = true;
+                                    for (var prop in filter) {
+                                        if (!res[i].hasOwnProperty(prop) || res[i][prop].trim().toLowerCase() != filter[prop].trim().toLowerCase()) {
+                                            found = false;
+                                        }
+                                    }
+                                    if (found) {
+                                        result.push(res[i]);
+                                    }
+                                }
+                            }
+
+                            if (result.length <= 0) {
+                                $("#search-error").html("Няма намерени записи!");
+                            } else {
+                                $("#search-error").html("");
+
+                                for (k = 1; k <= result.length; k++) {
+                                    var row = $(".rep-row").first().clone();
+                                    var tds = row.find("td");
+
+                                    var btn = $(tds[0]).find("button");
+
+                                    btn.html("" + k);
+                                    $(tds[1]).html(result[k-1].PERSONALID_BULSTAT || "няма");
+                                    $(tds[2]).html(result[k-1].CLIENTID_STRING || "няма");
+                                    $(tds[3]).html(result[k-1].FULL_NAME || "няма");
+                                    $(tds[4]).html(result[k-1].COUNTRY_ADDRESS_ID || "няма");
+                                    $(tds[5]).html(result[k-1].TOWN_ADDRESS_ID || "няма");
+
+                                    row.show()
+                                        .removeClass("rep-row")
+                                        .addClass("rep-data-row")
+                                        .appendTo($(".simple-table"));
+                                }
+
+                                $(".selected-rep-number").click(function (ev) {
+                                    var parent = $(ev.target).parent().parent("");
+                                    dialog.dialog("close");
+                                    var sufix = n == 1 ? "" : n;
+                                    var inputName = $("#AUTHORISED_NAME" + sufix);
+                                    var inputTxt = $("#txtpulnomnm" + n);
+
+                                    console.log(parent.find(inputName));
+                                    console.log(parent.find(inputTxt));
+
+                                    inputName.val(parent.find("td")[2].innerText);
+                                    inputTxt.val(parent.find("td")[3].innerText);
+                                });
+                            }
+                        },
+                        error: function (err) {
+                            console.log("error:", err);
+                        }
+                    });
+                });
             }
 
             // initial search if client is registered
