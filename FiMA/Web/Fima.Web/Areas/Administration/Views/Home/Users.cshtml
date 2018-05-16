@@ -34,16 +34,16 @@
         new { id = c.Id },
         new { @class = "pure-button pure-button-primary button-xsmall" }));
 
-    columns.Add(c => c.strName).Titled("име").Filterable(true);
+    columns.Add(c => c.StrName).Titled("име").Filterable(true);
     columns.Add(c => c.UserName).Titled("потребител").Filterable(true);
-    columns.Add(c => c.strEmpPassword).Titled("парола");
+    columns.Add(c => c.StrEmpPassword).Titled("парола");
     columns.Add(c => c.Email).Titled("е-мейл").Filterable(true);
     columns.Add(c => c.PhoneNumber).Titled("телефон");
     columns.Add(c => c.EmpFunction).Titled("функция");
-    columns.Add(c => c.emptown).Titled("град");
-    columns.Add(c => c.strTown).Titled("град");
-    columns.Add(c => c.strIndex).Titled("индекс");
-    columns.Add(c => c.strAccess).Titled("достъп");
+    columns.Add(c => c.Emptown).Titled("град");
+    columns.Add(c => c.StrTown).Titled("град");
+    columns.Add(c => c.StrIndex).Titled("индекс");
+    columns.Add(c => c.StrAccess).Titled("достъп");
     columns.Add(c => c.AccessFailedCount).Titled("Опити");
     columns.Add(c => c.FimaRoles).Titled("роли").RenderValueAs(x => string.Join(",", x.FimaRoles));
 }).WithPaging(20).Sortable(true)
