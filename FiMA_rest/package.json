@@ -1,0 +1,24 @@
+{
+  "name": "fima_rest",
+  "version": "1.0.0",
+  "description": "rest api for FiMA",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zachdimitrov/FiMA_web/FiMA_rest"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "fima"
+  ],
+  "author": "Zach Dimitrov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mssql": "^4.1.0"
+  }
+}
