@@ -1,3 +1,20 @@
+/* eslint no-console: 0 */
+const config = require('./config/config');
+const greeting = `Server started at: ${config.port}`;
+
+Promise.resolve()
+    .then(() => require('./db/db').init(config.sqlConfig))
+    .then((db) => require('./data/data').init(db))
+    .then((data) => require('./app/app').init(data))
+    .then((app) => {
+        app.listen(config.port, () => console.log(greeting));
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+
+/*
 var express = require('express');
 var app = express();
 var sql = require('mssql');
@@ -26,6 +43,7 @@ app.get('/banks', function(req, res) {
                 .then(function(recordset) {
                     console.log(recordset);
                     res.end(JSON.stringify(recordset));
+                    sql.close();
                 })
                 .catch(function(err) {
                     console.log(err);
@@ -36,3 +54,4 @@ app.get('/banks', function(req, res) {
             console.log(err);
         })
 })
+*/
